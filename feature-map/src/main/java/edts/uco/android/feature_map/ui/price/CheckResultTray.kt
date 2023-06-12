@@ -7,12 +7,10 @@ import androidx.core.view.isVisible
 import com.google.android.libraries.places.api.model.Place
 import edts.base.android.core_domain.model.CheckPriceData
 import edts.base.android.core_domain.model.VehicleTypeData
+import edts.base.core_utils.formatMoney
 import edts.uco.android.feature_map.R
 import edts.uco.android.feature_map.databinding.TrayCheckPriceResultBinding
-import edts.uco.android.feature_map.databinding.TrayVehicleTypeBinding
 import id.co.edtslib.edtsds.bottom.BottomLayoutDialog
-import id.co.edtslib.edtsds.list.menu.MenuDelegate
-import id.co.edtslib.edtsds.list.menu.MenuListView
 
 class CheckResultTray(private val context: Context,
                       private val vehicle: VehicleTypeData?,
@@ -42,7 +40,7 @@ class CheckResultTray(private val context: Context,
 
         binding.tvVehicleType.text = vehicle?.toString()
 
-        binding.tvPrice.text = price?.cost
+        binding.tvPrice.text = price?.cost?.formatMoney()
         binding.tvDuration.text = price?.duration
         binding.tvDistance.text = price?.km
 

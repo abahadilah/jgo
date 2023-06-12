@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
@@ -115,7 +116,7 @@ class CheckPriceActivity: PopupActivity<ActivityCheckPriceBinding>(), OnMapReady
         setupView()
         setupObserver()
         setupListener()
-        initData()
+        loadData()
     }
 
     private fun setupView() {
@@ -135,6 +136,10 @@ class CheckPriceActivity: PopupActivity<ActivityCheckPriceBinding>(), OnMapReady
         }
 
         viewModel.originAddress.observe(this) {
+            viewModel.setOriginAddress(lat = it.latLng?.latitude,
+                lng = it.latLng?.longitude,
+                name = it.name).observeForever {  }
+
             clearError()
             binding.etOriginAddress.text = it.name
             binding.ivOriginAddressMap.isVisible = true
@@ -190,8 +195,17 @@ class CheckPriceActivity: PopupActivity<ActivityCheckPriceBinding>(), OnMapReady
         }
     }
 
-    private fun initData() {
+    private fun loadData() {
         viewModel.getVehicleType(true).observeForever {  }
+        viewModel.getConfiguration().observe(this) {
+            if (it?.originAddress?.lat != null && it.originAddress?.lng != null) {
+                val builder = Place.builder()
+                builder.latLng = LatLng(it.originAddress!!.lat!!, it.originAddress!!.lng!!)
+                builder.name = it.originAddress?.name
+
+                viewModel.originAddress.postValue(builder.build())
+            }
+        }
     }
 
     private fun setupListener() {

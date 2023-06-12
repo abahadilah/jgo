@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface IConfigurationRepository {
     fun get(): Flow<ConfigurationData?>
+    fun setOriginAddress(lat: Double?, lng: Double?, name: String?): Flow<ConfigurationData?>
     fun skipVersion(version: String?): Flow<ConfigurationData?>
     fun clearFcmId()
 }

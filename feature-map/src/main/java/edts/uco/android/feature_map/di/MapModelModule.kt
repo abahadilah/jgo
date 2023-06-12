@@ -7,5 +7,7 @@ import org.koin.dsl.module
 
 val mapModelModule = module {
     viewModel { MapViewModel(get()) }
-    viewModel { CheckPriceViewModel(get()) }
+    viewModel {
+        CheckPriceViewModel(get(), get())
+    }
 }

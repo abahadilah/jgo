@@ -66,9 +66,6 @@ val repositoryModule = module {
 
     single<IConfigurationRepository> {
         ConfigurationRepository(
-            get(),
-            get(),
-            get(),
             get()
         )
     }

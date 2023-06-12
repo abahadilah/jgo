@@ -4,10 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import com.google.android.libraries.places.api.model.Place
 import edts.base.android.core_domain.model.VehicleTypeData
+import edts.base.android.core_domain.usecase.ConfigurationUseCase
 import edts.base.android.core_domain.usecase.VehicleUseCase
 import id.co.edtslib.uibase.BaseViewModel
 
-class CheckPriceViewModel(private val vehicleUseCase: VehicleUseCase): BaseViewModel() {
+class CheckPriceViewModel(private val vehicleUseCase: VehicleUseCase,
+                          private val configurationUseCase: ConfigurationUseCase): BaseViewModel() {
     var vehicleType = MutableLiveData<VehicleTypeData>()
 
     var originAddress = MutableLiveData<Place>()
@@ -33,4 +35,8 @@ class CheckPriceViewModel(private val vehicleUseCase: VehicleUseCase): BaseViewM
         destination5Lat = destinationAddress5.value?.latLng?.latitude,
         destination5Lng = destinationAddress5.value?.latLng?.longitude
     ).asLiveData()
+
+    fun setOriginAddress(lat: Double?, lng: Double?, name: String?) =
+        configurationUseCase.setOriginAddress(lat, lng, name).asLiveData()
+    fun getConfiguration() = configurationUseCase.get().asLiveData()
 }

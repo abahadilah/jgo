@@ -10,7 +10,7 @@ data class CheckPriceResponse (
     val km: String?,
 
     @field:SerializedName("tarif")
-    val cost: String?,
+    val cost: Double?,
 
     @field:SerializedName("durasi")
     val duration: String?,
