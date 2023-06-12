@@ -18,4 +18,6 @@
     <string name="price_duration">Durasi</string>
     <string name="price_cost">Total</string>
 
+    <string name="price_result_error">Data tidak ditemukan</string>
+
 </resources>
