@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>otp_interval</key>
+        <value>10</value>
+    </entry>
+    <entry>
+        <key>bank_list</key>
+        <value />
+    </entry>
+    <entry>
+        <key>longitude</key>
+        <value>106.8176494</value>
+    </entry>
+    <entry>
+        <key>latitude</key>
+        <value>-6.2033168</value>
+    </entry>
+</defaultsMap>

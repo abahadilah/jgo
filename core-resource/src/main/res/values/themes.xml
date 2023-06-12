@@ -1,0 +1,52 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.EDTS" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary30</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary10</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorSecondary30</item>
+        <item name="colorSecondaryVariant">@color/colorSecondary10</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="actionBarTheme">@style/PopupActionBar</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.EDTS">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+    <style name="FullScreenTheme" parent="Theme.EDTS">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+    <style name="FullScreenThemeNeutral20" parent="FullScreenTheme">
+        <item name="android:windowBackground">@color/colorNeutral20</item>
+    </style>
+    <style name="HomeScreenTheme" parent="FullScreenTheme">
+        <item name="android:statusBarColor">@color/homeStatusBar</item>
+    </style>
+    <style name="PopupTheme" parent="Theme.EDTS">
+        <item name="windowNoTitle">false</item>
+        <item name="windowActionBar">true</item>
+        <item name="android:textColor">@color/colorNeutral70</item>
+    </style>
+
+    <style name="PopupActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar" />
+
+    <style name="FullScreenDialog">
+        <item name="android:statusBarColor">@color/colorWhite</item>
+    </style>
+
+    <style name="BottomLayoutWithEditDialog" parent="EdtsDialog">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+</resources>

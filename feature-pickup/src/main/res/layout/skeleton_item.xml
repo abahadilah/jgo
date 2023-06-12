@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/dimen_16dp"
+    android:paddingBottom="@dimen/dimen_16dp"
+    android:layout_marginStart="@dimen/dimen_16dp"
+    android:layout_marginEnd="@dimen/dimen_16dp"
+    android:background="@drawable/bg_menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.facebook.shimmer.ShimmerFrameLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/tvKg"
+        app:shimmer_auto_start="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/B1"
+            android:background="@drawable/bg_placeholder_text"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="@dimen/dimen_shimmer_text_short"
+            android:layout_height="wrap_content" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/TvTime"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKg"
+        app:shimmer_auto_start="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/B2"
+            android:background="@drawable/bg_placeholder_text"
+            android:textColor="@color/colorNeutral40"
+            android:layout_width="@dimen/dimen_shimmer_text"
+            android:layout_height="wrap_content" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <com.facebook.shimmer.ShimmerFrameLayout
+        app:shimmer_auto_start="true"
+        android:id="@+id/tvPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvKg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/H2"
+            android:textColor="@color/colorNeutral70"
+            android:background="@drawable/bg_placeholder_text"
+            android:layout_width="@dimen/dimen_shimmer_text"
+            android:layout_height="wrap_content" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <com.facebook.shimmer.ShimmerFrameLayout
+        app:shimmer_auto_start="true"
+        android:id="@+id/tvStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/TvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/H4"
+            android:background="@drawable/bg_placeholder_text"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="@dimen/dimen_shimmer_text_short"
+            android:layout_height="wrap_content" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

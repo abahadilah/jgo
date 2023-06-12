@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_pin_point">Tandai titik lokasi</string>
+    <string name="map_choose">Pilih Lokasi</string>
+    <string name="map_search_empty">Lokasi Tidak Ditemukan</string>
+    <string name="map_search_empty_desc">Cek ulang lokasi yang Anda tulida dan coba lagi. Pastikan juga layanan lokasi di perangkat sudah aktif. </string>
+    <string name="map_choose_via_map">Pilih lewat peta</string>
+    <string name="map_location_not_found">Area Anda berada diluar jangkauan.</string>
+
+</resources>

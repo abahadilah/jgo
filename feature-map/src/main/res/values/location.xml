@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="location_min_height">450dp</dimen>
+
+    <string name="location_title">Cari Alamat</string>
+    <string name="location_search">Cari Lokasi / gedung / nama jalan</string>
+    <string name="location_use_current">Gunakan lokasi saat ini</string>
+    <string name="location_search_info">Silakan masukkan alamat/lokasimu untuk menentukan lokasi pengiriman</string>
+    <string name="location_current_location_failed">Gagal mengambil lokasi saat ini</string>
+</resources>

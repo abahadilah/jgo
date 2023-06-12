@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="forgot_pin_title">Lupa PIN</string>
+    <string name="forgot_pin_desc">Anda perlu masukan nomor HP dan melakukan verifikas untuk mengganti PIN baru</string>
+    <string name="forgot_pin_send_code">Kirim Kode Verifikasi</string>
+    <string name="forgot_pin_create">Atur 4 digit PIN Anda</string>
+    <string name="forgot_pin_reset_success">Berhasil!</string>
+    <string name="forgot_pin_reset_success_desc">PIN berhasil diperbaharui. </string>
+</resources>

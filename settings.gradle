@@ -1,0 +1,30 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        //noinspection JcenterRepositoryObsolete
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+rootProject.name = "MyJGo"
+include ':app'
+include ':core-resource'
+include ':core-data'
+include ':core-domain'
+include ':core-navigation'
+include ':core-utils'
+include ':feature-home'
+include ':feature-auth'
+include ':feature-map'
+include ':feature-pickup'
+include ':feature-profile'
+include ':feature-activity'

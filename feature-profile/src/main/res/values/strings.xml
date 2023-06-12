@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_title">Profile</string>
+    <string name="profile_setting">Pengaturan</string>
+
+    <string name="profile_change_pin">Ubah Kata Sandi</string>
+    <string name="profile_change_pin_desc">Pengaturan kata sandi</string>
+
+    <string name="profile_business_detail">Detail Usaha</string>
+    <string name="profile_business_detail_desc">Lokasi usaha dan outlet</string>
+
+    <string name="profile_supply_commitment">Komitmen Supply</string>
+    <string name="profile_supply_commitment_desc">Jumlah Minyak, harga &amp; Penjadwalan</string>
+
+    <string name="profile_change_pin_current_pin">Masukan PIN Anda saat ini</string>
+    <string name="profile_change_pin_current_pin_desc">Masukan 4 digit PIN Anda</string>
+    <string name="profile_change_pin_current_pin_error">PIN yang kamu masukkan tidak sesuai</string>
+
+    <string name="profile_change_pin_new_pin">Buat PIN baru</string>
+    <string name="profile_change_pin_new_pin_desc">Masukkan 4 digit PIN baru</string>
+
+    <string name="profile_change_pin_new_pin_confirm">Buat Konfirmasi PIN</string>
+    <string name="profile_change_pin_new_pin_confirm_desc">Masukkan 4 digit PIN baru</string>
+
+    <string name="profile_change_pin_new_pin_confirm_error">PIN yang kamu masukkan tidak cocok</string>
+
+    <string name="profile_change_pin_forgot">Lupa PIN?</string>
+    <string name="profile_change_pin_success">PIN berhasil diubah</string>
+    <string name="profile_change_business_detail_success">Detail Usaha berhasil dirubah </string>
+    <string name="profile_change_supply_commitment_success">Komitmen Supply berhasil diubah</string>
+
+    <string name="profile_change_title">Ubah Profil</string>
+    <string name="profile_change_photo">Ubah Foto Profil</string>
+    <string name="profile_change_full_name">Nama Lengkap</string>
+    <string name="profile_change_phone_no">Nomor HP</string>
+    <string name="profile_change_success">Profil berhasil diubah</string>
+
+    <string name="profile_logout_confirm">Keluar dari aplikasi</string>
+    <string name="profile_logout_confirm_question">Apakah anda ingin keluar dari aplikasi?</string>
+    <string name="profile_name_empty">Nama Lengkap wajib diisi</string>
+</resources>

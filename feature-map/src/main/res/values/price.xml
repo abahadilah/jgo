@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="price_check">Cek Ongkos Kirim</string>
+    <string name="price_vehicle_type">Jenis Kendaraan</string>
+    <string name="price_select_vehicle_type">Pilih Jenis Kendaraan</string>
+    <string name="price_origin_address">Alamat Asal</string>
+    <string name="price_destination_address_1">Alamat Tujuan 1</string>
+    <string name="price_destination_address_2">Alamat Tujuan 2</string>
+    <string name="price_destination_address_3">Alamat Tujuan 3</string>
+    <string name="price_destination_address_4">Alamat Tujuan 4</string>
+    <string name="price_destination_address_5">Alamat Tujuan 5</string>
+
+    <string name="price_vehicle_type_empty">Jenis Kendaraan harus dipilih</string>
+    <string name="price_origin_address_empty">Alamat asal harus diisi</string>
+    <string name="price_destination_address_empty">Alamat tujuan harus diisi</string>
+    <string name="price_check_1">Ongkos Kirim</string>
+    <string name="price_distance">Jarak</string>
+    <string name="price_duration">Durasi</string>
+    <string name="price_cost">Total</string>
+
+</resources>

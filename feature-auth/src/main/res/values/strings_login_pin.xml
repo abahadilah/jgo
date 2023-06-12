@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_pin_header">Masukkan PIN</string>
+    <string name="login_pin_title">Masukan 4 digit PIN kamu</string>
+    <string name="login_pin_forgot">Lupa PIN?</string>
+    <string name="login_pin_success">Selamat Datang Kembali</string>
+    <string name="login_pin_success_desc">Kamu berhasil masuk</string>
+    <string name="login_pin_error">PIN yang kamu masukkan tidak sesuai</string>
+</resources>

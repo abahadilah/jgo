@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application>
+        <activity
+            android:name="edts.uco.android.feature_profile.changepin.ChangePinActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="@string/profile_change_pin"
+            android:screenOrientation="portrait"
+            android:theme="@style/PopupTheme"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name="edts.uco.android.feature_profile.business.ChangeBusinessDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="@string/profile_business_detail"
+            android:screenOrientation="portrait"
+            android:theme="@style/PopupTheme"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name="edts.uco.android.feature_profile.supplycommitment.ChangeSupplyCommitmentActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="@string/profile_supply_commitment"
+            android:screenOrientation="portrait"
+            android:theme="@style/PopupTheme"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name="edts.uco.android.feature_profile.changeprofile.ChangeProfileActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="@string/profile_change_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/PopupTheme"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
+    </application>
+</manifest>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="otp_title">Masukan Kode Verifikasi</string>
+    <string name="otp_desc">Cek SMS masuk ya, masukan kode\nverifikasi yang sudah dikirim ke nomor</string>
+    <string name="otp_try_again">Kirim ulang kode verifikasi</string>
+    <string name="otp_change_phone_no">Ganti Nomor Handphone</string>
+    <string name="otp_remaining"><![CDATA[Kirim ulang kode verifikasi <font color="#0058B1"><b>%s</b></font>]]></string>
+    <string name="otp_pin_error">Kode yang kamu masukkan tidak sesuai</string>
+
+</resources>

@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+apply (from: "../shared_dependencies.gradle")
+
+android {
+    namespace 'edts.base.android.core_data'
+
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+}
+
+dependencies {
+    implementation project(":core-utils")
+    implementation project(":core-domain")
+
+    /* coroutine */
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlin_coroutines_core_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlin_coroutines_android_version")
+    api("androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle_version")
+
+    /* support lib*/
+    implementation("com.facebook.stetho:stetho:$versions.stetho_version")
+    implementation("com.facebook.stetho:stetho-okhttp3:$versions.stetho_version")
+    implementation project(path: ':core-domain')
+
+    /* room */
+    implementation "androidx.room:room-ktx:$versions.room_version"
+    implementation "androidx.room:room-runtime:$versions.room_version"
+    kapt "androidx.room:room-compiler:$versions.room_version"
+    androidTestImplementation "androidx.room:room-testing:$versions.room_version"
+
+}

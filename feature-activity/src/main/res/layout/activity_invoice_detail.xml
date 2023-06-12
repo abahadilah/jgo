@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_menu"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_marginBottom="@dimen/dimen_2dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_marginTop="@dimen/dimen_24dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/H2"
+                    android:layout_marginStart="@dimen/dimen_16dp"
+                    android:textColor="@color/colorNeutral70"
+                    android:text="@string/invoice"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_marginEnd="@dimen/dimen_16dp"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="@dimen/dimen_4dp"
+                    app:cardBackgroundColor="#FFF0E6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:paddingStart="@dimen/dimen_8dp"
+                        android:paddingEnd="@dimen/dimen_8dp"
+                        android:paddingTop="@dimen/dimen_2dp"
+                        android:paddingBottom="@dimen/dimen_2dp"
+                        android:id="@+id/tvStatus"
+                        style="@style/H4"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_marginEnd="@dimen/dimen_12dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:paddingStart="@dimen/dimen_12dp"
+                    android:paddingEnd="@dimen/dimen_12dp"
+                    android:paddingTop="@dimen/dimen_16dp"
+                    android:paddingBottom="@dimen/dimen_16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:id="@+id/lbInvoiceName"
+                        style="@style/B1"
+                        android:text="@string/invoice_name"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbInvoiceName"
+                        style="@style/B1"
+                        android:id="@+id/tvInvoiceName"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvInvoiceName"
+                        android:id="@+id/lbCreatedDate"
+                        style="@style/B1"
+                        android:text="@string/invoice_created_date"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbCreatedDate"
+                        style="@style/B1"
+                        android:id="@+id/tvCreatedDate"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCreatedDate"
+                        android:id="@+id/lbDueDate"
+                        style="@style/B1"
+                        android:text="@string/invoice_due_date"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbDueDate"
+                        style="@style/B1"
+                        android:id="@+id/tvDueDate"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDueDate"
+                        android:id="@+id/lbUser"
+                        style="@style/B1"
+                        android:text="@string/invoice_creator"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbUser"
+                        style="@style/B1"
+                        android:id="@+id/tvUser"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/H2"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:textColor="@color/colorNeutral70"
+                android:text="@string/invoice_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_marginEnd="@dimen/dimen_12dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:paddingStart="@dimen/dimen_12dp"
+                    android:paddingEnd="@dimen/dimen_12dp"
+                    android:paddingTop="@dimen/dimen_16dp"
+                    android:paddingBottom="@dimen/dimen_16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:id="@+id/lbCompany"
+                        style="@style/B1"
+                        android:text="@string/invoice_company"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbCompany"
+                        app:layout_constraintStart_toEndOf="@id/lbCompany"
+                        android:layout_marginStart="@dimen/dimen_8dp"
+                        style="@style/B1"
+                        android:gravity="end"
+                        android:id="@+id/tvCompany"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCompany"
+                        android:id="@+id/lbAMountUntaxed"
+                        style="@style/B1"
+                        android:text="@string/invoice_untaxed"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbAMountUntaxed"
+                        style="@style/B1"
+                        android:id="@+id/tvAMountUntaxed"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvAMountUntaxed"
+                        android:id="@+id/lbResidual"
+                        style="@style/B1"
+                        android:text="@string/invoice_residual"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbResidual"
+                        style="@style/B1"
+                        android:id="@+id/tvResidual"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvResidual"
+                        android:id="@+id/lbTotalAmount"
+                        style="@style/B1"
+                        android:text="@string/invoice_total_amount"
+                        android:textColor="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/lbTotalAmount"
+                        style="@style/B1"
+                        android:id="@+id/tvTotalAmount"
+                        android:textColor="@color/colorNeutral70"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/H2"
+                android:id="@+id/lbInvoiceCostTitle"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:textColor="@color/colorNeutral70"
+                android:text="@string/invoice_cost_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcvInvoiceCost"
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_marginEnd="@dimen/dimen_12dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                app:cardCornerRadius="@dimen/dimen_8dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/dimen_12dp"
+                    android:paddingEnd="@dimen/dimen_12dp"
+                    android:paddingTop="@dimen/dimen_16dp"
+                    android:paddingBottom="@dimen/dimen_16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/costRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

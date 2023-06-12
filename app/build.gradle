@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+apply (from: "../shared_dependencies.gradle")
+
+android {
+
+    namespace 'com.base.android'
+
+
+    flavorDimensions "default"
+
+    productFlavors {
+        staging {
+            applicationId "adilahsoft.jgo.dev.android"
+        }
+        production {
+            applicationId "adilahsoft.jgo.android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
+}
+
+dependencies {
+    implementation project(":core-data")
+    implementation project(":core-navigation")
+    implementation project(":core-resource")
+    implementation project(":core-domain")
+    implementation project(":core-utils")
+    implementation project(":feature-auth")
+    implementation project(":feature-home")
+    implementation project(":feature-map")
+    implementation project(":feature-pickup")
+    implementation project(":feature-activity")
+    implementation project(":feature-profile")
+}

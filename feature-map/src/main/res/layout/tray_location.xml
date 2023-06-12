@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:minHeight="@dimen/location_min_height"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout
+        android:background="@drawable/bg_menu"
+        android:padding="@dimen/dimen_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etSearch"
+            app:inputType="search"
+            app:imeOptions="search"
+            android:hint="@string/location_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/flCurrent"
+        android:padding="@dimen/dimen_16dp"
+        android:background="@drawable/bg_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <id.co.edtslib.edtsds.shimmer.ShimmerView
+            android:id="@+id/shimmerCurrentLocation"
+            app:shimmerBackground="@drawable/bg_placeholder_text"
+            app:shimmerWidth="@dimen/dimen_shimmer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                app:drawableStartCompat="@drawable/ic_current_location"
+                android:gravity="center_vertical"
+                android:drawablePadding="@dimen/dimen_12dp"
+                style="@style/H2"
+                android:textColor="@color/colorNeutral70"
+                android:text="@string/location_use_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </id.co.edtslib.edtsds.shimmer.ShimmerView>
+    </FrameLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llResult"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <id.co.edtslib.edtsds.list.skeleton.RecyclerShimmerView
+                android:id="@+id/skeleton"
+                app:count="10"
+                app:layout="@layout/skeleton_adapter_search_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="@string/location_search_info"
+            style="@style/B2"
+            android:textColor="@color/colorNeutral50"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <include
+        android:layout_marginTop="@dimen/dimen_56dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/vEmpty"
+        layout="@layout/view_empty_search" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

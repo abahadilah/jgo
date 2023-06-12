@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_title">Masuk</string>
+    <string name="login_desc">Silahkan masukan username anda\nyang terdaftar</string>
+    <string name="login_phone_no">Username</string>
+    <string name="login_phone_no_hint">Masukkan usernam</string>
+    <string name="login_phone_next">Selanjutnya</string>
+    <string name="login_phone_confirm">Nomor HP yang kamu masukan sudah benar?</string>
+    <string name="auth_phone_password">Kata Sandi</string>
+    <string name="auth_phone_password_hint">Masukkan Kata Sandi</string>
+    <string name="auth_phone_error">Username atau Kata Sandi salah</string>
+    <string name="login_check_price">Cek Ongkos Kirim</string>
+</resources>

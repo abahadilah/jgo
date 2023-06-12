@@ -1,0 +1,25 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+apply (from: "../shared_dependencies.gradle")
+
+android {
+    namespace 'edts.base.android.feature_auth'
+
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+}
+
+dependencies {
+    implementation project(":core-data")
+    implementation project(":core-domain")
+    implementation project(":core-navigation")
+    implementation project(":core-resource")
+    implementation project(":core-utils")
+}

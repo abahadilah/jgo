@@ -1,0 +1,22 @@
+<resources>
+
+    <style name="SplashTheme" parent="Theme.EDTS">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+<!--
+<item name="android:windowBackground">@drawable/bg_splash</item>
+-->
+    <style name="FullScreenTheme" parent="Theme.EDTS">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="FullScreenThemeNeutral20" parent="FullScreenTheme">
+        <item name="android:windowBackground">@color/colorNeutral20</item>
+    </style>
+</resources>

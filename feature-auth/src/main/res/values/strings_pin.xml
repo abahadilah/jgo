@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pin_title">Atur PIN</string>
+    <string name="pin_desc">Atur PIN akun kamu dulu ya untuk\nkeamanan akunmu</string>
+    <string name="pin_success_title">Hampir Selesai </string>
+    <string name="pin_success_account">Ikuti langkah-langkah registrasi berikut ini untuk daftar jadi supplier Gurih Awan. </string>
+
+    <string name="pin_confirmation_title">Konfirmasi PIN</string>
+    <string name="pin_confirmation_info">Masukkan PIN sekali lagi untuk keamanan\nkamu</string>
+    <string name="pin_confirmation_error">PIN yang kamu masukkan tidak cocok</string>
+
+</resources>

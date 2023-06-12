@@ -1,0 +1,26 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.gaelmarhic.quadrant'
+}
+
+apply (from: "../shared_dependencies.gradle")
+
+android {
+    namespace 'edts.base.android.core_navigation'
+
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    quadrantConfig {
+        perModule true
+    }
+}
+
+dependencies {
+    implementation project(":core-resource")
+    implementation project(":core-domain")
+}

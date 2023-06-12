@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="5" by="lint Electric Eel | 2022.1.1">
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.9.0">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.9.0">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.9.0">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.9.0">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.9.0">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.xml.file_paths` appears to be unused">
+        <location
+            file="../core-resource/src/main/res/xml/file_paths.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.xml.remote_config` appears to be unused">
+        <location
+            file="../core-resource/src/main/res/xml/remote_config.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.SplashTheme` appears to be unused">
+        <location
+            file="../core-resource/src/main/res/values/themes.xml"
+            line="18"/>
+        <location
+            file="../core-resource/src/main/res/values-v23/themes.xml"
+            line="3"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.FullScreenTheme` appears to be unused">
+        <location
+            file="../core-resource/src/main/res/values/themes.xml"
+            line="23"/>
+        <location
+            file="../core-resource/src/main/res/values-v23/themes.xml"
+            line="11"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.style.PopupTheme` appears to be unused">
+        <location
+            file="../core-resource/src/main/res/values/themes.xml"
+            line="28"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.bool.isTablet` appears to be unused">
+        <location
+            file="../../../../../.gradle/caches/transforms-3/8ba1854d1c8bc7fa042b34fc98ff237a/transformed/jetified-tracker-2.2.2/res/values/values.xml"
+            line="3"/>
+        <location
+            file="../../../../../.gradle/caches/transforms-3/8ba1854d1c8bc7fa042b34fc98ff237a/transformed/jetified-tracker-2.2.2/res/values-sw600dp-v13/values-sw600dp-v13.xml"
+            line="3"/>
+        <location
+            file="../../../../../.gradle/caches/transforms-3/481af671230993fb7c7f7abc9b90bc73/transformed/jetified-edtsku-1.6.0/res/values/values.xml"
+            line="3"/>
+        <location
+            file="../../../../../.gradle/caches/transforms-3/481af671230993fb7c7f7abc9b90bc73/transformed/jetified-edtsku-1.6.0/res/values-sw600dp-v13/values-sw600dp-v13.xml"
+            line="3"/>
+        <location
+            file="src/main/res/values/strings.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive icon is missing a monochrome tag">
+        <location
+            file="src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+            line="2"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive roundIcon is missing a monochrome tag">
+        <location
+            file="src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="2"/>
+    </issue>
+
+</issues>

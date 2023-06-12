@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeRefreshLayout"
+    android:paddingBottom="@dimen/dimen_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/clRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            app:elevation="0dp"
+            android:background="@drawable/bg_header"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbarLayout"
+                android:layout_width="match_parent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:layout_height="match_parent"
+                app:toolbarId="@id/toolbar">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    app:layout_collapseMode="pin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivNotification"
+                        app:layout_constraintTop_toTopOf="@id/tvHello"
+                        app:layout_constraintBottom_toBottomOf="@id/tvName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/dimen_16dp"
+                        android:src="@drawable/ic_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvHello"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/dimen_16dp"
+                        android:layout_marginTop="@dimen/dimen_32dp"
+                        style="@style/B2"
+                        android:textColor="@color/white"
+                        android:text="@string/pickup_hello"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvName"
+                        app:layout_constraintStart_toStartOf="@id/tvHello"
+                        app:layout_constraintTop_toBottomOf="@id/tvHello"
+                        android:layout_marginTop="@dimen/dimen_2dp"
+                        style="@style/H1"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+        <FrameLayout
+            android:layout_marginTop="-40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_marginTop="@dimen/dimen_56dp"
+                    android:id="@+id/mcvAllStatus"
+                    app:cardCornerRadius="@dimen/dimen_12dp"
+                    app:strokeWidth="@dimen/dimen_1dp"
+                    app:strokeColor="@color/colorNeutral30"
+                    android:layout_marginStart="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvStatus"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/dimen_4dp"
+                        android:paddingBottom="@dimen/dimen_4dp"
+                        android:paddingEnd="@dimen/dimen_8dp"
+                        android:paddingStart="@dimen/dimen_8dp"
+                        android:text="@string/order_all_status"
+                        style="@style/B2"
+                        android:textColor="@color/colorNeutral50"
+                        app:drawableTint="@color/colorNeutral40"
+                        app:drawableEndCompat="@drawable/ic_chevron_down_small"
+                        android:layout_marginEnd="@dimen/dimen_4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="@dimen/dimen_4dp"
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_marginTop="@dimen/dimen_72dp"
+                        android:id="@+id/llEmpty"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:src="@drawable/ic_activity_empty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:textColor="@color/colorNeutral40"
+                            style="@style/H1"
+                            android:layout_marginTop="@dimen/dimen_16dp"
+                            android:text="@string/order_empty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llSkeleton"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <include layout="@layout/skeleton_period" />
+                        <include layout="@layout/skeleton_item" />
+                        <include layout="@layout/skeleton_item" />
+                        <include layout="@layout/skeleton_item" />
+                        <include layout="@layout/skeleton_item" />
+                        <include layout="@layout/skeleton_item" />
+                        <include layout="@layout/skeleton_period" />
+                        <include layout="@layout/skeleton_item" />
+                        <include layout="@layout/skeleton_item" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </FrameLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/dimen_16dp"
+    android:paddingBottom="@dimen/dimen_16dp"
+    android:layout_marginStart="@dimen/dimen_16dp"
+    android:layout_marginEnd="@dimen/dimen_16dp"
+    android:background="@drawable/bg_menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvKg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableStartCompat="@drawable/ic_oil"
+        app:drawableTint="@color/colorPrimary30"
+        android:drawablePadding="@dimen/dimen_8dp"
+        style="@style/B1"
+        android:textColor="@color/colorNeutral70"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTime"
+        android:layout_marginTop="@dimen/dimen_8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKg"
+        app:layout_constraintEnd_toStartOf="@id/mcvStatus"
+        android:layout_marginEnd="@dimen/dimen_4dp"
+        style="@style/B2"
+        android:textColor="@color/colorNeutral40"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvKg"
+        style="@style/H2"
+        android:textColor="@color/colorNeutral70"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.google.android.material.card.MaterialCardView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvTime"
+        android:id="@+id/mcvStatus"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/dimen_4dp"
+        app:cardBackgroundColor="#FFF0E6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:paddingStart="@dimen/dimen_8dp"
+            android:paddingEnd="@dimen/dimen_8dp"
+            android:paddingTop="@dimen/dimen_2dp"
+            android:paddingBottom="@dimen/dimen_2dp"
+            android:id="@+id/tvStatus"
+            style="@style/H4"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

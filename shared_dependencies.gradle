@@ -1,0 +1,165 @@
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+}
+
+def mapsApiKeyProperties = new Properties()
+def mapsApiKeyPropertiesFile = rootProject.file('local.properties')
+if (mapsApiKeyPropertiesFile.exists()) {
+    mapsApiKeyProperties.load(new FileInputStream(mapsApiKeyPropertiesFile))
+}
+
+android {
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    compileSdkVersion versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.code
+        versionName "${apps_version}"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        staging {
+            buildConfigField "String", "BUILD_NUMBER", "\"${apps_build_number}\""
+            buildConfigField "String", "BASE_API_URL", "\"${api_base_url_staging}\""
+            buildConfigField "String", "REFRESH_TOKEN_PATH", "\"${api_path_refresh_token}\""
+            buildConfigField "String", "VERSION_NAME", "\"${apps_version}\""
+            buildConfigField "String", "TRACKER_API_URL", "\"${tracker_url_staging}\""
+            buildConfigField "String", "TRACKER_API_KEY", "\"${tracker_url_api_key_staging}\""
+            buildConfigField "String", "SSL_PINNING", "\"${ssl_pinning_staging}\""
+            buildConfigField "String", "SSL_DOMAIN", "\"${ssl_domain_staging}\""
+            resValue "string", "app_name", "\"${apps_name_staging}\""
+        }
+        production {
+            buildConfigField "String", "BUILD_NUMBER", "\"${apps_build_number}\""
+            buildConfigField "String", "BASE_API_URL", "\"${api_base_url_production}\""
+            buildConfigField "String", "REFRESH_TOKEN_PATH", "\"${api_path_refresh_token}\""
+            buildConfigField "String", "VERSION_NAME", "\"${apps_version}\""
+            buildConfigField "String", "TRACKER_API_URL", "\"${tracker_url_production}\""
+            buildConfigField "String", "TRACKER_API_KEY", "\"${tracker_url_api_key_production}\""
+            buildConfigField "String", "SSL_PINNING", "\"${ssl_pinning_production}\""
+            buildConfigField "String", "SSL_DOMAIN", "\"${ssl_domain_production}\""
+            resValue "string", "app_name", "\"${apps_name_production}\""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+
+dependencies {
+    /* retrofit */
+    implementation("com.squareup.retrofit2:retrofit:$versions.retrofit_version")
+    implementation("com.squareup.retrofit2:converter-gson:$versions.retrofit_version")
+    implementation("com.squareup.okhttp3:okhttp:$versions.logging_interceptor_version")
+    implementation("com.squareup.okhttp3:logging-interceptor:$versions.logging_interceptor_version")
+
+    implementation("androidx.core:core-ktx:$versions.core_ktx_version")
+    implementation("androidx.appcompat:appcompat:$versions.appcompat_version")
+    implementation("com.google.android.material:material:$versions.material_version")
+    implementation("androidx.constraintlayout:constraintlayout:$versions.constraint_version")
+    implementation("androidx.legacy:legacy-support-v4:$versions.legacy_support_version")
+    implementation("androidx.preference:preference-ktx:$versions.preference_version")
+    implementation("androidx.paging:paging-runtime-ktx:$versions.paging_runtime_version")
+
+    /* testing */
+    testImplementation("junit:junit:$versions.junit_version")
+    androidTestImplementation("androidx.test.ext:junit:$versions.androidx_junit_version")
+    androidTestImplementation("androidx.test.espresso:espresso-core:$versions.espresso_version")
+
+    /* firebase */
+    implementation platform("com.google.firebase:firebase-bom:$versions.firebase_bom_version")
+    implementation("com.google.firebase:firebase-analytics-ktx:$versions.firebase_analytics_ktx_version")
+    implementation("com.google.firebase:firebase-crashlytics-ktx:$versions.firebase_crashlytics_ktx_version")
+    implementation("com.google.firebase:firebase-messaging:$versions.firebase_messaging_version")
+    implementation("com.google.firebase:firebase-config-ktx:$versions.firebase_config_ktx_version")
+
+    /* edts lib */
+    implementation("com.github.edtslib:checkappversion:$versions.checkversion_version")
+    implementation("com.github.edtslib:tracker:$versions.tracker_version")
+    implementation("com.github.edstlib:edtsku:$versions.edtsku_version") {
+        exclude group: 'com.google.android.material', module: 'material'
+    }
+    implementation("com.github.edtslib:edtsds:$versions.edtsds_version")
+    implementation("com.github.edtslib:baserecyclerview2:$versions.baserecyclerview2_version")
+    implementation("com.github.edtslib:baserecyclerview:$versions.baserecyclerview_version")
+
+    /* navigation component */
+    implementation("androidx.navigation:navigation-fragment-ktx:$versions.nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$versions.nav_version")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$versions.nav_version")
+
+    /* koin */
+    implementation("io.insert-koin:koin-androidx-navigation:$versions.koin_version")
+    implementation("io.insert-koin:koin-android:$versions.koin_version")
+
+    /* support lib */
+    implementation("com.jakewharton.timber:timber:$versions.timber_version")
+    implementation("com.google.code.gson:gson:$versions.gson_version")
+    implementation("androidx.core:core-splashscreen:$versions.splashscree_version")
+    implementation("androidx.webkit:webkit:$versions.webkit_version")
+    implementation("com.redmadrobot:input-mask-android:$versions.input_mask_android_version")
+    implementation("gun0912.ted:tedbottompicker:$versions.tedbottompicker_version")
+    implementation("io.karn:notify:1.4.0")
+
+    /* image */
+    implementation("com.airbnb.android:lottie:$versions.lottie_version")
+    implementation("com.facebook.shimmer:shimmer:$versions.shimmer_version")
+    implementation("com.github.bumptech.glide:glide:$versions.glide_version")
+    implementation("com.github.bumptech.glide:okhttp3-integration:$versions.glide_version")
+    kapt("com.github.bumptech.glide:compiler:$versions.glide_version")
+    implementation("id.zelory:compressor:$versions.compressor_version")
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+    /* security */
+    implementation("androidx.security:security-crypto:$versions.security_crypto_version")
+    implementation("com.scottyab:secure-preferences-lib:$versions.secure_preference_version")
+    implementation("net.zetetic:android-database-sqlcipher:$versions.sqlcipher_version")
+    implementation("androidx.sqlite:sqlite-ktx:$versions.sqlite_ktx_version")
+
+    /* location & maps */
+    implementation("io.nlopez.smartlocation:library:$versions.smartlocation_version")
+    implementation("com.google.android.libraries.places:places:$versions.google_places_version")
+    implementation("com.google.android.gms:play-services-maps:$versions.google_maps_version")
+
+    implementation("org.osmdroid:osmdroid-android:$versions.osm_version")
+    implementation("com.github.MKergall:osmbonuspack:$versions.osmbonuspack_version")
+
+    /* map struct*/
+    api("com.github.pozo:mapstruct-kotlin:$versions.mapstruct_kotlin_version")
+    kapt("com.github.pozo:mapstruct-kotlin-processor:$versions.mapstruct_kotlin_version")
+
+    api "com.otaliastudios:cameraview:2.7.2"
+    implementation 'com.github.edtslib:ocr:1.1.0'
+
+    implementation("org.mapstruct:mapstruct:$versions.maps_struct_version")
+    kapt("org.mapstruct:mapstruct-processor:$versions.maps_struct_version")
+
+
+}

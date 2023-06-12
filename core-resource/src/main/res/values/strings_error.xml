@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="err_connection_body">Koneksi sedang bermasalah, cek kembali koneksimu</string>
+    <string name="err_system_body">Tunggu sebentar, kami sedang bereskan. Coba lagi atau kembali lagi nanti</string>
+</resources>

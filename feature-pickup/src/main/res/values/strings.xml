@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pickup_hello">Halo,</string>
+    <string name="pickup_request">Pickup Request</string>
+    <string name="pickup_request_desc">Permintaan Penjemputan</string>
+    <string name="pickup_total">Jumlah Jeriken</string>
+    <string name="pickup_total_desc">Masukkan jumlah jeriken sesuai dengan ukuran. </string>
+    <string name="pickup_total_oil">Jumlah Minyak</string>
+    <string name="pickup_total_oil_kg">Jumlah Minyak (kg)</string>
+    <string name="pickup_price_oil">Harga Jual / kg</string>
+    <string name="pickup_take_oil_photo">Ambil foto barang</string>
+
+    <string name="pickup_detail">Detail Penjemputan</string>
+    <string name="pickup_product_photo">Foto Barang</string>
+    <string name="pickup_sell_estimate">Perkiraan Penjualan</string>
+    
+    <string name="pickup_total_oil_empty">Jumlah jeriken wajib diisi</string>
+    <string name="pickup_price_empty">Harga jual wajib diisi</string>
+    <string name="pickup_photo_product_empty">Foto barang wajib diisi</string>
+
+    <string name="pickup_request_confirmation">Konfirmasi Pickup Request</string>
+
+    <string name="pickup_request_success_title">Permintaan Diterima &amp;\nAkan Segera Diproses</string>
+    <string name="pickup_request_success_desc">Kami akan memberitahukan saat\npengemudi dalam proses pengambilan</string>
+
+    <string name="pickup_request_pending_title">Permintaan Dikirim</string>
+    <string name="pickup_request_pending_desc">Kami sedang meninjau permintaan Anda.\nCek kembali untuk melihat status permintaan.</string>
+
+    <string name="pickup_status">Status</string>
+    <string name="pickup_photo">Foto</string>
+    
+    <string name="pickup_finish_transaction">Selesaikan Transaksi</string>
+    <string name="pickup_finish_transaction_desc">Pastikan Anda sudah menerima uang sebelum\nmenyelesaikan transaksi</string>
+
+    <string name="pickup_kg">%1$s kg</string>
+    <string name="pickup_kg_minus">%1$s kg</string>
+
+    <string name="order_this_month">Bulan ini</string>
+    <string name="order_empty">Belum Ada Order</string>
+    <string name="order_all_status">Semua Status</string>
+    <string name="order_apply">Terapkan</string>
+    <string name="order_status_1">Status Order</string>
+
+    <string name="order">Order</string>
+    <string name="order_do_name">Delivery Order</string>
+    <string name="order_detail">Detil Order</string>
+    <string name="order_created_date">Tanggal</string>
+    <string name="order_product">Produk</string>
+    <string name="order_dimension">Dimensi</string>
+    <string name="order_weight">Berat </string>
+    <string name="order_delivery">Pengiriman</string>
+    <string name="order_pickup_name">Nama Pengirim</string>
+    <string name="order_pickup_city">Kota Asal</string>
+    <string name="order_recipient_name">Nama Penerima</string>
+    <string name="order_recipient_city">Kota Tujuan</string>
+    <string name="order_distance">Jarak</string>
+    <string name="order_distance_unit">%1$s km</string>
+    <string name="order_cost">Ongkos</string>
+    <string name="order_total">Total</string>
+    <string name="order_vehicle">Kendaraan</string>
+    <string name="order_driver_name">Nama Pengemudi</string>
+    <string name="order_driver_phone">Hp Pengemudi</string>
+
+    <string name="order_kg">%1$s kg</string>
+    <string name="order_dimension_unit">%1$s x %2$s x %3$s, %4$s koli</string>
+
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="invoice_this_month">Bulan ini</string>
+    <string name="invoice_empty">Belum Ada Invoice</string>
+    <string name="invoice_list">Daftar Invoice</string>
+    <string name="invoice_all_status">Semua status</string>
+    <string name="invoice_status_1">Status Invoice</string>
+
+    <string name="invoice">Invoice</string>
+    <string name="invoice_name">No Invoice</string>
+    <string name="invoice_created_date">Tanggal Dibuat</string>
+    <string name="invoice_due_date">Batas Pembayaran</string>
+    <string name="invoice_creator">Pembuat</string>
+    <string name="invoice_cost">Biaya</string>
+    <string name="invoice_company">Nama Perusahaan</string>
+    <string name="invoice_untaxed">Total sebelum pajak</string>
+    <string name="invoice_residual">Total sisa</string>
+    <string name="invoice_total_amount">Total yang harus dibayar</string>
+    <string name="invoice_total">Total</string>
+
+    <string name="invoice_cost_detail">Rincian Biaya</string>
+    <string name="invoice_detail">Detil Invoice</string>
+
+    <string name="invoice_amount_untaxed">Jumlah sebelum pajak</string>
+    <string name="invoice_discount">Diskon</string>
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="change">Ganti</string>
+    <string name="right">Benar</string>
+    <string name="save">Simpan</string>
+    <string name="next">Selanjutnya</string>
+    <string name="start">Mulai</string>
+    <string name="submit">Kirim</string>
+    <string name="confirmation">Konfirmasi</string>
+    <string name="finish">Selesai</string>
+    <string name="see">Lihat</string>
+    <string name="quit">Keluar</string>
+    <string name="cancel">Batal</string>
+    <string name="back">Kembali</string>
+    <string name="yes_quit">Ya, Keluar</string>
+    <string name="update">Update</string>
+    <string name="reject">Tolak</string>
+    <string name="agree">Setuju</string>
+    <string name="update_now">Update sekarang</string>
+    <string name="enter">Masuk</string>
+
+    <string name="update_your_application">Perbaharui Aplikasi Anda</string>
+    <string name="update_your_application_desc">Aplikasi versi %1$s sudah tersedia, silahkan dowload dan perbaharui versi aplikasi Anda.</string>
+</resources>

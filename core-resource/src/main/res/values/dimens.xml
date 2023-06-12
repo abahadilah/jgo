@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_shimmer_text_long">150dp</dimen>
+    <dimen name="dimen_shimmer_text">120dp</dimen>
+    <dimen name="dimen_shimmer_text_short">100dp</dimen>
+
+    <dimen name="dimen_navigation">64dp</dimen>
+
+</resources>

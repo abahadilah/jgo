@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProfileMenuView">
+        <attr name="menuTitle" format="string" />
+        <attr name="menuDescription" format="string" />
+    </declare-styleable>
+</resources>
