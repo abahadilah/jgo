@@ -11,8 +11,8 @@ data class InvoiceDetailLineResponse(
     val beforeTax: Double? = null,
 
     @field:SerializedName("amount_disc")
-    val discount: String? = null,
+    val discount: Double? = null,
 
     @field:SerializedName("price_total")
-    val total: String? = null
+    val total: Double? = null
 )

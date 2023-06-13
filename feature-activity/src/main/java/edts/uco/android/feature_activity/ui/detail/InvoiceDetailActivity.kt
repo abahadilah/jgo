@@ -39,8 +39,8 @@ class InvoiceDetailActivity: PopupActivity<ActivityInvoiceDetailBinding>() {
     private fun setupObserver() {
         viewModel.invoice.observe(this) {
             binding.tvInvoiceName.text = it?.name
-            binding.tvCreatedDate.text = it?.created
-            binding.tvDueDate.text = it?.dueDate
+            binding.tvCreatedDate.text = it?.getCreatedDateFormat()
+            binding.tvDueDate.text = it?.getDueDateFormat()
             binding.tvUser.text = it?.userId
             binding.tvStatus.text = InvoiceStatus.getStatus(it?.state)?.toString()
             binding.tvCompany.text = it?.company

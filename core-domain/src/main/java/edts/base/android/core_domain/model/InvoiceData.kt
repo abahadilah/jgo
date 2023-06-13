@@ -16,6 +16,9 @@ data class InvoiceData (
     val dueDate: String?,
     var company: String?
 ) {
+
+    fun getCreatedDateFormat() = getDate(created)
+    fun getDueDateFormat() = getDate(dueDate)
     fun getMonthYear(): String? {
         if (dueDate == null) {
             return null
@@ -29,6 +32,27 @@ data class InvoiceData (
                     null
                 } else {
                     val simpleDateFormat = SimpleDateFormat("MMMM yyyy", Locale("ID"))
+                    simpleDateFormat.format(d)
+                }
+            } catch (e: ParseException) {
+                null
+            }
+        }
+    }
+
+    private fun getDate(s: String?): String? {
+        if (s == null) {
+            return null
+        }
+        else {
+            return try {
+                val simpleDateFormat1 = SimpleDateFormat("yyyy-MM-dd", Locale("ID"))
+
+                val d = simpleDateFormat1.parse(s)
+                if (d == null) {
+                    null
+                } else {
+                    val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale("ID"))
                     simpleDateFormat.format(d)
                 }
             } catch (e: ParseException) {
