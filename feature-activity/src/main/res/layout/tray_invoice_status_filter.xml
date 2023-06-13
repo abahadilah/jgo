@@ -12,7 +12,7 @@
         android:id="@+id/bvSubmit"
         app:variant="primary"
         app:size="medium"
-        android:text="@string/order_apply"
+        android:text="@string/invoice_apply"
         android:layout_margin="@dimen/dimen_16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
