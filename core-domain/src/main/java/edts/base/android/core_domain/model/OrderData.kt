@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 data class OrderData (
-    val taxAmount: String?,
-    val beforeTaxAmount: String?,
+    val taxAmount: Double?,
+    val beforeTaxAmount: Double?,
     val weight: Double?,
     val created: String?,
     val customerStreet: String?,
@@ -21,8 +21,9 @@ data class OrderData (
     val length: Double?,
     val productName: String?,
     val height: Double?,
-    val totalAmount: String?,
+    val totalAmount: Double?,
     val state: String?,
+    val invoice: List<String>?,
 
     ) {
 

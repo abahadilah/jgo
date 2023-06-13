@@ -30,7 +30,6 @@
     <string name="pickup_photo">Foto</string>
     
     <string name="pickup_finish_transaction">Selesaikan Transaksi</string>
-    <string name="pickup_finish_transaction_desc">Pastikan Anda sudah menerima uang sebelum\nmenyelesaikan transaksi</string>
 
     <string name="pickup_kg">%1$s kg</string>
     <string name="pickup_kg_minus">%1$s kg</string>
@@ -60,6 +59,7 @@
     <string name="order_vehicle">Kendaraan</string>
     <string name="order_driver_name">Nama Pengemudi</string>
     <string name="order_driver_phone">Hp Pengemudi</string>
+    <string name="order_list">Daftar Order (%1$s)</string>
 
     <string name="order_kg">%1$s kg</string>
     <string name="order_dimension_unit">%1$s x %2$s x %3$s, %4$s koli</string>

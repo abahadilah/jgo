@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 data class OrderResponse (
     @field:SerializedName("amount_taxs")
-    val taxAmount: String?,
+    val taxAmount: Double?,
 
     @field:SerializedName("before_taxs")
-    val beforeTaxAmount: String?,
+    val beforeTaxAmount: Double?,
 
     @field:SerializedName("berat")
     val weight: Double?,
@@ -52,8 +52,11 @@ data class OrderResponse (
     val height: Double?,
 
     @field:SerializedName("total_amount")
-    val totalAmount: String?,
+    val totalAmount: Double?,
 
     @field:SerializedName("state")
     val state: String?,
+
+    @field:SerializedName("ref_invoice")
+    val invoice: List<String>?,
     )

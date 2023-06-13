@@ -9,6 +9,9 @@ import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
 import edts.base.android.core_resource.base.result.UcoProcessDelegate
 import edts.base.android.core_resource.base.result.UcoProcessLoadResult
+import edts.base.core_utils.formatDecimal
+import edts.base.core_utils.money
+import edts.uco.android.feature_pickup.R
 import edts.uco.android.feature_pickup.databinding.FragmentOrderBinding
 import edts.uco.android.feature_pickup.ui.status.OrderStatusFilterDelegate
 import edts.uco.android.feature_pickup.ui.status.OrderStatusFilterTray
@@ -90,9 +93,30 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
                 object : UcoProcessDelegate<List<OrderData>?> {
                     override fun success(data: List<OrderData>?) {
                         hideShimmer(data)
-                        adapter.setData(data)
+
+                        processData(data)
                     }
                 })
+        }
+    }
+
+    private fun processData(data: List<OrderData>?) {
+        val count = data?.size ?: 0
+
+        binding.tvTitle.text = getString(R.string.order_list,
+            count.toDouble().formatDecimal())
+
+        var total = 0.0
+        data?.forEach {
+            total += if (it.totalAmount == null) 0.0 else it.totalAmount!!
+        }
+
+        binding.tvTotal.text = total.money(requireContext())
+
+        adapter.setData(data)
+
+        binding.recyclerView.post {
+            (binding.recyclerView.layoutManager as LinearLayoutManager).scrollToPosition(0)
         }
     }
 
@@ -105,13 +129,13 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
 
     private fun showShimmer() {
         binding.llSkeleton.isVisible = true
-        binding.recyclerView.isVisible = false
+        binding.llData.isVisible = false
         binding.llEmpty.isVisible = false
     }
 
     private fun hideShimmer(data: List<OrderData>?) {
         binding.llSkeleton.isVisible = false
-        binding.recyclerView.isVisible = data?.isNotEmpty() == true
+        binding.llData.isVisible = data?.isNotEmpty() == true
         binding.llEmpty.isVisible = data?.isNotEmpty() != true
     }
 
