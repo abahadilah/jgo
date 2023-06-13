@@ -11,7 +11,6 @@ import edts.base.android.core_domain.model.ProfileData
 import edts.base.android.core_domain.repository.ICustomerRepository
 import edts.base.core_utils.getDeviceName
 import id.co.edtslib.data.NetworkBoundProcessResource
-import id.co.edtslib.data.Result
 import id.co.edtslib.data.source.local.HttpHeaderLocalSource
 import id.co.edtslib.data.source.remote.SessionRemoteDataSource
 import kotlinx.coroutines.flow.flow
@@ -22,6 +21,9 @@ class CustomerRepository(
     private val sessionRemoteDataSource: SessionRemoteDataSource,
     private val customerRemoteDataSource: CustomerRemoteDataSource,
     private val profileLocalDataSource: ProfileLocalDataSource,
+    private val orderLocalDataSource: OrderLocalDataSource,
+    private val invoiceLocalDataSource: InvoiceLocalDataSource,
+    private val paymentLocalDataSource: PaymentLocalDataSource,
     private val context: Context,
 ) :
     ICustomerRepository {
@@ -60,6 +62,9 @@ class CustomerRepository(
 
     override fun logout() = flow {
         profileLocalDataSource.clear()
+        orderLocalDataSource.clear()
+        invoiceLocalDataSource.clear()
+        paymentLocalDataSource.clear()
         emit(true)
     }
 }
