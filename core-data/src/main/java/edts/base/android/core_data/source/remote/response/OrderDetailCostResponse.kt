@@ -7,6 +7,6 @@ data class OrderDetailCostResponse (
     val cost: List<Any>,
 
     @field:SerializedName("amount")
-    val amount: String
+    val amount: Double
 
 )

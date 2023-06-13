@@ -27,6 +27,26 @@ data class OrderData (
 
     ) {
 
+    fun getCreatedDate(): String? {
+        if (created == null) {
+            return null
+        }
+        else {
+            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale("ID"))
+            return try {
+                val d = simpleDateFormat.parse(created)
+                if (d == null) {
+                    created
+                } else {
+                    val simpleDateFormat1 = SimpleDateFormat("dd MMMM yyyy HH:mm:ss", Locale("ID"))
+                    simpleDateFormat1.format(d)
+                }
+            } catch (e: ParseException) {
+                created
+            }
+        }
+    }
+
     fun getMonthYear(): String? {
         if (date == null) {
             return null

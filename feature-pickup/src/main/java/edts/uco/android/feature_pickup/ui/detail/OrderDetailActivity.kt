@@ -42,7 +42,7 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>() {
     private fun setupObserver() {
         viewModel.order.observe(this) {
             binding.tvDOName.text = it?.name
-            binding.tvDate.text = it?.created
+            binding.tvDate.text = it?.getCreatedDate()
             binding.tvProduct.text = it?.productName
             binding.tvDimension.text = getString(R.string.order_dimension_unit,
                 it?.length?.formatDecimal(),
