@@ -266,7 +266,7 @@ class CheckPriceActivity: PopupActivity<ActivityCheckPriceBinding>(), OnMapReady
         }
 
         if (viewModel.destinationAddress1.value == null) {
-            binding.tvDestinationAddress1.error = getString(R.string.price_destination_address_empty)
+            binding.etDestinationAddress1.error = getString(R.string.price_destination_address_empty)
         }
 
         viewModel.checkPrice().observe(this) {

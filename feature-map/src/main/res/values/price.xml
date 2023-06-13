@@ -2,7 +2,7 @@
 <resources>
     <string name="price_check">Cek Ongkos Kirim</string>
     <string name="price_vehicle_type">Jenis Kendaraan</string>
-    <string name="price_select_vehicle_type">Pilih Jenis Kendaraan</string>
+    <string name="price_select_vehicle_type">Jenis Kendaraan</string>
     <string name="price_origin_address">Alamat Asal</string>
     <string name="price_destination_address_1">Alamat Tujuan 1</string>
     <string name="price_destination_address_2">Alamat Tujuan 2</string>
