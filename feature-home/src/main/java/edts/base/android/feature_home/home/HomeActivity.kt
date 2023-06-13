@@ -11,7 +11,7 @@ import edts.base.android.core_resource.UcoActivity
 import edts.base.android.feature_home.databinding.ActivityHomeBinding
 import edts.base.android.feature_home.home.navigation.Navigation
 import edts.base.android.feature_home.home.navigation.NavigationDelegate
-import edts.uco.android.feature_activity.ui.InvoiceFragment
+import edts.uco.android.feature_invoice.ui.InvoiceFragment
 import edts.uco.android.feature_profile.ProfileFragment
 import id.co.edtslib.edtsds.R
 

@@ -1,5 +1,6 @@
 <resources>
     <string name="home_nav_order">Order</string>
     <string name="home_nav_invoice">Invoice</string>
+    <string name="home_nav_payment">Pembayaran</string>
     <string name="home_nav_profile">Profile</string>
 </resources>

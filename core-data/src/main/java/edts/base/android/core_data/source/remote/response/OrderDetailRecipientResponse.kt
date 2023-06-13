@@ -4,16 +4,16 @@ import com.google.gson.annotations.SerializedName
 
 data class OrderDetailRecipientResponse (
     @field:SerializedName("pickup_name")
-    val pickupName: List<Any>,
+    val pickupName: IdNameResponse,
 
     @field:SerializedName("pickup_city")
-    val pickupCity: List<Any>,
+    val pickupCity: IdNameResponse,
 
     @field:SerializedName("recipient_name")
-    val recipientName: List<Any>,
+    val recipientName: IdNameResponse,
 
     @field:SerializedName("recipient_city")
-    val recipientCity: List<Any>,
+    val recipientCity: IdNameResponse,
 
     @field:SerializedName("jarak")
     val distance: Double?,

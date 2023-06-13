@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="payment_list">Daftar Pembayaran</string>
+    <string name="payment_all_status">Semua Status</string>
+    <string name="payment_total">Total</string>
+    <string name="payment_empty">Tidak ada data pembayaran</string>
+    <string name="payment_this_month">Bulan ini</string>
+    <string name="payment_apply">Terapkan</string>
+    <string name="payment_status_1">Status Pembayaran</string>
+    <string name="payment_list_with_total">Daftar Pembayaran (%1$s)</string>
+
+</resources>

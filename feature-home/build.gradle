@@ -22,9 +22,10 @@ dependencies {
     implementation project(":core-navigation")
     implementation project(":core-resource")
     implementation project(":core-utils")
-    implementation project(":feature-pickup")
-    implementation project(":feature-activity")
+    implementation project(":feature-order")
+    implementation project(":feature-invoice")
     implementation project(":feature-profile")
+    implementation project(":feature-payment")
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

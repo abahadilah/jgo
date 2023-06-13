@@ -1,5 +1,6 @@
 package edts.base.android.feature_home.home.navigation
 
+import adilahsoft.jgo.android.feature_payment.ui.PaymentFragment
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -8,8 +9,8 @@ import androidx.fragment.app.FragmentManager
 import edts.base.android.core_resource.HomeBaseFragment
 import edts.base.android.feature_home.R
 import edts.base.android.feature_home.databinding.ViewNavigationBinding
-import edts.uco.android.feature_activity.ui.InvoiceFragment
-import edts.uco.android.feature_pickup.ui.OrderFragment
+import edts.uco.android.feature_invoice.ui.InvoiceFragment
+import edts.uco.android.feature_order.ui.OrderFragment
 import edts.uco.android.feature_profile.ProfileFragment
 
 class NavigationView : FrameLayout {
@@ -40,17 +41,19 @@ class NavigationView : FrameLayout {
     init {
 
         if (!isInEditMode) {
-            binding.clPickup.setOnClickListener { selectedIndex = Navigation.Order }
-            binding.clActivity.setOnClickListener { selectedIndex = Navigation.Activity }
+            binding.clOrder.setOnClickListener { selectedIndex = Navigation.Order }
+            binding.clInvoice.setOnClickListener { selectedIndex = Navigation.Invoice }
             binding.clProfile.setOnClickListener { selectedIndex = Navigation.Profile }
+            binding.clPayment.setOnClickListener { selectedIndex = Navigation.Payment }
         }
     }
 
     private fun changeNav(value: Navigation?) {
         when (value) {
-            Navigation.Activity -> changeNav(R.id.clActivity)
+            Navigation.Invoice -> changeNav(R.id.clInvoice)
             Navigation.Profile -> changeNav(R.id.clProfile)
-            else -> changeNav(R.id.clPickup)
+            Navigation.Payment -> changeNav(R.id.clPayment)
+            else -> changeNav(R.id.clOrder)
         }
     }
 
@@ -69,13 +72,15 @@ class NavigationView : FrameLayout {
 
     private fun changeNav(res: Int) {
 
-        val prevSelectedIndex = if (binding.clPickup.isActivated) Navigation.Order else
-            if (binding.clActivity.isActivated) Navigation.Activity else
-                if (binding.clProfile.isActivated) Navigation.Profile  else null
+        val prevSelectedIndex = if (binding.clOrder.isActivated) Navigation.Order else
+            if (binding.clInvoice.isActivated) Navigation.Invoice else
+                if (binding.clProfile.isActivated) Navigation.Profile  else
+                    if (binding.clPayment.isActivated) Navigation.Payment else null
 
-        binding.clPickup.isActivated = R.id.clPickup == res
-        binding.clActivity.isActivated = R.id.clActivity == res
+        binding.clOrder.isActivated = R.id.clOrder == res
+        binding.clInvoice.isActivated = R.id.clInvoice == res
         binding.clProfile.isActivated = R.id.clProfile == res
+        binding.clPayment.isActivated = R.id.clPayment == res
 
         val fragmentTransaction = fragmentManager.beginTransaction()
         if (prevSelectedIndex != null) {
@@ -94,8 +99,9 @@ class NavigationView : FrameLayout {
         } else {
             created = true
             selectedFragment = when (res) {
-                R.id.clActivity -> InvoiceFragment()
+                R.id.clInvoice -> InvoiceFragment()
                 R.id.clProfile -> ProfileFragment()
+                R.id.clPayment -> PaymentFragment()
                 else -> OrderFragment()
             }
 

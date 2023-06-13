@@ -19,6 +19,7 @@ val repositoryModule = module {
     single { InvoiceLocalDataSource(get()) }
     single { FcmRemoteDataSource(get()) }
     single { VehicleTypeLocalDataSource(get()) }
+    single { PaymentLocalDataSource(get()) }
 
     single<IVehicleRepository> {
         VehicleRepository(
@@ -46,6 +47,7 @@ val repositoryModule = module {
 
     single<IInvoiceRepository> {
         InvoiceRepository(
+            get(),
             get(),
             get(),
             get(),

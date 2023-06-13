@@ -19,7 +19,7 @@ class OrderLocalDataSource(sharedPreference: SharedPreferences) :
         return getCached()
     }
 
-    override fun getKeyName(): String = "order_list_$key"
+    override fun getKeyName(): String = "order_list_1_$key"
 
     override fun expiredInterval() = 3600
     override fun getValue(json: String): List<OrderEntity>? =

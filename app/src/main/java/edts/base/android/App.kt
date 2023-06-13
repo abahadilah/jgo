@@ -1,5 +1,6 @@
 package edts.base.android
 
+import adilahsoft.jgo.android.feature_payment.di.paymentModelModule
 import android.app.Application
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
@@ -13,9 +14,9 @@ import edts.base.android.core_resource.UcoActivity
 import edts.base.android.core_resource.di.baseModelModule
 import edts.base.android.feature_auth.di.authModelModule
 import edts.base.android.feature_home.di.homeModelModule
-import edts.uco.android.feature_activity.di.invoiceModelModule
+import edts.uco.android.feature_invoice.di.invoiceModelModule
 import edts.uco.android.feature_map.di.mapModelModule
-import edts.uco.android.feature_pickup.di.orderViewModel
+import edts.uco.android.feature_order.di.orderViewModel
 import edts.uco.android.feature_profile.di.profileModelModule
 import id.co.edtslib.EdtsKu
 import id.co.edtslib.edtsds.popup.Popup
@@ -64,7 +65,8 @@ class App: Application() {
                 homeModelModule,
                 profileModelModule,
                 baseModelModule,
-                invoiceModelModule
+                invoiceModelModule,
+                paymentModelModule
             )
         ) {
 

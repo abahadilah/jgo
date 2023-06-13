@@ -52,7 +52,8 @@ dependencies {
     implementation project(":feature-auth")
     implementation project(":feature-home")
     implementation project(":feature-map")
-    implementation project(":feature-pickup")
-    implementation project(":feature-activity")
+    implementation project(":feature-order")
+    implementation project(":feature-invoice")
     implementation project(":feature-profile")
+    implementation project(":feature-payment")
 }

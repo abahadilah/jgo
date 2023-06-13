@@ -23,7 +23,7 @@ data class OrderData (
     val height: Double?,
     val totalAmount: Double?,
     val state: String?,
-    val invoice: List<String>?,
+    val invoice: IdNameData?,
 
     ) {
 

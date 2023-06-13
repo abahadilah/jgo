@@ -1,10 +1,10 @@
 package edts.base.android.core_domain.model
 
 data class OrderDetailRecipientData (
-    val pickupName: List<Any>,
-    val pickupCity: List<Any>,
-    val recipientName: List<Any>,
-    val recipientCity: List<Any>,
+    val pickupName: IdNameData,
+    val pickupCity: IdNameData,
+    val recipientName: IdNameData,
+    val recipientCity: IdNameData,
     val distance: Double?,
 
     )

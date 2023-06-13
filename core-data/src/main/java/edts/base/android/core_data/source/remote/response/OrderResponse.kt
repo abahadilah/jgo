@@ -58,5 +58,5 @@ data class OrderResponse (
     val state: String?,
 
     @field:SerializedName("ref_invoice")
-    val invoice: List<String>?,
+    val invoice: IdNameResponse?,
     )

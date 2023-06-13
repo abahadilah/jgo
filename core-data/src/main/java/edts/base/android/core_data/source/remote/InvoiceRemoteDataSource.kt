@@ -19,4 +19,10 @@ class InvoiceRemoteDataSource(
         getResult { invoiceApiService.getDetail(InvoiceDetailRequest(
             id = id
         )) }
+
+    suspend fun getPayments(id: Long, status: String) =
+        getResult { invoiceApiService.getPayments(InvoiceRequest(
+            partnerId = id,
+            status = status
+        )) }
 }

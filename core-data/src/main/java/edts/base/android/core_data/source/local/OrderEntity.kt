@@ -19,5 +19,5 @@ data class OrderEntity (
     val height: Double?,
     val totalAmount: Double?,
     val state: String?,
-    val invoice: List<String>?,
+    val invoice: IdNameEntity?,
 )
