@@ -6,7 +6,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import edts.base.android.core_domain.model.InvoiceData
 import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_domain.model.OrderDetailData
@@ -123,20 +122,7 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>(), ModuleNa
                     override fun success(data: InvoiceDetailData?) {
                         if (data != null) {
 
-                            navigateToInvoiceDetail(
-                                InvoiceData(
-                                    id = data.id,
-                                    name = data.name,
-                                    created = data.created,
-                                    state = data.state,
-                                    total = data.total,
-                                    tax = data.tax,
-                                    userId = data.userId,
-                                    residual = data.residual,
-                                    dueDate = data.dueDate,
-                                    company = data.company
-                                )
-                            )
+                            navigateToInvoiceDetail(data)
                         }
                     }
 

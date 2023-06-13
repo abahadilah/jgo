@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.gson.Gson
 import edts.base.android.core_domain.model.InvoiceData
+import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 
 interface ModuleNavigator {
@@ -31,8 +32,11 @@ interface ModuleNavigator {
         startActivity(ActivityClassPath.InvoiceDetail, invoiceData)
     }
 
-    fun <T> T.navigateToInvoiceDetail(invoiceData: InvoiceData) where T : FragmentActivity, T : ModuleNavigator {
-        startActivity(ActivityClassPath.InvoiceDetail, invoiceData)
+    fun <T> T.navigateToInvoiceDetail(invoiceDetailData: InvoiceDetailData) where T : Fragment, T : ModuleNavigator {
+        startActivity(ActivityClassPath.InvoiceDetail, invoiceDetailData)
+    }
+    fun <T> T.navigateToInvoiceDetail(invoiceDetailData: InvoiceDetailData) where T : FragmentActivity, T : ModuleNavigator {
+        startActivity(ActivityClassPath.InvoiceDetail, invoiceDetailData)
     }
 
     fun <T> T.navigateToMapActivity(lat: Double?, lng: Double?,
@@ -105,12 +109,21 @@ private fun Fragment.startActivity(
     startActivity(intent)
 }
 
+private fun Fragment.startActivity(
+    activityClassPath: ActivityClassPath,
+    invoiceDetailData: InvoiceDetailData
+) {
+    val intent = activityClassPath.getIntent(requireContext())
+    intent.putExtra("invoiceDetailData", Gson().toJson(invoiceDetailData))
+    startActivity(intent)
+}
+
 private fun FragmentActivity.startActivity(
     activityClassPath: ActivityClassPath,
-    invoiceData: InvoiceData
+    invoiceDetailData: InvoiceDetailData
 ) {
     val intent = activityClassPath.getIntent(this)
-    intent.putExtra("invoice", Gson().toJson(invoiceData))
+    intent.putExtra("invoiceDetailData", Gson().toJson(invoiceDetailData))
     startActivity(intent)
 }
 

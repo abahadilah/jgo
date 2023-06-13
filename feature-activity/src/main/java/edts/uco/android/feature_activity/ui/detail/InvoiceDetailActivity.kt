@@ -38,15 +38,7 @@ class InvoiceDetailActivity: PopupActivity<ActivityInvoiceDetailBinding>() {
     @SuppressLint("NotifyDataSetChanged")
     private fun setupObserver() {
         viewModel.invoice.observe(this) {
-            binding.tvInvoiceName.text = it?.name
-            binding.tvCreatedDate.text = it?.getCreatedDateFormat()
-            binding.tvDueDate.text = it?.getDueDateFormat()
-            binding.tvUser.text = it?.userId
-            binding.tvStatus.text = InvoiceStatus.getStatus(it?.state)?.toString()
-            binding.tvCompany.text = it?.company
-            binding.tvAMountUntaxed.text = it?.tax?.money(this)
-            binding.tvResidual.text = it?.residual?.money(this)
-            binding.tvTotalAmount.text = it?.total?.money(this)
+            drawInvoice(it)
 
             loadDetail()
         }
@@ -57,6 +49,18 @@ class InvoiceDetailActivity: PopupActivity<ActivityInvoiceDetailBinding>() {
                 costAdapter.notifyDataSetChanged()
             }
         }
+    }
+
+    private fun drawInvoice(it: InvoiceData?) {
+        binding.tvInvoiceName.text = it?.name
+        binding.tvCreatedDate.text = it?.getCreatedDateFormat()
+        binding.tvDueDate.text = it?.getDueDateFormat()
+        binding.tvUser.text = it?.userId
+        binding.tvStatus.text = InvoiceStatus.getStatus(it?.state)?.toString()
+        binding.tvCompany.text = it?.company
+        binding.tvAMountUntaxed.text = it?.tax?.money(this)
+        binding.tvResidual.text = it?.residual?.money(this)
+        binding.tvTotalAmount.text = it?.total?.money(this)
     }
 
     private fun loadDetail() {
@@ -74,8 +78,28 @@ class InvoiceDetailActivity: PopupActivity<ActivityInvoiceDetailBinding>() {
     private fun initData() {
         val json = intent?.getStringExtra("invoice")
         if (json?.isNotEmpty() == true) {
-            val order = Gson().fromJson<InvoiceData?>(json, object : TypeToken<InvoiceData?>() {}.type)
-            viewModel.invoice.postValue(order)
+            val invoiceData = Gson().fromJson<InvoiceData?>(json, object : TypeToken<InvoiceData?>() {}.type)
+            viewModel.invoice.postValue(invoiceData)
         }
+        else {
+            val jsonInvoiceDetailData = intent?.getStringExtra("invoiceDetailData")
+
+            val invoiceDetailData = Gson().fromJson<InvoiceDetailData?>(jsonInvoiceDetailData, object : TypeToken<InvoiceDetailData?>() {}.type)
+
+            drawInvoice(InvoiceData(
+                id = invoiceDetailData.id,
+                name = invoiceDetailData.name,
+                created = invoiceDetailData.created,
+                state = invoiceDetailData.state,
+                total = invoiceDetailData.total,
+                tax = invoiceDetailData.tax,
+                userId = invoiceDetailData.userId,
+                residual = invoiceDetailData.residual,
+                dueDate = invoiceDetailData.dueDate,
+                company = invoiceDetailData.company
+            ))
+            viewModel.invoiceDetail.postValue(invoiceDetailData)
+        }
+
     }
 }

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import edts.base.android.core_domain.model.InvoiceData
 import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_navigation.ModuleNavigator
@@ -94,18 +93,7 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
                             override fun success(data: InvoiceDetailData?) {
                                 if (data != null) {
 
-                                    navigateToInvoiceDetail(InvoiceData(
-                                        id = data.id,
-                                        name = data.name,
-                                        created = data.created,
-                                        state = data.state,
-                                        total = data.total,
-                                        tax = data.tax,
-                                        userId = data.userId,
-                                        residual = data.residual,
-                                        dueDate = data.dueDate,
-                                        company = data.company
-                                    ))
+                                    navigateToInvoiceDetail(data)
                                 }
                             }
 
