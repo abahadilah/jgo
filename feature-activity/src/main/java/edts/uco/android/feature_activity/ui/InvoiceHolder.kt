@@ -2,10 +2,10 @@ package edts.uco.android.feature_activity.ui
 
 import edts.base.android.core_domain.model.InvoiceData
 import edts.base.core_utils.money
-import edts.uco.android.feature_activity.databinding.AdapterItemBinding
+import edts.uco.android.feature_activity.databinding.AdapterInvoiceItemBinding
 import id.co.edtslib.baserecyclerview2.BaseViewHolder
 
-class InvoiceHolder(private val binding: AdapterItemBinding): BaseViewHolder<InvoiceData>(binding) {
+class InvoiceHolder(private val binding: AdapterInvoiceItemBinding): BaseViewHolder<InvoiceData>(binding) {
     override fun setData(t: InvoiceData?) {
         binding.tvKg.text = t?.name
         binding.tvPrice.text = t?.total?.money(binding.root.context)

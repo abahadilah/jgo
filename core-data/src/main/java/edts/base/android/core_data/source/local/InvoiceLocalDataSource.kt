@@ -20,7 +20,7 @@ class InvoiceLocalDataSource(sharedPreference: SharedPreferences) :
         return getCached()
     }
 
-    override fun getKeyName(): String = "invoices_$key"
+    override fun getKeyName(): String = "invoice_list_$key"
 
     override fun expiredInterval() = 3600
     override fun getValue(json: String): List<InvoiceEntity>? =

@@ -9,24 +9,22 @@ data class InvoiceData (
     val name: String,
     val created: String?,
     val state: String?,
-    val total: String?,
+    val total: Double?,
     val tax: String?,
     var userId: String?,
     var residual: String?,
     val dueDate: String?,
-    val created2: String?,
-    val dueDate2: String?,
     var company: String?
 ) {
     fun getMonthYear(): String? {
-        if (dueDate2 == null) {
+        if (dueDate == null) {
             return null
         }
         else {
             return try {
                 val simpleDateFormat1 = SimpleDateFormat("yyyy-MM-dd", Locale("ID"))
 
-                val d = simpleDateFormat1.parse(dueDate2)
+                val d = simpleDateFormat1.parse(dueDate)
                 if (d == null) {
                     null
                 } else {

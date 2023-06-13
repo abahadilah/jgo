@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import edts.uco.android.feature_activity.R
-import edts.uco.android.feature_activity.databinding.TrayStatusFilterBinding
+import edts.uco.android.feature_activity.databinding.TrayInvoiceStatusFilterBinding
 import edts.uco.android.feature_activity.ui.InvoiceStatus
 import id.co.edtslib.edtsds.bottom.BottomLayoutDialog
 import id.co.edtslib.edtsds.list.checkmenu.RadioButtonListDelegate
@@ -14,7 +14,7 @@ class InvoiceStatusFilterTray(private val context: Context, private val init: In
     var delegate: InvoiceStatusFilterDelegate? = null
 
     private var selected: InvoiceStatus? = null
-    private val binding = TrayStatusFilterBinding.inflate(LayoutInflater.from(context))
+    private val binding = TrayInvoiceStatusFilterBinding.inflate(LayoutInflater.from(context))
 
     fun show() {
         val listView = binding.root.findViewById<RadioButtonListView<InvoiceStatusFilterData>>(R.id.listView)

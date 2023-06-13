@@ -23,5 +23,7 @@
 
     <string name="invoice_amount_untaxed">Jumlah sebelum pajak</string>
     <string name="invoice_discount">Diskon</string>
+    <string name="invoice_list_with_total">Daftar Invoice (%1$s)</string>
+    <string name="invoice_apply">Terapkan</string>
 
 </resources>

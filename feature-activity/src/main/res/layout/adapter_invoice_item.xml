@@ -29,7 +29,7 @@
         android:layout_marginEnd="@dimen/dimen_4dp"
         style="@style/B2"
         android:textColor="@color/colorNeutral40"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content" />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPrice"

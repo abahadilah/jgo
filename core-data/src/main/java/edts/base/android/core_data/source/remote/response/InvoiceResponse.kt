@@ -15,17 +15,11 @@ data class InvoiceResponse (
     @field:SerializedName("invoice_date_due")
     val dueDate: String?,
 
-    @field:SerializedName("invoice_date2")
-    val created2: String?,
-
-    @field:SerializedName("invoice_date_due2")
-    val dueDate2: String?,
-
     @field:SerializedName("payment_state")
     val state: String?,
 
     @field:SerializedName("amount_total")
-    val total: String?,
+    val total: Double?,
 
     @field:SerializedName("amount_untaxed")
     val tax: String?,

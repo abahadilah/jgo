@@ -9,6 +9,9 @@ import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
 import edts.base.android.core_resource.base.result.UcoProcessDelegate
 import edts.base.android.core_resource.base.result.UcoProcessLoadResult
+import edts.base.core_utils.formatDecimal
+import edts.base.core_utils.money
+import edts.uco.android.feature_activity.R
 import edts.uco.android.feature_activity.databinding.FragmentInvoceBinding
 import edts.uco.android.feature_activity.ui.status.InvoiceStatusFilterDelegate
 import edts.uco.android.feature_activity.ui.status.InvoiceStatusFilterTray
@@ -83,23 +86,38 @@ class InvoiceFragment: HomeBaseFragment<FragmentInvoceBinding>(), ModuleNavigato
             UcoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
                 object : UcoProcessDelegate<List<InvoiceData>?> {
                     override fun success(data: List<InvoiceData>?) {
-                        hideShimmer(data)
-                        adapter.setData(data)
+                        processData(data)
                     }
                 })
         }
     }
 
+    private fun processData(data: List<InvoiceData>?) {
+        hideShimmer(data)
+
+        val count = data?.size ?: 0
+        var total = 0.0
+        data?.forEach {
+            total += if (it.total == null) 0.0 else it.total!!
+        }
+
+        binding.tvTitle.text = getString(R.string.invoice_list_with_total,
+            count.toDouble().formatDecimal())
+
+        binding.tvTotal.text = total.money(requireContext())
+
+        adapter.setData(data)
+    }
 
     private fun showShimmer() {
         binding.llSkeleton.isVisible = true
-        binding.recyclerView.isVisible = false
+        binding.llData.isVisible = false
         binding.llEmpty.isVisible = false
     }
 
     private fun hideShimmer(data: List<InvoiceData>?) {
         binding.llSkeleton.isVisible = false
-        binding.recyclerView.isVisible = data?.isNotEmpty() == true
+        binding.llData.isVisible = data?.isNotEmpty() == true
         binding.llEmpty.isVisible = data?.isNotEmpty() != true
     }
 }
