@@ -31,6 +31,10 @@ interface ModuleNavigator {
         startActivity(ActivityClassPath.InvoiceDetail, invoiceData)
     }
 
+    fun <T> T.navigateToInvoiceDetail(invoiceData: InvoiceData) where T : FragmentActivity, T : ModuleNavigator {
+        startActivity(ActivityClassPath.InvoiceDetail, invoiceData)
+    }
+
     fun <T> T.navigateToMapActivity(lat: Double?, lng: Double?,
                                     resultLauncher: ActivityResultLauncher<Intent>? = null) where T : FragmentActivity, T : ModuleNavigator {
         startMapActivity(activityClassPath = ActivityClassPath.Map,
@@ -97,6 +101,15 @@ private fun Fragment.startActivity(
     invoiceData: InvoiceData
 ) {
     val intent = activityClassPath.getIntent(requireContext())
+    intent.putExtra("invoice", Gson().toJson(invoiceData))
+    startActivity(intent)
+}
+
+private fun FragmentActivity.startActivity(
+    activityClassPath: ActivityClassPath,
+    invoiceData: InvoiceData
+) {
+    val intent = activityClassPath.getIntent(this)
     intent.putExtra("invoice", Gson().toJson(invoiceData))
     startActivity(intent)
 }

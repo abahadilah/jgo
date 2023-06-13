@@ -6,8 +6,11 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import edts.base.android.core_domain.model.InvoiceData
+import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_domain.model.OrderDetailData
+import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.base.result.UcoProcessDelegate
 import edts.base.android.core_resource.base.result.UcoProcessResult
 import edts.base.core_utils.formatDecimal
@@ -17,8 +20,9 @@ import edts.uco.android.feature_pickup.databinding.ActivityOrderDetailBinding
 import edts.uco.android.feature_pickup.ui.OrderStatus
 import id.co.edtslib.uibase.PopupActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.lang.NumberFormatException
 
-class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>() {
+class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>(), ModuleNavigator {
     private val viewModel: OrderDetailViewModel by viewModel()
     private val costAdapter = OrderDetailCostAdapter()
 
@@ -52,6 +56,24 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>() {
             binding.tvWeight.text = getString(R.string.order_kg, it?.weight?.formatDecimal())
             binding.tvStatus.text = OrderStatus.getStatus(it?.state)?.toString()
             binding.tvTotal.text = it?.totalAmount?.money(this)
+
+            binding.lbInvoice.isVisible = it?.invoice?.get(1)?.isNotEmpty() == true
+            binding.tvInvoice.text = it?.invoice?.get(1)
+
+            if (it?.invoice?.get(1)?.isNotEmpty() == true) {
+                binding.tvInvoice.setOnClickListener { _ ->
+                    val s = it.invoice?.get(0)
+                    if (s != null) {
+                        try {
+                            showInvoice(s.toLong())
+                        }
+                        catch (e: NumberFormatException) {
+                            UcoProcessResult.showError(this@OrderDetailActivity,
+                                "Terjadi kesalahan")
+                        }
+                    }
+                }
+            }
 
             loadDetail()
         }
@@ -91,6 +113,34 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>() {
                 costAdapter.list = it.cost!!.toMutableList()
                 costAdapter.notifyDataSetChanged()
             }
+        }
+    }
+
+    private fun showInvoice(invoiceId: Long) {
+        viewModel.getInvoice(invoiceId).observe(this) {
+            UcoProcessResult(fragmentActivity = this, result = it,
+                delegate = object : UcoProcessDelegate<InvoiceDetailData?> {
+                    override fun success(data: InvoiceDetailData?) {
+                        if (data != null) {
+
+                            navigateToInvoiceDetail(
+                                InvoiceData(
+                                    id = data.id,
+                                    name = data.name,
+                                    created = data.created,
+                                    state = data.state,
+                                    total = data.total,
+                                    tax = data.tax,
+                                    userId = data.userId,
+                                    residual = data.residual,
+                                    dueDate = data.dueDate,
+                                    company = data.company
+                                )
+                            )
+                        }
+                    }
+
+                })
         }
     }
 

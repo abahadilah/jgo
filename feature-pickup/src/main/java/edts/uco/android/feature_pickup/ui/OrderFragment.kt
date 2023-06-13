@@ -4,11 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import edts.base.android.core_domain.model.InvoiceData
+import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
 import edts.base.android.core_resource.base.result.UcoProcessDelegate
 import edts.base.android.core_resource.base.result.UcoProcessLoadResult
+import edts.base.android.core_resource.base.result.UcoProcessResult
 import edts.base.core_utils.formatDecimal
 import edts.base.core_utils.money
 import edts.uco.android.feature_pickup.R
@@ -16,6 +19,7 @@ import edts.uco.android.feature_pickup.databinding.FragmentOrderBinding
 import edts.uco.android.feature_pickup.ui.status.OrderStatusFilterDelegate
 import edts.uco.android.feature_pickup.ui.status.OrderStatusFilterTray
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.lang.NumberFormatException
 
 class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
     private val viewModel: OrderViewModel by viewModel()
@@ -66,11 +70,51 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
             tray.show()
         }
 
-        adapter.delegate = object : OrderAdapterDelegate {
-            override fun onDetail(orderData: OrderData?) {
+        adapter.delegate = object : OrderDelegate {
+            override fun onOrderDetail(orderData: OrderData?) {
                 if (orderData?.id != null) {
                     navigateToOrderDetail(orderData)
                 }
+            }
+
+            override fun onInvoiceDetail(orderData: OrderData?) {
+                showInvoice(orderData)
+            }
+        }
+    }
+
+    private fun showInvoice(orderData: OrderData?) {
+        val sInvoiceId = orderData?.invoice?.get(0)
+        if (sInvoiceId != null) {
+            try {
+                val invoiceId: Long = sInvoiceId.toLong()
+                viewModel.getInvoice(invoiceId).observe(this) {
+                    UcoProcessResult(fragmentActivity = requireActivity(), result = it,
+                        delegate = object : UcoProcessDelegate<InvoiceDetailData?> {
+                            override fun success(data: InvoiceDetailData?) {
+                                if (data != null) {
+
+                                    navigateToInvoiceDetail(InvoiceData(
+                                        id = data.id,
+                                        name = data.name,
+                                        created = data.created,
+                                        state = data.state,
+                                        total = data.total,
+                                        tax = data.tax,
+                                        userId = data.userId,
+                                        residual = data.residual,
+                                        dueDate = data.dueDate,
+                                        company = data.company
+                                    ))
+                                }
+                            }
+
+                        })
+                }
+            }
+            catch (e: NumberFormatException) {
+                UcoProcessResult.showError(requireActivity(),
+                    "Terjadi kesalahan")
             }
         }
     }

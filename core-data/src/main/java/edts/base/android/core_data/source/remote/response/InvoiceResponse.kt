@@ -22,13 +22,13 @@ data class InvoiceResponse (
     val total: Double?,
 
     @field:SerializedName("amount_untaxed")
-    val tax: String?,
+    val tax: Double?,
 
     @field:SerializedName("invoice_user_id")
     var userId: String?,
 
     @field:SerializedName("amount_residual")
-    var residual: String?,
+    var residual: Double?,
 
     @field:SerializedName("company_id")
     var company: String?,

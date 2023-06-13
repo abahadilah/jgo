@@ -5,15 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import edts.base.android.core_domain.model.OrderData
-import edts.uco.android.feature_pickup.databinding.AdapterItemBinding
-import edts.uco.android.feature_pickup.databinding.AdapterPeriodBinding
 import id.co.edtslib.baserecyclerview2.AdapterData
 import id.co.edtslib.baserecyclerview2.BaseRecyclerView2
-import id.co.edtslib.baserecyclerview2.BaseRecyclerView2AdapterDelegate
 import id.co.edtslib.baserecyclerview2.BaseViewHolder
+import edts.uco.android.feature_pickup.databinding.AdapterOrderPeriodBinding
+import edts.uco.android.feature_pickup.databinding.AdapterOrderItemBinding
 
 class OrderAdapter: BaseRecyclerView2()  {
-    var delegate: OrderAdapterDelegate? = null
+    var delegate: OrderDelegate? = null
     override fun createHolder(
         inflater: LayoutInflater,
         parent: ViewGroup,
@@ -22,26 +21,30 @@ class OrderAdapter: BaseRecyclerView2()  {
         return when(viewType) {
 
             OrderAdapterType.Period.ordinal -> {
-                val binding = AdapterPeriodBinding.inflate(
+                val binding = AdapterOrderPeriodBinding.inflate(
                     inflater, parent,
                     false
                 )
                 OrderPeriodHolder(binding)
             }
             else -> {
-                val binding = AdapterItemBinding.inflate(
+                val binding = AdapterOrderItemBinding.inflate(
                     inflater, parent,
                     false
                 )
                 val holder = OrderItemHolder(binding)
                 holder.delegate =
-                    object : BaseRecyclerView2AdapterDelegate<OrderData> {
+                    object : OrderAdapterDelegate {
+                        override fun onInvoiceDetail(t: OrderData?) {
+                            delegate?.onInvoiceDetail(t)
+                        }
+
                         override fun onClick(
                             t: OrderData?,
                             position: Int,
                             viewBinding: ViewBinding
                         ) {
-                           delegate?.onDetail(t)
+                           delegate?.onOrderDetail(t)
                         }
 
                         override fun onDraw(

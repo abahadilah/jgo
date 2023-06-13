@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import edts.uco.android.feature_pickup.R
-import edts.uco.android.feature_pickup.databinding.TrayStatusFilterBinding
+import edts.uco.android.feature_pickup.databinding.TrayOrderStatusFilterBinding
 import edts.uco.android.feature_pickup.ui.OrderStatus
 import id.co.edtslib.edtsds.bottom.BottomLayoutDialog
 import id.co.edtslib.edtsds.list.checkmenu.RadioButtonListDelegate
@@ -14,7 +14,7 @@ class OrderStatusFilterTray(private val context: Context, private val init: Orde
     var delegate: OrderStatusFilterDelegate? = null
 
     private var selected: OrderStatus? = null
-    private val binding = TrayStatusFilterBinding.inflate(LayoutInflater.from(context))
+    private val binding = TrayOrderStatusFilterBinding.inflate(LayoutInflater.from(context))
 
     fun show() {
         val listView = binding.root.findViewById<RadioButtonListView<OrderStatusFilterData>>(R.id.listView)
