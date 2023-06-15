@@ -20,6 +20,16 @@ class PaymentLocalDataSource(sharedPreference: SharedPreferences) :
         return getCached()
     }
 
+    fun clearAll() {
+        PaymentStatus.values().forEach {
+            clear(it.code()!!)
+        }
+    }
+
+    private fun clear(key: String) {
+        this.key = key
+        clear()
+    }
     override fun getKeyName(): String = "payment_list_$key"
 
     override fun expiredInterval() = 3600

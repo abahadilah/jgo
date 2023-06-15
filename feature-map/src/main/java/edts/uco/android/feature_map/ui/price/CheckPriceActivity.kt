@@ -18,6 +18,7 @@ import edts.base.android.core_domain.model.VehicleTypeData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.base.result.UcoProcessDelegate2
 import edts.base.android.core_resource.base.result.UcoProcessResult
+import edts.uco.android.feature_map.BuildConfig
 import edts.uco.android.feature_map.R
 import edts.uco.android.feature_map.databinding.ActivityCheckPriceBinding
 import id.co.edtslib.edtsds.textfield.TextFieldDelegate
@@ -108,7 +109,7 @@ class CheckPriceActivity: PopupActivity<ActivityCheckPriceBinding>(), OnMapReady
 
     override fun setupPopup() {
         if (!Places.isInitialized()) {
-            Places.initialize(this, "AIzaSyB_G55jQfWNymaR5nTssCO5S_lM3Pau9Uw",
+            Places.initialize(this, BuildConfig.MAPS_KEY,
                 Locale("ID")
             )
         }

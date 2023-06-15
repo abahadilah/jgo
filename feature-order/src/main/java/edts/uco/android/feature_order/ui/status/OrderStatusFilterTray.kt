@@ -5,7 +5,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import edts.uco.android.feature_order.R
 import edts.uco.android.feature_order.databinding.TrayOrderStatusFilterBinding
-import edts.uco.android.feature_order.ui.OrderStatus
+import edts.base.android.core_data.source.local.OrderStatus
 import id.co.edtslib.edtsds.bottom.BottomLayoutDialog
 import id.co.edtslib.edtsds.list.checkmenu.RadioButtonListDelegate
 import id.co.edtslib.edtsds.list.radiobuttonlist.RadioButtonListView

@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom" />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
             android:src="@drawable/ds_ic_plus_white"
             app:layout_anchor="@id/bottomAppBar"
             app:fabCustomSize="@dimen/dimen_40dp"

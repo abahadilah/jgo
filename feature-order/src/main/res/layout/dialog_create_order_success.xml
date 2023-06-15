@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            android:layout_gravity="center"
+            style="@style/H1"
+            android:textColor="@color/colorNeutral70"
+            android:text="@string/order_success_title"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescription"
+            android:layout_gravity="center"
+            style="@style/P1"
+            android:layout_marginStart="@dimen/dimen_50dp"
+            android:layout_marginEnd="@dimen/dimen_50dp"
+            android:gravity="center"
+            android:textColor="@color/colorNeutral40"
+            android:text="@string/order_success_desc"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <id.co.edtslib.edtsds.ButtonView
+        android:id="@+id/bvSubmit"
+        app:variant="primary"
+        app:size="medium"
+        android:layout_margin="@dimen/dimen_16dp"
+        android:text="@string/finish"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</FrameLayout>

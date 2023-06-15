@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class OrderDetailDriverResponse (
     @field:SerializedName("driver_name")
-    val name: IdNameResponse,
+    val name: IdNameResponse?,
 
     @field:SerializedName("driver_phone")
-    val phone: String,
+    val phone: String?,
 
     @field:SerializedName("vehicle_id")
-    val vehicle: IdNameResponse
+    val vehicle: IdNameResponse?
 
 
 )

@@ -43,6 +43,8 @@ android {
             buildConfigField "String", "TRACKER_API_KEY", "\"${tracker_url_api_key_staging}\""
             buildConfigField "String", "SSL_PINNING", "\"${ssl_pinning_staging}\""
             buildConfigField "String", "SSL_DOMAIN", "\"${ssl_domain_staging}\""
+            buildConfigField "String", "MAPS_KEY", "\"${apps_key_map}\""
+
             resValue "string", "app_name", "\"${apps_name_staging}\""
         }
         production {
@@ -54,6 +56,7 @@ android {
             buildConfigField "String", "TRACKER_API_KEY", "\"${tracker_url_api_key_production}\""
             buildConfigField "String", "SSL_PINNING", "\"${ssl_pinning_production}\""
             buildConfigField "String", "SSL_DOMAIN", "\"${ssl_domain_production}\""
+            buildConfigField "String", "MAPS_KEY", "\"${apps_key_map}\""
             resValue "string", "app_name", "\"${apps_name_production}\""
         }
     }
@@ -150,6 +153,7 @@ dependencies {
 
     implementation("org.osmdroid:osmdroid-android:$versions.osm_version")
     implementation("com.github.MKergall:osmbonuspack:$versions.osmbonuspack_version")
+    implementation 'com.google.maps.android:android-maps-utils:3.4.0'
 
     /* map struct*/
     api("com.github.pozo:mapstruct-kotlin:$versions.mapstruct_kotlin_version")

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.WindowInsetsController
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
+import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
 import edts.base.android.core_resource.UcoActivity
 import edts.base.android.feature_home.databinding.ActivityHomeBinding
@@ -15,7 +16,7 @@ import edts.uco.android.feature_invoice.ui.InvoiceFragment
 import edts.uco.android.feature_profile.ProfileFragment
 import id.co.edtslib.edtsds.R
 
-class HomeActivity : UcoActivity<ActivityHomeBinding>() {
+class HomeActivity : UcoActivity<ActivityHomeBinding>(), ModuleNavigator {
 
     //val viewModel: HomeViewModel by viewModel()
 
@@ -48,6 +49,10 @@ class HomeActivity : UcoActivity<ActivityHomeBinding>() {
 
             override fun selected(fragment: HomeBaseFragment<*>) {
                 setupStatusBar(fragment)
+            }
+
+            override fun onCreateOrder() {
+                navigateToCreateOrder()
             }
         }
     }

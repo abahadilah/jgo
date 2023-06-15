@@ -16,13 +16,14 @@ import edts.base.core_utils.formatDecimal
 import edts.base.core_utils.money
 import edts.uco.android.feature_order.R
 import edts.uco.android.feature_order.databinding.ActivityOrderDetailBinding
-import edts.uco.android.feature_order.ui.OrderStatus
+import edts.base.android.core_data.source.local.OrderStatus
 import id.co.edtslib.uibase.PopupActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>(), ModuleNavigator {
     private val viewModel: OrderDetailViewModel by viewModel()
     private val costAdapter = OrderDetailCostAdapter()
+    private val destinationAdapter = OrderDestinationAdapter()
 
     override val bindingInflater: (LayoutInflater) -> ActivityOrderDetailBinding
         get() = ActivityOrderDetailBinding::inflate
@@ -38,6 +39,9 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>(), ModuleNa
     private fun setupView() {
         binding.costRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.costRecyclerView.adapter = costAdapter
+
+        binding.destinationRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.destinationRecyclerView.adapter = destinationAdapter
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -69,30 +73,20 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>(), ModuleNa
 
         viewModel.orderDetail.observe(this) {
             binding.lbDeliveryTitle.isVisible = it?.recipient?.isNotEmpty() == true
-            binding.mcvDeliveryTitle.isVisible = it?.recipient?.isNotEmpty() == true
-            if (it?.recipient?.isNotEmpty() == true) {
 
-                binding.tvPickupName.text = it.recipient?.get(0)?.pickupName?.name
-                binding.tvPickupCity.text = it.recipient?.get(0)?.pickupCity?.name
+            destinationAdapter.list = if (it?.recipient?.isNotEmpty() == true) it.recipient!!.toMutableList()
+                else mutableListOf()
+            destinationAdapter.notifyDataSetChanged()
 
-                binding.tvRecipientName.text =
-                    it.recipient?.get(0)?.recipientName?.name
-                binding.tvRecipientCity.text =
-                    it.recipient?.get(0)?.recipientCity?.name
+            val haveDriver = it?.vehicle?.isNotEmpty() == true && it.vehicle?.get(0)?.name?.name?.isNotEmpty() == true
 
-                binding.tvDistance.text = getString(
-                    R.string.order_distance_unit,
-                    it.recipient?.get(0)?.distance?.formatDecimal()
-                )
-            }
+            binding.lbDeliveryVehicleTitle.isVisible = haveDriver
+            binding.mcvDeliveryVehicle.isVisible = haveDriver
 
-            binding.lbDeliveryVehicleTitle.isVisible = it?.vehicle?.isNotEmpty() == true
-            binding.mcvDeliveryVehicle.isVisible = it?.vehicle?.isNotEmpty() == true
-
-            if (it?.vehicle?.isNotEmpty() == true) {
-                binding.tvDriverName.text = it.vehicle?.get(0)?.name?.name
-                binding.tvDriverPhone.text = it.vehicle?.get(0)?.phone
-                binding.tvVehicle.text = it.vehicle?.get(0)?.vehicle?.name
+            if (haveDriver) {
+                binding.tvDriverName.text = it?.vehicle?.get(0)?.name?.name
+                binding.tvDriverPhone.text = it?.vehicle?.get(0)?.phone
+                binding.tvVehicle.text = it?.vehicle?.get(0)?.vehicle?.name
             }
 
             binding.lbDeliveryCostTitle.isVisible = it?.cost?.isNotEmpty() == true

@@ -45,6 +45,10 @@ class NavigationView : FrameLayout {
             binding.clInvoice.setOnClickListener { selectedIndex = Navigation.Invoice }
             binding.clProfile.setOnClickListener { selectedIndex = Navigation.Profile }
             binding.clPayment.setOnClickListener { selectedIndex = Navigation.Payment }
+
+            binding.fabAdd.setOnClickListener {
+                delegate?.onCreateOrder()
+            }
         }
     }
 

@@ -18,6 +18,8 @@
     <string name="agree">Setuju</string>
     <string name="update_now">Update sekarang</string>
     <string name="enter">Masuk</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
 
     <string name="update_your_application">Perbaharui Aplikasi Anda</string>
     <string name="update_your_application_desc">Aplikasi versi %1$s sudah tersedia, silahkan dowload dan perbaharui versi aplikasi Anda.</string>

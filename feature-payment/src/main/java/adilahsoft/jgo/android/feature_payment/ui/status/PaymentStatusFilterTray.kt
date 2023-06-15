@@ -2,7 +2,7 @@ package adilahsoft.jgo.android.feature_payment.ui.status
 
 import adilahsoft.jgo.android.feature_payment.R
 import adilahsoft.jgo.android.feature_payment.databinding.TrayPaymentStatusFilterBinding
-import adilahsoft.jgo.android.feature_payment.ui.PaymentStatus
+import edts.base.android.core_data.source.local.PaymentStatus
 import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater

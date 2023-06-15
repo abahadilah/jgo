@@ -15,7 +15,7 @@
             android:id="@+id/etVehicleType"
             android:layout_marginTop="@dimen/dimen_8dp"
             style="@style/B1"
-            android:hint="@string/price_select_vehicle_type"
+            android:hint="@string/price_origin_address"
             app:inputType="popup"
             app:errorTextColor="@color/colorSupportError"
             app:errorTextAppearance="@style/B2"

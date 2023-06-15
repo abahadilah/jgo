@@ -28,6 +28,10 @@ interface ModuleNavigator {
         startActivity(ActivityClassPath.CheckPrice)
     }
 
+    fun <T> T.navigateToCreateOrder() where T : FragmentActivity, T : ModuleNavigator {
+        startActivity(ActivityClassPath.CreateOrder)
+    }
+
     fun <T> T.navigateToInvoiceDetail(invoiceData: InvoiceData) where T : Fragment, T : ModuleNavigator {
         startActivity(ActivityClassPath.InvoiceDetail, invoiceData)
     }

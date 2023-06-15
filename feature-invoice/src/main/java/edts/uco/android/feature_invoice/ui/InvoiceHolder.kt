@@ -1,5 +1,6 @@
 package edts.uco.android.feature_invoice.ui
 
+import edts.base.android.core_data.source.local.InvoiceStatus
 import edts.base.android.core_domain.model.InvoiceData
 import edts.base.core_utils.money
 import edts.uco.android.feature_invoice.databinding.AdapterInvoiceItemBinding

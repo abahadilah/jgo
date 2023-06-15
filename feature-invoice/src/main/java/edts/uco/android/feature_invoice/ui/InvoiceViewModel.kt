@@ -2,6 +2,7 @@ package edts.uco.android.feature_invoice.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import edts.base.android.core_data.source.local.InvoiceStatus
 import edts.base.android.core_domain.usecase.InvoiceUseCase
 import id.co.edtslib.uibase.BaseViewModel
 

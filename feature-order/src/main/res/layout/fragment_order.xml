@@ -48,7 +48,7 @@
                         android:layout_marginTop="@dimen/dimen_32dp"
                         style="@style/B2"
                         android:textColor="@color/white"
-                        android:text="@string/pickup_hello"
+                        android:text="@string/order_hello"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <androidx.appcompat.widget.AppCompatTextView

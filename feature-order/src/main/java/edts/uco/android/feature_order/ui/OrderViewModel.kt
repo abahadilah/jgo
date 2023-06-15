@@ -2,6 +2,7 @@ package edts.uco.android.feature_order.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import edts.base.android.core_data.source.local.OrderStatus
 import edts.base.android.core_domain.usecase.InvoiceUseCase
 import edts.base.android.core_domain.usecase.OrderUseCase
 import edts.base.android.core_domain.usecase.ProfileUseCase
@@ -12,7 +13,7 @@ class OrderViewModel(private val profileUseCase: ProfileUseCase,
                      private val invoiceUseCase: InvoiceUseCase): BaseViewModel() {
     var filter = MutableLiveData<OrderStatus>()
 
-    fun getProfile() = profileUseCase.getProfile().asLiveData()
+    fun getProfile() = profileUseCase.get().asLiveData()
     fun getOrder(isReload: Boolean) = orderUseCase.get(isReload,
         if (filter.value?.code() == null) "all" else filter.value!!.code()!!).asLiveData()
 

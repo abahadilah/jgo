@@ -1,6 +1,6 @@
 package adilahsoft.jgo.android.feature_payment.ui.status
 
-import adilahsoft.jgo.android.feature_payment.ui.PaymentStatus
+import edts.base.android.core_data.source.local.PaymentStatus
 import id.co.edtslib.edtsds.list.radiobuttonlist.DataSelected
 
 class PaymentStatusFilterData(val type: PaymentStatus): DataSelected() {

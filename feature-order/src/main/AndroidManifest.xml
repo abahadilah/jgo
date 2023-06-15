@@ -11,5 +11,14 @@
             android:theme="@style/PopupTheme"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name="edts.uco.android.feature_order.ui.create.CreateOrderActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="@string/order_create_order"
+            android:screenOrientation="portrait"
+            android:theme="@style/PopupTheme"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 </manifest>

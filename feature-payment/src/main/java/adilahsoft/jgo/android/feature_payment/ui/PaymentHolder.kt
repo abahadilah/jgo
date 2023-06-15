@@ -1,6 +1,7 @@
 package adilahsoft.jgo.android.feature_payment.ui
 
 import adilahsoft.jgo.android.feature_payment.databinding.AdapterPaymentItemBinding
+import edts.base.android.core_data.source.local.PaymentStatus
 import edts.base.android.core_domain.model.PaymentData
 import edts.base.core_utils.money
 import id.co.edtslib.baserecyclerview2.BaseViewHolder

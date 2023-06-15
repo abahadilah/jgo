@@ -3,6 +3,7 @@ package edts.base.android.core_domain.model
 data class CheckPriceData (
     val tipe: String,
     val km: String?,
+    val kmValue: Double?,
     val cost: Double?,
     var duration: String?,
     var origin: List<String>?,

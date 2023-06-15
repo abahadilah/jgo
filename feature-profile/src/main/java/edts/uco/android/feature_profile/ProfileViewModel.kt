@@ -7,6 +7,6 @@ import id.co.edtslib.uibase.BaseViewModel
 
 class ProfileViewModel(private val customerUseCase: CustomerUseCase,
                        private val profileUseCase: ProfileUseCase): BaseViewModel() {
-    fun get() = profileUseCase.getProfile().asLiveData()
+    fun get() = profileUseCase.get().asLiveData()
     fun logout() = customerUseCase.logout().asLiveData()
 }

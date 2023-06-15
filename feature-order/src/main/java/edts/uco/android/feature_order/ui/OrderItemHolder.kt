@@ -1,5 +1,6 @@
 package edts.uco.android.feature_order.ui
 
+import edts.base.android.core_data.source.local.OrderStatus
 import edts.base.android.core_domain.model.OrderData
 import edts.base.core_utils.money
 import edts.uco.android.feature_order.databinding.AdapterOrderItemBinding

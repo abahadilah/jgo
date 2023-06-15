@@ -19,6 +19,17 @@ class OrderLocalDataSource(sharedPreference: SharedPreferences) :
         return getCached()
     }
 
+    fun clearAll() {
+        OrderStatus.values().forEach {
+            clear(it.code()!!)
+        }
+    }
+
+    private fun clear(key: String) {
+        this.key = key
+        clear()
+    }
+
     override fun getKeyName(): String = "order_list_1_$key"
 
     override fun expiredInterval() = 3600

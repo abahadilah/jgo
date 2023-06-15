@@ -20,6 +20,17 @@ class InvoiceLocalDataSource(sharedPreference: SharedPreferences) :
         return getCached()
     }
 
+    fun clearAll() {
+        InvoiceStatus.values().forEach {
+            clear(it.code()!!)
+        }
+    }
+
+    private fun clear(key: String) {
+        this.key = key
+        clear()
+    }
+
     override fun getKeyName(): String = "invoice_list_$key"
 
     override fun expiredInterval() = 3600

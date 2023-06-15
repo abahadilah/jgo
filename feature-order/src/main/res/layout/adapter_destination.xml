@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mcvDeliveryTitle"
+    android:layout_marginStart="@dimen/dimen_12dp"
+    android:layout_marginEnd="@dimen/dimen_12dp"
+    android:layout_marginTop="@dimen/dimen_16dp"
+    app:cardCornerRadius="@dimen/dimen_8dp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:paddingStart="@dimen/dimen_12dp"
+        android:paddingEnd="@dimen/dimen_12dp"
+        android:paddingTop="@dimen/dimen_16dp"
+        android:paddingBottom="@dimen/dimen_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/lbPickupName"
+            style="@style/B1"
+            android:text="@string/order_pickup_name"
+            android:textColor="@color/colorNeutral50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lbPickupName"
+            style="@style/B1"
+            android:id="@+id/tvPickupName"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbPickupName"
+            android:id="@+id/lbPickupCity"
+            style="@style/B1"
+            android:text="@string/order_pickup_city"
+            android:textColor="@color/colorNeutral50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lbPickupCity"
+            style="@style/B1"
+            android:id="@+id/tvPickupCity"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbPickupCity"
+            android:id="@+id/lbRecipientName"
+            style="@style/B1"
+            android:text="@string/order_recipient_name"
+            android:textColor="@color/colorNeutral50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lbRecipientName"
+            style="@style/B1"
+            android:id="@+id/tvRecipientName"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbRecipientName"
+            android:id="@+id/lbRecipientCity"
+            style="@style/B1"
+            android:text="@string/order_recipient_city"
+            android:textColor="@color/colorNeutral50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lbRecipientCity"
+            style="@style/B1"
+            android:id="@+id/tvRecipientCity"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="@dimen/dimen_12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbRecipientCity"
+            android:id="@+id/lbDistance"
+            style="@style/B1"
+            android:text="@string/order_distance"
+            android:textColor="@color/colorNeutral50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lbDistance"
+            style="@style/B1"
+            android:id="@+id/tvDistance"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

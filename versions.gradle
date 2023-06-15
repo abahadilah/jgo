@@ -6,7 +6,7 @@ ext.versions = [
 
         build_gradle_version               : '7.3.0',
         kotlin_version                     : '1.7.10',
-        nav_version                        : '2.4.1',
+        nav_version                        : '2.5.0',
         google_service_version             : '4.3.5',
         firebase_crashlytics_gradle_version: '2.5.2',
         quadrant_version                   : '1.7',

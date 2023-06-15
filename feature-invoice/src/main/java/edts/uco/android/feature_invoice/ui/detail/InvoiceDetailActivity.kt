@@ -11,7 +11,7 @@ import edts.base.android.core_resource.base.result.UcoProcessDelegate
 import edts.base.android.core_resource.base.result.UcoProcessResult
 import edts.base.core_utils.money
 import edts.uco.android.feature_invoice.databinding.ActivityInvoiceDetailBinding
-import edts.uco.android.feature_invoice.ui.InvoiceStatus
+import edts.base.android.core_data.source.local.InvoiceStatus
 import id.co.edtslib.uibase.PopupActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

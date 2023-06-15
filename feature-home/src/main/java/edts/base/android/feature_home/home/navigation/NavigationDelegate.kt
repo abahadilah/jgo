@@ -6,4 +6,5 @@ interface NavigationDelegate {
     fun unselected(fragment: HomeBaseFragment<*>)
     fun reselected(fragment: HomeBaseFragment<*>)
     fun selected(fragment: HomeBaseFragment<*>)
+    fun onCreateOrder()
 }

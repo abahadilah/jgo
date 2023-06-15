@@ -1,4 +1,4 @@
-package adilahsoft.jgo.android.feature_payment.ui
+package edts.base.android.core_data.source.local
 
 enum class PaymentStatus {
     All {

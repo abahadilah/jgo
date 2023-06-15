@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="@dimen/dimen_8dp"
+    android:background="@drawable/bg_text_field"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:text="@string/order_dimension_hint"
+        android:textColor="@color/colorNeutral50"
+        style="@style/B2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_marginTop="@dimen/dimen_2dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etLength"
+            android:background="@null"
+            android:inputType="number"
+            style="@style/B1"
+            android:textColor="@color/colorNeutral70"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="@string/order_separator_x"
+            style="@style/B3"
+            android:textColor="@color/colorNeutral50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etWidth"
+            android:background="@null"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            style="@style/B1"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="@string/order_separator_x"
+            style="@style/B3"
+            android:textColor="@color/colorNeutral50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etHeight"
+            android:background="@null"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:gravity="center"
+            style="@style/B1"
+            android:layout_gravity="center"
+            android:imeOptions="actionNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

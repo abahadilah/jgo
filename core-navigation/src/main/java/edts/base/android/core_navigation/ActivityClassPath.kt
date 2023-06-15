@@ -8,6 +8,7 @@ import com.gaelmarhic.quadrant.`Feature-map`.MAP_ACTIVITY
 import com.gaelmarhic.quadrant.`Feature-invoice`.INVOICE_DETAIL_ACTIVITY
 import com.gaelmarhic.quadrant.`Feature-map`.CHECK_PRICE_ACTIVITY
 import com.gaelmarhic.quadrant.`Feature-order`.ORDER_DETAIL_ACTIVITY
+import com.gaelmarhic.quadrant.`Feature-order`.CREATE_ORDER_ACTIVITY
 
 enum class ActivityClassPath(private val className: String) {
     Home(HOME_ACTIVITY),
@@ -15,7 +16,8 @@ enum class ActivityClassPath(private val className: String) {
     CheckPrice(CHECK_PRICE_ACTIVITY),
     Map(MAP_ACTIVITY),
     OrderDetail(ORDER_DETAIL_ACTIVITY),
-    InvoiceDetail(INVOICE_DETAIL_ACTIVITY);
+    InvoiceDetail(INVOICE_DETAIL_ACTIVITY),
+    CreateOrder(CREATE_ORDER_ACTIVITY);
 
     fun getIntent(context: Context) = Intent(context, Class.forName(className))
 }

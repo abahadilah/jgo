@@ -5,7 +5,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import edts.uco.android.feature_invoice.R
 import edts.uco.android.feature_invoice.databinding.TrayInvoiceStatusFilterBinding
-import edts.uco.android.feature_invoice.ui.InvoiceStatus
+import edts.base.android.core_data.source.local.InvoiceStatus
 import id.co.edtslib.edtsds.bottom.BottomLayoutDialog
 import id.co.edtslib.edtsds.list.checkmenu.RadioButtonListDelegate
 import id.co.edtslib.edtsds.list.radiobuttonlist.RadioButtonListView

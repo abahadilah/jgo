@@ -1,7 +1,9 @@
 package edts.base.android.core_data.source.remote.network
 
+import edts.base.android.core_data.source.remote.request.CreateOrderRequest
 import edts.base.android.core_data.source.remote.request.OrderDetailRequest
 import edts.base.android.core_data.source.remote.request.OrderRequest
+import edts.base.android.core_data.source.remote.response.CreateOrderResponse
 import edts.base.android.core_data.source.remote.response.OrderDetailResponse
 import edts.base.android.core_data.source.remote.response.OrderResponse
 import retrofit2.Response
@@ -14,5 +16,8 @@ interface OrderApiService {
 
     @POST("/order_line")
     suspend fun getDetail(@Body orderDetailRequest: OrderDetailRequest): Response<OrderDetailResponse>
+
+    @POST("/create_order")
+    suspend fun createOrder(@Body createOrderRequest: CreateOrderRequest): Response<CreateOrderResponse>
 
 }

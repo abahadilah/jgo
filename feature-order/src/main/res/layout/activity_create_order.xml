@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/dimen_16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etVehicleType"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            style="@style/B1"
+            android:hint="@string/order_vehicle_type"
+            app:inputType="popup"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.checkbox.CheckBox
+            app:layout_constraintTop_toBottomOf="@id/etVehicleType"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/cbUseCustomerAddress"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:text="@string/order_origin_address_use_mine"
+            style="@style/B2"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivOriginHistory"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/cbUseCustomerAddress"
+            app:layout_constraintBottom_toBottomOf="@id/cbUseCustomerAddress"
+            app:layout_constraintStart_toEndOf="@id/cbUseCustomerAddress"
+            android:layout_marginStart="@dimen/dimen_4dp"
+            android:src="@drawable/ic_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etOriginAddress"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            style="@style/B1"
+            android:hint="@string/order_origin_address"
+            app:inputType="popup"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toBottomOf="@id/ivOriginHistory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivOriginAddress"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            app:layout_goneMarginEnd="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatImageView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/etOriginAddress"
+            app:layout_constraintBottom_toBottomOf="@id/etOriginAddress"
+            android:id="@+id/ivOriginAddress"
+            android:src="@drawable/ic_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etOriginName"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            style="@style/B1"
+            android:hint="@string/order_origin_name"
+            app:inputType="text"
+            app:imeOptions="next"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toBottomOf="@id/etOriginAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <View
+            app:layout_constraintTop_toBottomOf="@id/etOriginName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/vBorder"
+            android:background="@drawable/bg_menu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_12dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbRecipient"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            style="@style/B1"
+            android:text="@string/order_recipient"
+            android:textColor="@color/colorNeutral60"
+            app:layout_constraintTop_toBottomOf="@id/vBorder"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDestinationHistory"
+            app:layout_constraintTop_toTopOf="@id/lbRecipient"
+            app:layout_constraintBottom_toBottomOf="@id/lbRecipient"
+            app:layout_constraintStart_toEndOf="@id/lbRecipient"
+            android:layout_marginStart="@dimen/dimen_8dp"
+            android:src="@drawable/ic_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMultipleAddress"
+            app:layout_constraintTop_toTopOf="@id/lbRecipient"
+            app:layout_constraintBottom_toBottomOf="@id/lbRecipient"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/order_multiple_address"
+            app:drawableEndCompat="@drawable/ic_expand_collapse"
+            app:drawableTint="@color/colorPrimary30"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            style="@style/B2"
+            android:textColor="@color/colorPrimary30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etDestinationAddress"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            style="@style/B1"
+            android:hint="@string/order_destination_address"
+            app:inputType="popup"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toBottomOf="@id/ivDestinationHistory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivDestinationAddress"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            app:layout_goneMarginEnd="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/etDestinationAddress"
+            app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress"
+            android:id="@+id/ivDestinationAddress"
+            android:src="@drawable/ic_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etDestinationName"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            style="@style/B1"
+            android:hint="@string/order_destination_name"
+            app:inputType="text"
+            app:imeOptions="next"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toBottomOf="@id/etDestinationAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@+id/flMultipleContainer"
+            app:layout_constraintTop_toBottomOf="@id/etDestinationName"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llMultipleDestination"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationAddress2"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_address_2"
+                        app:inputType="popup"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddress2"
+                        android:layout_marginEnd="@dimen/dimen_8dp"
+                        app:layout_goneMarginEnd="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddressRemove2"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress2"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress2"
+                        android:layout_marginEnd="@dimen/dimen_6dp"
+                        android:id="@+id/ivDestinationAddress2"
+                        android:src="@drawable/ic_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress2"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress2"
+                        android:id="@+id/ivDestinationAddressRemove2"
+                        android:src="@drawable/ic_delete"
+                        android:tint="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationName2"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_name_2"
+                        app:inputType="text"
+                        app:imeOptions="next"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toBottomOf="@id/etDestinationAddress2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationAddress3"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_address_3"
+                        app:inputType="popup"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddress3"
+                        android:layout_marginEnd="@dimen/dimen_8dp"
+                        app:layout_goneMarginEnd="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddressRemove3"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress3"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress3"
+                        android:layout_marginEnd="@dimen/dimen_6dp"
+                        android:id="@+id/ivDestinationAddress3"
+                        android:src="@drawable/ic_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress3"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress3"
+                        android:id="@+id/ivDestinationAddressRemove3"
+                        android:src="@drawable/ic_delete"
+                        android:tint="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationName3"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_name_3"
+                        app:inputType="text"
+                        app:imeOptions="next"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toBottomOf="@id/etDestinationAddress3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationAddress4"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_address_4"
+                        app:inputType="popup"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddress4"
+                        android:layout_marginEnd="@dimen/dimen_8dp"
+                        app:layout_goneMarginEnd="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddressRemove4"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress4"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress4"
+                        android:layout_marginEnd="@dimen/dimen_6dp"
+                        android:id="@+id/ivDestinationAddress4"
+                        android:src="@drawable/ic_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress4"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress4"
+                        android:id="@+id/ivDestinationAddressRemove4"
+                        android:src="@drawable/ic_delete"
+                        android:tint="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationName4"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_name_4"
+                        app:inputType="text"
+                        app:imeOptions="next"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toBottomOf="@id/etDestinationAddress4"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationAddress5"
+                        android:layout_marginTop="@dimen/dimen_8dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_address_5"
+                        app:inputType="popup"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddress5"
+                        android:layout_marginEnd="@dimen/dimen_8dp"
+                        app:layout_goneMarginEnd="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toStartOf="@id/ivDestinationAddressRemove5"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress5"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress5"
+                        android:layout_marginEnd="@dimen/dimen_6dp"
+                        android:id="@+id/ivDestinationAddress5"
+                        android:src="@drawable/ic_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/etDestinationAddress5"
+                        app:layout_constraintBottom_toBottomOf="@id/etDestinationAddress5"
+                        android:id="@+id/ivDestinationAddressRemove5"
+                        android:src="@drawable/ic_delete"
+                        android:tint="@color/colorNeutral50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <id.co.edtslib.edtsds.textfield.TextFieldView
+                        android:id="@+id/etDestinationName5"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        style="@style/B1"
+                        android:hint="@string/order_destination_name_5"
+                        app:inputType="text"
+                        app:imeOptions="next"
+                        app:errorTextColor="@color/colorSupportError"
+                        app:errorTextAppearance="@style/B2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toBottomOf="@id/etDestinationAddress5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </FrameLayout>
+
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etProduct"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            style="@style/B1"
+            android:hint="@string/order_product_name"
+            app:inputType="text"
+            app:imeOptions="next"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toBottomOf="@id/flMultipleContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <edts.uco.android.feature_order.ui.create.DimensionView
+            android:id="@+id/etDimension"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            app:layout_constraintEnd_toStartOf="@id/etColi"
+            app:layout_constraintTop_toBottomOf="@id/etProduct"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etColi"
+            style="@style/B1"
+            android:hint="@string/order_coli"
+            app:inputType="number"
+            app:imeOptions="next"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toTopOf="@id/etDimension"
+            app:layout_constraintEnd_toStartOf="@id/etWeight"
+            android:layout_marginEnd="@dimen/dimen_8dp"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etWeight"
+            style="@style/B1"
+            android:hint="@string/order_weight"
+            app:inputType="number"
+            app:imeOptions="next"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toTopOf="@id/etDimension"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etDescription"
+            style="@style/B1"
+            android:hint="@string/order_description"
+            app:inputType="address"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            app:imeOptions="next"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toBottomOf="@id/etDimension"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lbPrice"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etDescription"
+            style="@style/B1"
+            android:text="@string/order_price"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/lbPrice"
+            style="@style/H1"
+            android:text="@string/order_price_empty"
+            android:textColor="@color/colorNeutral70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.ButtonView
+            android:id="@+id/bvSubmit"
+            android:text="@string/order_submit"
+            android:layout_marginTop="@dimen/dimen_6dp"
+            app:layout_constraintTop_toBottomOf="@id/tvPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
