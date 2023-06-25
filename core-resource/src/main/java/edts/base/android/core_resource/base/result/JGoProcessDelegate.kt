@@ -1,5 +1,5 @@
 package edts.base.android.core_resource.base.result
 
-interface UcoProcessDelegate<T> {
+interface JGoProcessDelegate<T> {
     fun success(data: T?)
 }

@@ -22,6 +22,7 @@ val repositoryModule = module {
     single { PaymentLocalDataSource(get()) }
     single { CreateOrderOriginLocalDataSource(get()) }
     single { CreateOrderDestinationLocalDataSource(get()) }
+    single { NotificationLocalDataSource(get()) }
 
     single<IVehicleRepository> {
         VehicleRepository(
@@ -77,6 +78,16 @@ val repositoryModule = module {
 
     single<IConfigurationRepository> {
         ConfigurationRepository(
+            get()
+        )
+    }
+
+    single<INotificationRepository> {
+        NotificationRepository(
+            get(),
+            get(),
+            get(),
+            get(),
             get()
         )
     }

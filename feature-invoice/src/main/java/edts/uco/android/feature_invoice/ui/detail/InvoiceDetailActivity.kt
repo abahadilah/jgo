@@ -7,8 +7,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import edts.base.android.core_domain.model.InvoiceData
 import edts.base.android.core_domain.model.InvoiceDetailData
-import edts.base.android.core_resource.base.result.UcoProcessDelegate
-import edts.base.android.core_resource.base.result.UcoProcessResult
+import edts.base.android.core_resource.base.result.JGoProcessDelegate
+import edts.base.android.core_resource.base.result.JGoProcessResult
 import edts.base.core_utils.money
 import edts.uco.android.feature_invoice.databinding.ActivityInvoiceDetailBinding
 import edts.base.android.core_data.source.local.InvoiceStatus
@@ -65,8 +65,8 @@ class InvoiceDetailActivity: PopupActivity<ActivityInvoiceDetailBinding>() {
 
     private fun loadDetail() {
         viewModel.getInvoiceDetail().observe(this) {
-            UcoProcessResult(fragmentActivity = this, result = it,
-                object : UcoProcessDelegate<InvoiceDetailData?> {
+            JGoProcessResult(fragmentActivity = this, result = it,
+                object : JGoProcessDelegate<InvoiceDetailData?> {
                     override fun success(data: InvoiceDetailData?) {
                         viewModel.invoiceDetail.postValue(data)
                     }

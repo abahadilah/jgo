@@ -20,9 +20,9 @@ import edts.base.android.core_domain.model.CreateOrderAddressData
 import edts.base.android.core_domain.model.CreateOrderData
 import edts.base.android.core_domain.model.VehicleTypeData
 import edts.base.android.core_navigation.ModuleNavigator
-import edts.base.android.core_resource.base.result.UcoProcessDelegate
-import edts.base.android.core_resource.base.result.UcoProcessDelegate2
-import edts.base.android.core_resource.base.result.UcoProcessResult
+import edts.base.android.core_resource.base.result.JGoProcessDelegate
+import edts.base.android.core_resource.base.result.JGoProcessDelegate2
+import edts.base.android.core_resource.base.result.JGoProcessResult
 import edts.base.core_utils.money
 import edts.uco.android.feature_map.ui.price.AutocompleteTarget
 import edts.uco.android.feature_map.ui.price.VehicleTypeDelegate
@@ -313,15 +313,15 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
     private fun loadPrice(isValid: Boolean) {
         if (isValid) {
             viewModel.checkPrice().observe(this@CreateOrderActivity) {
-                UcoProcessResult(fragmentActivity = this@CreateOrderActivity, result = it,
-                    delegate = object : UcoProcessDelegate2<CheckPriceData?> {
+                JGoProcessResult(fragmentActivity = this@CreateOrderActivity, result = it,
+                    delegate = object : JGoProcessDelegate2<CheckPriceData?> {
                         override fun success(data: CheckPriceData?) {
                             binding.tvPrice.text = data?.cost?.money(this@CreateOrderActivity)
                         }
 
                         override fun error(code: String?, message: String?) {
                             binding.tvPrice.text = getString(R.string.order_price_empty)
-                            UcoProcessResult.showError(fragmentActivity = this@CreateOrderActivity, message)
+                            JGoProcessResult.showError(fragmentActivity = this@CreateOrderActivity, message)
                         }
 
                     })
@@ -600,9 +600,9 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
 
             if (! error) {
                 viewModel.createOrder().observe(this@CreateOrderActivity) {
-                    UcoProcessResult(fragmentActivity = this@CreateOrderActivity,
+                    JGoProcessResult(fragmentActivity = this@CreateOrderActivity,
                         result = it,
-                        delegate = object : UcoProcessDelegate<CreateOrderData?> {
+                        delegate = object : JGoProcessDelegate<CreateOrderData?> {
                             override fun success(data: CreateOrderData?) {
                                 if (data?.name?.isNotEmpty() == true) {
                                     CreateOrderSuccessDialog(this@CreateOrderActivity, data) {
@@ -610,7 +610,7 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
                                     }.show()
                                 }
                                 else {
-                                    UcoProcessResult.showError(fragmentActivity = this@CreateOrderActivity,
+                                    JGoProcessResult.showError(fragmentActivity = this@CreateOrderActivity,
                                         getString(edts.base.android.core_resource.R.string.err_system_body))
                                 }
                             }

@@ -3,9 +3,9 @@ package edts.base.android.feature_auth.ui
 import android.view.LayoutInflater
 import edts.base.android.core_domain.model.ProfileData
 import edts.base.android.core_navigation.ModuleNavigator
-import edts.base.android.core_resource.UcoActivity
-import edts.base.android.core_resource.base.result.UcoProcessDelegate
-import edts.base.android.core_resource.base.result.UcoProcessResult
+import edts.base.android.core_resource.JGoActivity
+import edts.base.android.core_resource.base.result.JGoProcessDelegate
+import edts.base.android.core_resource.base.result.JGoProcessResult
 import edts.base.android.feature_auth.BuildConfig
 import edts.base.android.feature_auth.R
 import edts.base.android.feature_auth.databinding.ActivityLoginBinding
@@ -14,7 +14,7 @@ import edts.base.core_utils.isValidPassword
 import id.co.edtslib.edtsds.textfield.TextFieldDelegate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginActivity: UcoActivity<ActivityLoginBinding>(), ModuleNavigator {
+class LoginActivity: JGoActivity<ActivityLoginBinding>(), ModuleNavigator {
     private val viewModel: LoginViewModel by viewModel()
 
     override val bindingInflater: (LayoutInflater) -> ActivityLoginBinding
@@ -62,8 +62,8 @@ class LoginActivity: UcoActivity<ActivityLoginBinding>(), ModuleNavigator {
 
         binding.bvSubmit.setOnClickListener {
             viewModel.login().observe(this) {
-                UcoProcessResult(fragmentActivity = this, result = it,
-                    object : UcoProcessDelegate<ProfileData?> {
+                JGoProcessResult(fragmentActivity = this, result = it,
+                    object : JGoProcessDelegate<ProfileData?> {
                         override fun success(data: ProfileData?) {
                             if (data?.id == null) {
                                 binding.etPassword.error = getString(R.string.auth_phone_error)

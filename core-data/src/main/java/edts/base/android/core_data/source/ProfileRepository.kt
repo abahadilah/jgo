@@ -13,6 +13,5 @@ class ProfileRepository(private val profileLocalDataSource: ProfileLocalDataSour
         val data = Mappers.getMapper(CustomerMapper::class.java)
             .profileEntityToModel(cached)
         emit(data)
-
     }
 }

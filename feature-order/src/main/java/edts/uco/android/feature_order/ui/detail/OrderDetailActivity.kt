@@ -10,8 +10,8 @@ import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_domain.model.OrderDetailData
 import edts.base.android.core_navigation.ModuleNavigator
-import edts.base.android.core_resource.base.result.UcoProcessDelegate
-import edts.base.android.core_resource.base.result.UcoProcessResult
+import edts.base.android.core_resource.base.result.JGoProcessDelegate
+import edts.base.android.core_resource.base.result.JGoProcessResult
 import edts.base.core_utils.formatDecimal
 import edts.base.core_utils.money
 import edts.uco.android.feature_order.R
@@ -101,8 +101,8 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>(), ModuleNa
 
     private fun showInvoice(invoiceId: Long) {
         viewModel.getInvoice(invoiceId).observe(this) {
-            UcoProcessResult(fragmentActivity = this, result = it,
-                delegate = object : UcoProcessDelegate<InvoiceDetailData?> {
+            JGoProcessResult(fragmentActivity = this, result = it,
+                delegate = object : JGoProcessDelegate<InvoiceDetailData?> {
                     override fun success(data: InvoiceDetailData?) {
                         if (data != null) {
 
@@ -116,8 +116,8 @@ class OrderDetailActivity: PopupActivity<ActivityOrderDetailBinding>(), ModuleNa
 
     private fun loadDetail() {
         viewModel.getOrderDetail().observe(this) {
-            UcoProcessResult(fragmentActivity = this, result = it,
-                object : UcoProcessDelegate<OrderDetailData?> {
+            JGoProcessResult(fragmentActivity = this, result = it,
+                object : JGoProcessDelegate<OrderDetailData?> {
                     override fun success(data: OrderDetailData?) {
                         viewModel.orderDetail.postValue(data)
                     }

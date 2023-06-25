@@ -8,8 +8,8 @@ import edts.base.android.core_data.source.local.InvoiceStatus
 import edts.base.android.core_domain.model.InvoiceData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
-import edts.base.android.core_resource.base.result.UcoProcessDelegate
-import edts.base.android.core_resource.base.result.UcoProcessLoadResult
+import edts.base.android.core_resource.base.result.JGoProcessDelegate
+import edts.base.android.core_resource.base.result.JGoProcessLoadResult
 import edts.base.core_utils.formatDecimal
 import edts.base.core_utils.money
 import edts.uco.android.feature_invoice.R
@@ -84,8 +84,8 @@ class InvoiceFragment: HomeBaseFragment<FragmentInvoceBinding>(), ModuleNavigato
         showShimmer()
 
         viewModel.getInvoice(isReload).observe(this) {
-            UcoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
-                object : UcoProcessDelegate<List<InvoiceData>?> {
+            JGoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
+                object : JGoProcessDelegate<List<InvoiceData>?> {
                     override fun success(data: List<InvoiceData>?) {
                         processData(data)
                     }

@@ -11,8 +11,8 @@ import id.co.edtslib.data.ProcessResult
 import id.co.edtslib.data.ProcessResultDelegate
 import id.co.edtslib.data.Result
 
-open class UcoProcessResult<T>(private val fragmentActivity: FragmentActivity,
-                               result: Result<T>, private val delegate: UcoProcessDelegate<T>,
+open class JGoProcessResult<T>(private val fragmentActivity: FragmentActivity,
+                               result: Result<T>, private val delegate: JGoProcessDelegate<T>,
                                private val isShowProgressBar: Boolean = true,
                                private val errorViewContainer: View? = null,
                                private val errorConnectionDelegate: ErrorConnectionDelegate? = null,
@@ -72,11 +72,11 @@ open class UcoProcessResult<T>(private val fragmentActivity: FragmentActivity,
 
             private fun doError(code: String?, message: String?) {
 
-                    if (delegate is UcoProcessDelegate2) {
+                    if (delegate is JGoProcessDelegate2) {
                         delegate.error(code, message)
                     }
                     else
-                        if (delegate is UcoProcessDelegate3) {
+                        if (delegate is JGoProcessDelegate3) {
                             showError(fragmentActivity, message, errorViewContainer)
                             delegate.error(code, message)
                         }

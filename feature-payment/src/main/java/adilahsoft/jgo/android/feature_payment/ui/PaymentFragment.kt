@@ -12,8 +12,8 @@ import edts.base.android.core_data.source.local.PaymentStatus
 import edts.base.android.core_domain.model.PaymentData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
-import edts.base.android.core_resource.base.result.UcoProcessDelegate
-import edts.base.android.core_resource.base.result.UcoProcessLoadResult
+import edts.base.android.core_resource.base.result.JGoProcessDelegate
+import edts.base.android.core_resource.base.result.JGoProcessLoadResult
 import edts.base.core_utils.formatDecimal
 import edts.base.core_utils.money
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -76,8 +76,8 @@ class PaymentFragment: HomeBaseFragment<FragmentPaymentBinding>(), ModuleNavigat
         showShimmer()
 
         viewModel.getPayments(isReload).observe(this) {
-            UcoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
-                object : UcoProcessDelegate<List<PaymentData>?> {
+            JGoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
+                object : JGoProcessDelegate<List<PaymentData>?> {
                     override fun success(data: List<PaymentData>?) {
                         processData(data)
                     }

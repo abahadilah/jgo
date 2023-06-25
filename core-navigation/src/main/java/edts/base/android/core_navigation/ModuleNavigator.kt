@@ -24,6 +24,10 @@ interface ModuleNavigator {
         startActivity(ActivityClassPath.OrderDetail, orderData)
     }
 
+    fun <T> T.navigateToNotification() where T : Fragment, T : ModuleNavigator {
+        startActivity(ActivityClassPath.Notification)
+    }
+
     fun <T> T.navigateToCheckPrice() where T : FragmentActivity, T : ModuleNavigator {
         startActivity(ActivityClassPath.CheckPrice)
     }
@@ -94,6 +98,12 @@ private fun Fragment.startActivity(
 ) {
     val intent = activityClassPath.getIntent(requireContext())
     intent.putExtra("order", Gson().toJson(orderData))
+    startActivity(intent)
+}
+
+private fun Fragment.startActivity(
+    activityClassPath: ActivityClassPath) {
+    val intent = activityClassPath.getIntent(requireContext())
     startActivity(intent)
 }
 

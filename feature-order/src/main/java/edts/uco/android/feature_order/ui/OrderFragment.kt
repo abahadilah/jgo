@@ -9,9 +9,9 @@ import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
-import edts.base.android.core_resource.base.result.UcoProcessDelegate
-import edts.base.android.core_resource.base.result.UcoProcessLoadResult
-import edts.base.android.core_resource.base.result.UcoProcessResult
+import edts.base.android.core_resource.base.result.JGoProcessDelegate
+import edts.base.android.core_resource.base.result.JGoProcessLoadResult
+import edts.base.android.core_resource.base.result.JGoProcessResult
 import edts.base.core_utils.formatDecimal
 import edts.base.core_utils.money
 import edts.uco.android.feature_order.R
@@ -80,13 +80,17 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
                 showInvoice(orderData)
             }
         }
+
+        binding.ivNotification.setOnClickListener {
+            navigateToNotification()
+        }
     }
 
     private fun showInvoice(orderData: OrderData?) {
         if (orderData?.invoice?.id != null) {
             viewModel.getInvoice(orderData.invoice!!.id).observe(this) {
-                UcoProcessResult(fragmentActivity = requireActivity(), result = it,
-                    delegate = object : UcoProcessDelegate<InvoiceDetailData?> {
+                JGoProcessResult(fragmentActivity = requireActivity(), result = it,
+                    delegate = object : JGoProcessDelegate<InvoiceDetailData?> {
                         override fun success(data: InvoiceDetailData?) {
                             if (data != null) {
 
@@ -113,8 +117,8 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
         showShimmer()
 
         viewModel.getOrder(isReload).observe(this) {
-            UcoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
-                object : UcoProcessDelegate<List<OrderData>?> {
+            JGoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
+                object : JGoProcessDelegate<List<OrderData>?> {
                     override fun success(data: List<OrderData>?) {
                         hideShimmer(data)
 

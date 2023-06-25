@@ -8,23 +8,28 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.viewbinding.ViewBinding
 import com.google.android.gms.tasks.Task
 import com.google.firebase.messaging.FirebaseMessaging
-import id.co.edtslib.uibase.PopupActivity
+import id.co.edtslib.uibase.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-abstract class UcoPopupActivity<viewBinding : ViewBinding> : PopupActivity<viewBinding>() {
+abstract class JGoActivity<viewBinding : ViewBinding> : BaseActivity<viewBinding>() {
     open fun reload() {}
 
-    private val ucoViewModel: UcoViewModel by viewModel()
-
+    val jgoViewModel: JGoViewModel by viewModel()
     private val broadcastReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
-            reload()
+            binding.root.postDelayed({
+                reload()
+            }, 250)
         }
     }
 
     override fun onStart() {
         super.onStart()
+
+        getToken {
+            jgoViewModel.bindFcm(it.result).observeForever {  }
+        }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, IntentFilter("UCO_PUSH"))
     }
@@ -35,7 +40,7 @@ abstract class UcoPopupActivity<viewBinding : ViewBinding> : PopupActivity<viewB
     }
 
     private fun getToken(onCompleteListener: (Task<String>) -> Unit) {
-        ucoViewModel.getConfiguration().observe(this) {configuration ->
+        jgoViewModel.getConfiguration().observe(this) { configuration ->
             if (configuration?.fcmId?.isNotEmpty() != true) {
                 try {
                     FirebaseMessaging.getInstance().token.addOnCompleteListener {

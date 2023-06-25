@@ -56,4 +56,5 @@ dependencies {
     implementation project(":feature-invoice")
     implementation project(":feature-profile")
     implementation project(":feature-payment")
+    implementation project(":feature-notification")
 }

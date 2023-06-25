@@ -16,8 +16,8 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import edts.base.android.core_domain.model.CheckPriceData
 import edts.base.android.core_domain.model.VehicleTypeData
 import edts.base.android.core_navigation.ModuleNavigator
-import edts.base.android.core_resource.base.result.UcoProcessDelegate2
-import edts.base.android.core_resource.base.result.UcoProcessResult
+import edts.base.android.core_resource.base.result.JGoProcessDelegate2
+import edts.base.android.core_resource.base.result.JGoProcessResult
 import edts.uco.android.feature_map.BuildConfig
 import edts.uco.android.feature_map.R
 import edts.uco.android.feature_map.databinding.ActivityCheckPriceBinding
@@ -271,9 +271,9 @@ class CheckPriceActivity: PopupActivity<ActivityCheckPriceBinding>(), OnMapReady
         }
 
         viewModel.checkPrice().observe(this) {
-            UcoProcessResult(fragmentActivity = this,
+            JGoProcessResult(fragmentActivity = this,
                 result = it,
-                delegate = object : UcoProcessDelegate2<CheckPriceData?> {
+                delegate = object : JGoProcessDelegate2<CheckPriceData?> {
                     override fun success(data: CheckPriceData?) {
                         CheckResultTray(this@CheckPriceActivity,
                             vehicle = viewModel.vehicleType.value,
@@ -287,7 +287,7 @@ class CheckPriceActivity: PopupActivity<ActivityCheckPriceBinding>(), OnMapReady
                     }
 
                     override fun error(code: String?, message: String?) {
-                        UcoProcessResult.showError(fragmentActivity = this@CheckPriceActivity,
+                        JGoProcessResult.showError(fragmentActivity = this@CheckPriceActivity,
                             message = getString(R.string.price_result_error))
                     }
                 })

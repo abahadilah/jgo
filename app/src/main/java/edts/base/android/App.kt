@@ -10,12 +10,13 @@ import edts.base.android.core_data.di.dataModule
 import edts.base.android.core_data.di.repositoryModule
 import edts.base.android.core_domain.di.useCaseModule
 import edts.base.android.core_resource.R
-import edts.base.android.core_resource.UcoActivity
+import edts.base.android.core_resource.JGoActivity
 import edts.base.android.core_resource.di.baseModelModule
 import edts.base.android.feature_auth.di.authModelModule
 import edts.base.android.feature_home.di.homeModelModule
 import edts.uco.android.feature_invoice.di.invoiceModelModule
 import edts.uco.android.feature_map.di.mapModelModule
+import edts.uco.android.feature_notification.di.notificationModelModule
 import edts.uco.android.feature_order.di.orderViewModel
 import edts.uco.android.feature_profile.di.profileModelModule
 import id.co.edtslib.EdtsKu
@@ -66,7 +67,8 @@ class App: Application() {
                 profileModelModule,
                 baseModelModule,
                 invoiceModelModule,
-                paymentModelModule
+                paymentModelModule,
+                notificationModelModule
             )
         ) {
 
@@ -123,8 +125,8 @@ class App: Application() {
     private fun showUpdateDialog(fragmentActivity: FragmentActivity,
                                  serverVersion: VersionItem?, forceUpdate: Boolean) {
         if (! forceUpdate) {
-            if (fragmentActivity is UcoActivity<*>) {
-                fragmentActivity.ucoViewModel.getConfiguration().observe(fragmentActivity) {
+            if (fragmentActivity is JGoActivity<*>) {
+                fragmentActivity.jgoViewModel.getConfiguration().observe(fragmentActivity) {
                     if (it?.skipVersion != serverVersion?.version) {
                         doShowUpdateDialog(fragmentActivity = fragmentActivity,
                             serverVersion = serverVersion,
@@ -157,8 +159,8 @@ class App: Application() {
             }, dismissible = ! forceUpdate)
 
         popup.setOnDismissListener {
-            if (fragmentActivity is UcoActivity<*>) {
-                fragmentActivity.ucoViewModel.skipVersion(serverVersion?.version).observeForever {  }
+            if (fragmentActivity is JGoActivity<*>) {
+                fragmentActivity.jgoViewModel.skipVersion(serverVersion?.version).observeForever {  }
             }
         }
     }

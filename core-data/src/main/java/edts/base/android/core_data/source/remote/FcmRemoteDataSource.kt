@@ -7,21 +7,17 @@ import id.co.edtslib.data.BaseDataSource
 class FcmRemoteDataSource(
     private val fcmApiApiService: FcmApiApiService
 ) : BaseDataSource() {
-    suspend fun bind(fcmId: String?, deviceId: String, phoneNo: String) =
+    suspend fun bind(id: Long?, fcmId: String?) =
         getResult { fcmApiApiService.bind(
             FcmBindRequest(
-                fcmId = fcmId,
-            deviceId = deviceId,
-            osType = "ANDROID",
-                phone = phoneNo
-        )) }
+                id = id,
+                token = fcmId)) }
 
-    suspend fun unbind(fcmId: String?, deviceId: String) =
-        getResult { fcmApiApiService.unbind(
-            FcmBindRequest(
-                fcmId = fcmId,
-                deviceId = deviceId,
-                osType = "ANDROID",
-                phone = null
-            )) }
+    suspend fun get(id: Long) =
+        getResult { fcmApiApiService.get(
+            NotificationRequest(
+                id = id,
+                offset = 0,
+                limit = 1000)) }
+
 }
