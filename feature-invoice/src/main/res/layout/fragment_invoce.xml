@@ -17,31 +17,41 @@
         android:textColor="@color/colorNeutral70"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <com.google.android.material.card.MaterialCardView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_marginTop="@dimen/dimen_16dp"
-        android:id="@+id/mcvAllStatus"
-        app:cardCornerRadius="@dimen/dimen_12dp"
-        app:strokeWidth="@dimen/dimen_1dp"
-        app:strokeColor="@color/colorNeutral30"
-        android:layout_marginStart="@dimen/dimen_16dp"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvStatus"
-            android:gravity="center_vertical"
-            android:paddingTop="@dimen/dimen_4dp"
-            android:paddingBottom="@dimen/dimen_4dp"
-            android:paddingEnd="@dimen/dimen_8dp"
-            android:paddingStart="@dimen/dimen_8dp"
-            android:text="@string/invoice_all_status"
-            style="@style/B2"
-            android:textColor="@color/colorNeutral50"
-            app:drawableTint="@color/colorNeutral40"
-            app:drawableEndCompat="@drawable/ic_chevron_down_small"
-            android:layout_marginEnd="@dimen/dimen_4dp"
+        <adilahsoft.jgo.android.feature_affiliate.FilterView
+            android:id="@+id/filterView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-    </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvAllStatus"
+            app:cardCornerRadius="@dimen/dimen_12dp"
+            app:strokeWidth="@dimen/dimen_1dp"
+            app:strokeColor="@color/colorNeutral30"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatus"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/dimen_4dp"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:paddingEnd="@dimen/dimen_8dp"
+                android:paddingStart="@dimen/dimen_8dp"
+                android:text="@string/invoice_all_status"
+                style="@style/B2"
+                android:textColor="@color/colorNeutral50"
+                app:drawableTint="@color/colorNeutral40"
+                app:drawableEndCompat="@drawable/ic_chevron_down_small"
+                android:layout_marginEnd="@dimen/dimen_4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_marginTop="@dimen/dimen_4dp"
         android:id="@+id/swipeRefreshLayout"

@@ -8,6 +8,7 @@ import edts.base.android.core_data.source.remote.InvoiceRemoteDataSource
 import edts.base.android.core_data.source.remote.response.InvoiceDetailResponse
 import edts.base.android.core_data.source.remote.response.InvoiceResponse
 import edts.base.android.core_data.source.remote.response.PaymentResponse
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.model.InvoiceData
 import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.PaymentData
@@ -28,15 +29,19 @@ class InvoiceRepository(private val localDataSource: HttpHeaderLocalSource,
                         private val paymentLocalDataSource: PaymentLocalDataSource
 ):
     IInvoiceRepository {
-    override fun get(isReload: Boolean, status: String) =
+    override fun get(isReload: Boolean,
+                     status: String,
+                     customer: CustomerData?) =
         object : NetworkBoundGetResource<List<InvoiceData>?, List<InvoiceResponse>>(
             localDataSource, sessionRemoteDataSource
         ) {
             override suspend fun createCall(): Result<List<InvoiceResponse>> {
                 val cached = profileLocalDataSource.getCached()
-                invoiceLocalDataSource.key = status
+                val id = if (customer?.id != null) customer.id else if (cached?.id == null) 0 else cached.id
+
+                invoiceLocalDataSource.key = "${id}_${status}"
                 return invoiceRemoteDataSource.get(
-                    id = if (cached?.id == null) 0 else cached.id,
+                    id = id,
                     status = status
                 )
             }
@@ -50,10 +55,13 @@ class InvoiceRepository(private val localDataSource: HttpHeaderLocalSource,
             }
 
             override suspend fun saveCallResult(data: List<InvoiceResponse>) {
+                val cached = profileLocalDataSource.getCached()
+                val id = if (customer?.id != null) customer.id else if (cached?.id == null) 0 else cached.id
+
                 data.let {
                     val mapper = Mappers.getMapper(InvoiceMapper::class.java)
                         .invoiceResponseToEntity(it)
-                    invoiceLocalDataSource.save(status, mapper)
+                    invoiceLocalDataSource.save("${id}_${status}", mapper)
                 }
             }
 

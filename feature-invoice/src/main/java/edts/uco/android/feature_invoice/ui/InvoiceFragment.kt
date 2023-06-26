@@ -43,9 +43,16 @@ class InvoiceFragment: HomeBaseFragment<FragmentInvoceBinding>(), ModuleNavigato
             binding.tvStatus.text = it.toString()
             loadData(false)
         }
+
+        viewModel.customer.observe(this) {
+            binding.filterView.data = it
+            loadInvoice()
+            viewModel.isReload = false
+        }
     }
 
     private fun setupView() {
+        binding.filterView.isVisible = false
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
@@ -81,9 +88,32 @@ class InvoiceFragment: HomeBaseFragment<FragmentInvoceBinding>(), ModuleNavigato
     }
 
     private fun loadData(isReload: Boolean) {
+        viewModel.isReload = isReload
+        loadProfile()
+    }
+
+    private fun loadProfile() {
+        viewModel.getProfile().observe(this) {
+            binding.filterView.isVisible = it?.isAffiliate() == true
+            if (it?.isAffiliate() == true) {
+                loadCustomer()
+            }
+            else {
+                loadInvoice()
+            }
+        }
+    }
+
+    private fun loadCustomer() {
+        viewModel.getCustomer().observe(this) {
+            viewModel.customer.postValue(it?.customer)
+        }
+    }
+
+    private fun loadInvoice() {
         showShimmer()
 
-        viewModel.getInvoice(isReload).observe(this) {
+        viewModel.getInvoice(viewModel.isReload).observe(this) {
             JGoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
                 object : JGoProcessDelegate<List<InvoiceData>?> {
                     override fun success(data: List<InvoiceData>?) {
@@ -91,6 +121,7 @@ class InvoiceFragment: HomeBaseFragment<FragmentInvoceBinding>(), ModuleNavigato
                     }
                 })
         }
+        viewModel.isReload = false
     }
 
     private fun processData(data: List<InvoiceData>?) {
