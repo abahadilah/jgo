@@ -1,6 +1,7 @@
 package edts.base.android.core_domain.usecase
 
 import edts.base.android.core_domain.model.ConfigurationData
+import edts.base.android.core_domain.model.CustomerData
 import kotlinx.coroutines.flow.Flow
 
 interface ConfigurationUseCase {
@@ -8,5 +9,6 @@ interface ConfigurationUseCase {
     fun skipVersion(version: String?): Flow<ConfigurationData?>
     fun get(): Flow<ConfigurationData?>
     fun getCustomer(): Flow<ConfigurationData?>
+    fun setCustomer(customerData: CustomerData): Flow<ConfigurationData?>
     fun clearFcmId()
 }

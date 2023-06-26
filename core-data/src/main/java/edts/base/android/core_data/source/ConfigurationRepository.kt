@@ -8,6 +8,7 @@ import edts.base.android.core_data.source.local.ConfigurationLocalDataSource
 import edts.base.android.core_data.source.local.CustomerLocalDataSource
 import edts.base.android.core_data.source.local.ProfileLocalDataSource
 import edts.base.android.core_data.source.remote.AffiliateRemoteDataSource
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.repository.IConfigurationRepository
 import id.co.edtslib.data.Result
 import kotlinx.coroutines.flow.emitAll
@@ -42,6 +43,18 @@ class ConfigurationRepository(private val configurationLocalDataSource: Configur
             cached = ConfigurationEntity()
         }
         cached.skipVersion = version
+
+        configurationLocalDataSource.save(cached)
+
+        emitAll(get())
+    }
+
+    override fun setCustomer(customerData: CustomerData) = flow {
+        var cached = configurationLocalDataSource.getCached()
+        if (cached == null) {
+            cached = ConfigurationEntity()
+        }
+        cached.customer = customerData
 
         configurationLocalDataSource.save(cached)
 

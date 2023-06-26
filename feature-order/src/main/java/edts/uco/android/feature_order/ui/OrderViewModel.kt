@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import edts.base.android.core_data.source.local.OrderStatus
 import edts.base.android.core_domain.model.CustomerData
+import edts.base.android.core_domain.usecase.AffiliateUseCase
 import edts.base.android.core_domain.usecase.ConfigurationUseCase
 import edts.base.android.core_domain.usecase.InvoiceUseCase
 import edts.base.android.core_domain.usecase.OrderUseCase
@@ -13,7 +14,8 @@ import id.co.edtslib.uibase.BaseViewModel
 class OrderViewModel(private val profileUseCase: ProfileUseCase,
                      private val orderUseCase: OrderUseCase,
                      private val invoiceUseCase: InvoiceUseCase,
-                     private val configurationUseCase: ConfigurationUseCase): BaseViewModel() {
+                     private val configurationUseCase: ConfigurationUseCase,
+                     private val affiliateUseCase: AffiliateUseCase): BaseViewModel() {
     var filter = MutableLiveData<OrderStatus>()
     var customer = MutableLiveData<CustomerData?>()
     var isReload = false
@@ -25,4 +27,6 @@ class OrderViewModel(private val profileUseCase: ProfileUseCase,
 
     fun getInvoice(id: Long) = invoiceUseCase.getDetail(id).asLiveData()
     fun getCustomer() = configurationUseCase.getCustomer().asLiveData()
+    fun setCustomer(customerData: CustomerData) = configurationUseCase.setCustomer(customerData).asLiveData()
+    fun getCustomers(isReload: Boolean) = affiliateUseCase.getCustomer(isReload).asLiveData()
 }

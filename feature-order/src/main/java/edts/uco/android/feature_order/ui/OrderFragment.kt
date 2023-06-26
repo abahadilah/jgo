@@ -1,10 +1,12 @@
 package edts.uco.android.feature_order.ui
 
+import adilahsoft.jgo.android.feature_affiliate.FilterDelegate
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import edts.base.android.core_data.source.local.OrderStatus
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_navigation.ModuleNavigator
@@ -48,13 +50,14 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
         }
 
         viewModel.customer.observe(this) {
-            binding.filterView.data = it
+            binding.filterView.selected = it
             loadOrder(viewModel.isReload)
             viewModel.isReload = false
         }
     }
 
     private fun initData() {
+        viewModel.getCustomers(true).observeForever {  }
         viewModel.filter.postValue(OrderStatus.All)
     }
 
@@ -62,6 +65,8 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
         binding.swipeRefreshLayout.setOnRefreshListener {
             binding.swipeRefreshLayout.isRefreshing = false
             viewModel.isReload = true
+
+            viewModel.getCustomers(true).observeForever {  }
             loadProfile()
         }
 
@@ -112,6 +117,14 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
 
     private fun setupView() {
         binding.filterView.isVisible = false
+        binding.filterView.delegate = object : FilterDelegate {
+            override fun onSubmit(selected: CustomerData) {
+                viewModel.customer.postValue(selected)
+                viewModel.setCustomer(selected).observeForever {  }
+            }
+        }
+        binding.filterView.data = viewModel.getCustomers(false)
+
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }

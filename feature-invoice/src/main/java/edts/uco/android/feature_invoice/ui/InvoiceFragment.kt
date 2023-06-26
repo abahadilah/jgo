@@ -1,10 +1,12 @@
 package edts.uco.android.feature_invoice.ui
 
+import adilahsoft.jgo.android.feature_affiliate.FilterDelegate
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import edts.base.android.core_data.source.local.InvoiceStatus
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.model.InvoiceData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
@@ -43,11 +45,17 @@ class InvoiceFragment: HomeBaseFragment<FragmentInvoceBinding>(), ModuleNavigato
             binding.tvStatus.text = it.toString()
             loadData(false)
         }
+        binding.filterView.delegate = object : FilterDelegate {
+            override fun onSubmit(selected: CustomerData) {
+                viewModel.customer.postValue(selected)
+                viewModel.setCustomer(selected).observeForever {  }
+            }
+        }
+        binding.filterView.data = viewModel.getCustomers(false)
 
         viewModel.customer.observe(this) {
-            binding.filterView.data = it
+            binding.filterView.selected = it
             loadInvoice()
-            viewModel.isReload = false
         }
     }
 

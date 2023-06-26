@@ -56,8 +56,12 @@ class AffiliateRepository(private val profileLocalDataSource: ProfileLocalDataSo
                     val mapper1 = Mappers.getMapper(AffiliateMapper::class.java)
                         .customerEntityToModel(mapper)
 
-                    cached.customer = mapper1?.get(0)
-                    configurationLocalDataSource.save(cached)
+
+                    val f = mapper1?.find { it.id == cached.customer?.id }
+                    if (f == null) {
+                        cached.customer = mapper1?.get(0)
+                        configurationLocalDataSource.save(cached)
+                    }
                 }
 
                 customerLocalDataSource.save(mapper)

@@ -12,6 +12,8 @@ interface IInvoiceRepository {
             status: String = "all",
             customer: CustomerData? = null): Flow<Result<List<InvoiceData>?>>
     fun getDetail(id: Long): Flow<Result<InvoiceDetailData?>>
-    fun getPayments(isReload: Boolean, status: String = "all"): Flow<Result<List<PaymentData>?>>
+    fun getPayments(isReload: Boolean,
+                    status: String = "all",
+                    customer: CustomerData? = null): Flow<Result<List<PaymentData>?>>
 
 }

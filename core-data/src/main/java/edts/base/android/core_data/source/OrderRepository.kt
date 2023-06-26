@@ -56,7 +56,10 @@ class OrderRepository(private val localDataSource: HttpHeaderLocalSource,
             }
 
             override fun getCached() = flow {
-                val cached = orderLocalDataSource.getCached(status)
+                val profile = profileLocalDataSource.getCached()
+                val id = customer?.id ?: if (profile?.id == null) 0 else profile.id
+
+                val cached = orderLocalDataSource.getCached("${id}_${status}")
                 emit(Mappers.getMapper(OrderMapper::class.java)
                     .orderEntityToModel(cached))
             }

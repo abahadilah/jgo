@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="affiliate_all_customer">Semua Customer</string>
+    <string name="affiliate_apply">Terapkan</string>
+    <string name="affiliate_filter">Filter</string>
+
 </resources>

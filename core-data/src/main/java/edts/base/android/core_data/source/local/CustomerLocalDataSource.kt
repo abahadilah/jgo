@@ -7,8 +7,6 @@ import id.co.edtslib.data.source.local.LocalDataSource
 
 class CustomerLocalDataSource(sharedPreference: SharedPreferences) :
     LocalDataSource<List<CustomerEntity>?>(sharedPreference) {
-    override fun expiredInterval() = 24*3600
-
     override fun getKeyName(): String = "customers"
 
     override fun getValue(json: String): List<CustomerEntity>? =

@@ -10,7 +10,7 @@ class InvoiceInteractor(private val repository: IInvoiceRepository): InvoiceUseC
     override fun getDetail(id: Long) =
         repository.getDetail(id)
 
-    override fun getPayments(isReload: Boolean, status: String) =
-        repository.getPayments(isReload, status)
+    override fun getPayments(isReload: Boolean, status: String, customer: CustomerData?) =
+        repository.getPayments(isReload, status, customer)
 
 }

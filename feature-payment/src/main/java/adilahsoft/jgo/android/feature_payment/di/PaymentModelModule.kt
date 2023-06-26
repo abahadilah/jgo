@@ -5,6 +5,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val paymentModelModule = module {
-    viewModel { PaymentViewModel(get()) }
+    viewModel { PaymentViewModel(get(), get(), get(), get()) }
 
 }

@@ -47,7 +47,10 @@ class InvoiceRepository(private val localDataSource: HttpHeaderLocalSource,
             }
 
             override fun getCached() = flow {
-                val cached = invoiceLocalDataSource.getCached(status)
+                val profile = profileLocalDataSource.getCached()
+                val id = customer?.id ?: if (profile?.id == null) 0 else profile.id
+
+                val cached = invoiceLocalDataSource.getCached("${id}_${status}")
                 emit(
                     Mappers.getMapper(InvoiceMapper::class.java)
                         .invoiceEntityToModel(cached)
@@ -84,21 +87,26 @@ class InvoiceRepository(private val localDataSource: HttpHeaderLocalSource,
 
         }.asFlow()
 
-    override fun getPayments(isReload: Boolean, status: String) =
+    override fun getPayments(isReload: Boolean, status: String, customer: CustomerData?) =
         object : NetworkBoundGetResource<List<PaymentData>?, List<PaymentResponse>>(
             localDataSource, sessionRemoteDataSource
         ) {
             override suspend fun createCall(): Result<List<PaymentResponse>> {
                 val cached = profileLocalDataSource.getCached()
-                invoiceLocalDataSource.key = status
+                val id = if (customer?.id != null) customer.id else if (cached?.id == null) 0 else cached.id
+
+                invoiceLocalDataSource.key = "${id}_${status}"
                 return invoiceRemoteDataSource.getPayments(
-                    id = if (cached?.id == null) 0 else cached.id,
+                    id = id,
                     status = status
                 )
             }
 
             override fun getCached() = flow {
-                val cached = paymentLocalDataSource.getCached(status)
+                val profile = profileLocalDataSource.getCached()
+                val id = customer?.id ?: if (profile?.id == null) 0 else profile.id
+
+                val cached = paymentLocalDataSource.getCached("${id}_${status}")
                 emit(
                     Mappers.getMapper(InvoiceMapper::class.java)
                         .paymentEntityToModel(cached)
@@ -106,10 +114,13 @@ class InvoiceRepository(private val localDataSource: HttpHeaderLocalSource,
             }
 
             override suspend fun saveCallResult(data: List<PaymentResponse>) {
+                val cached = profileLocalDataSource.getCached()
+                val id = if (customer?.id != null) customer.id else if (cached?.id == null) 0 else cached.id
+
                 data.let {
                     val mapper = Mappers.getMapper(InvoiceMapper::class.java)
                         .paymentResponseToEntity(it)
-                    paymentLocalDataSource.save(status, mapper)
+                    paymentLocalDataSource.save("${id}_${status}", mapper)
                 }
             }
 

@@ -1,5 +1,6 @@
 package adilahsoft.jgo.android.feature_payment.ui
 
+import adilahsoft.jgo.android.feature_affiliate.FilterDelegate
 import adilahsoft.jgo.android.feature_payment.R
 import adilahsoft.jgo.android.feature_payment.databinding.FragmentPaymentBinding
 import adilahsoft.jgo.android.feature_payment.ui.status.PaymentStatusFilterDelegate
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import edts.base.android.core_data.source.local.PaymentStatus
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.model.PaymentData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
@@ -43,9 +45,22 @@ class PaymentFragment: HomeBaseFragment<FragmentPaymentBinding>(), ModuleNavigat
             binding.tvStatus.text = it.toString()
             loadData(false)
         }
+        binding.filterView.delegate = object : FilterDelegate {
+            override fun onSubmit(selected: CustomerData) {
+                viewModel.customer.postValue(selected)
+                viewModel.setCustomer(selected).observeForever {  }
+            }
+        }
+        binding.filterView.data = viewModel.getCustomers(false)
+
+        viewModel.customer.observe(this) {
+            binding.filterView.selected = it
+            loadPayment()
+        }
     }
 
     private fun setupView() {
+        binding.filterView.isVisible = false
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
@@ -73,9 +88,27 @@ class PaymentFragment: HomeBaseFragment<FragmentPaymentBinding>(), ModuleNavigat
     }
 
     private fun loadData(isReload: Boolean) {
+        viewModel.isReload = isReload
+        loadProfile()
+    }
+
+    private fun loadProfile() {
+        viewModel.getProfile().observe(this) {
+            binding.filterView.isVisible = it?.isAffiliate() == true
+            loadCustomer()
+        }
+    }
+
+    private fun loadCustomer() {
+        viewModel.getCustomer().observe(this) {
+            viewModel.customer.postValue(it?.customer)
+        }
+    }
+
+    private fun loadPayment() {
         showShimmer()
 
-        viewModel.getPayments(isReload).observe(this) {
+        viewModel.getPayments(viewModel.isReload).observe(this) {
             JGoProcessLoadResult(fragmentActivity = requireActivity(), result = it,
                 object : JGoProcessDelegate<List<PaymentData>?> {
                     override fun success(data: List<PaymentData>?) {
@@ -83,6 +116,8 @@ class PaymentFragment: HomeBaseFragment<FragmentPaymentBinding>(), ModuleNavigat
                     }
                 })
         }
+
+        viewModel.isReload = false
     }
 
     private fun processData(data: List<PaymentData>?) {

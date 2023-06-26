@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import edts.base.android.core_data.source.local.InvoiceStatus
 import edts.base.android.core_domain.model.CustomerData
+import edts.base.android.core_domain.usecase.AffiliateUseCase
 import edts.base.android.core_domain.usecase.ConfigurationUseCase
 import edts.base.android.core_domain.usecase.InvoiceUseCase
 import edts.base.android.core_domain.usecase.ProfileUseCase
@@ -11,7 +12,8 @@ import id.co.edtslib.uibase.BaseViewModel
 
 class InvoiceViewModel(private val invoiceUseCase: InvoiceUseCase,
                        private val profileUseCase: ProfileUseCase,
-                       private val configurationUseCase: ConfigurationUseCase): BaseViewModel() {
+                       private val configurationUseCase: ConfigurationUseCase,
+                       private val affiliateUseCase: AffiliateUseCase): BaseViewModel() {
     var filter = MutableLiveData<InvoiceStatus?>()
 
     var isReload = false
@@ -19,6 +21,8 @@ class InvoiceViewModel(private val invoiceUseCase: InvoiceUseCase,
 
     fun getProfile() = profileUseCase.get().asLiveData()
     fun getCustomer() = configurationUseCase.getCustomer().asLiveData()
+    fun setCustomer(customerData: CustomerData) = configurationUseCase.setCustomer(customerData).asLiveData()
+    fun getCustomers(isReload: Boolean) = affiliateUseCase.getCustomer(isReload).asLiveData()
     fun getInvoice(isReload: Boolean) = invoiceUseCase.get(isReload = isReload,
         status = if (filter.value == null) InvoiceStatus.All.code()!! else filter.value!!.code()!!,
         customer = customer.value).asLiveData()
