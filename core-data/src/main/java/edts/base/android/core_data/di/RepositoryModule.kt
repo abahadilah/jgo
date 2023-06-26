@@ -8,6 +8,7 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single { CustomerRemoteDataSource(get()) }
+    single { AffiliateRemoteDataSource(get()) }
     single { OtpRemoteDataSource(get()) }
     single { LocationRemoteDataSource(get()) }
     single { InvoiceRemoteDataSource(get()) }
@@ -23,6 +24,7 @@ val repositoryModule = module {
     single { CreateOrderOriginLocalDataSource(get()) }
     single { CreateOrderDestinationLocalDataSource(get()) }
     single { NotificationLocalDataSource(get()) }
+    single { CustomerLocalDataSource(get()) }
 
     single<IVehicleRepository> {
         VehicleRepository(
@@ -34,6 +36,8 @@ val repositoryModule = module {
 
     single<ICustomerRepository> {
         CustomerRepository(
+            get(),
+            get(),
             get(),
             get(),
             get(),
@@ -78,12 +82,26 @@ val repositoryModule = module {
 
     single<IConfigurationRepository> {
         ConfigurationRepository(
+            get(),
+            get(),
+            get(),
             get()
         )
     }
 
     single<INotificationRepository> {
         NotificationRepository(
+            get(),
+            get(),
+            get(),
+            get(),
+            get()
+        )
+    }
+
+    single<IAffiliateRepository> {
+        AffiliateRepository(
+            get(),
             get(),
             get(),
             get(),

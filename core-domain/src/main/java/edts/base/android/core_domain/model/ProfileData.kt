@@ -11,4 +11,7 @@ data class ProfileData (
     val zip: String?,
     val state: IdNameData?,
     val country: IdNameData?,
-)
+    val partner_type: String?,
+) {
+    fun isAffiliate() = partner_type == "affiliate"
+}

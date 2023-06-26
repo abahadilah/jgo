@@ -36,5 +36,4 @@ data class ProfileResponse (
     @field:SerializedName("partner_type")
     val partner_type: String?,
     ) {
-    fun isCustomer() = partner_type == "customer"
 }

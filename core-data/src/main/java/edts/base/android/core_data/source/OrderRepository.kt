@@ -16,6 +16,7 @@ import edts.base.android.core_data.source.remote.response.CreateOrderResponse
 import edts.base.android.core_data.source.remote.response.OrderDetailResponse
 import edts.base.android.core_data.source.remote.response.OrderResponse
 import edts.base.android.core_domain.model.CreateOrderData
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.model.OrderData
 import edts.base.android.core_domain.model.OrderDetailData
 import edts.base.android.core_domain.repository.IOrderRepository
@@ -41,14 +42,15 @@ class OrderRepository(private val localDataSource: HttpHeaderLocalSource,
                       private val paymentLocalDataSource: PaymentLocalDataSource):
     IOrderRepository {
 
-    override fun get(isReload: Boolean, status: String) =
+    override fun get(isReload: Boolean, status: String, customer: CustomerData?) =
         object : NetworkBoundGetResource<List<OrderData>?, List<OrderResponse>>(
             localDataSource, sessionRemoteDataSource
         ) {
             override suspend fun createCall(): Result<List<OrderResponse>> {
                 val cached = profileLocalDataSource.getCached()
-                orderLocalDataSource.key = status
-                return orderRemoteDataSource.get(id = if (cached?.id == null) 0 else cached.id,
+                val id = customer?.id ?: if (cached?.id == null) 0 else cached.id
+                orderLocalDataSource.key = "${id}_${status}"
+                return orderRemoteDataSource.get(id = id,
                     status = status
                 )
             }
@@ -61,10 +63,13 @@ class OrderRepository(private val localDataSource: HttpHeaderLocalSource,
 
 
             override suspend fun saveCallResult(data: List<OrderResponse>) {
+                val cached = profileLocalDataSource.getCached()
+                val id = customer?.id ?: if (cached?.id == null) 0 else cached.id
+
                 data.let {
                     val mapper = Mappers.getMapper(OrderMapper::class.java)
                         .orderResponseToEntity(it)
-                    orderLocalDataSource.save(status, mapper)
+                    orderLocalDataSource.save("${id}_${status}", mapper)
                 }
             }
 

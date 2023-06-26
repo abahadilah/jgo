@@ -3,5 +3,6 @@ package edts.base.android.core_domain.model
 data class ConfigurationData (
     val originAddress: AddressData?,
     var skipVersion: String?,
-    val fcmId: String?
+    val fcmId: String?,
+    var customer: CustomerData?
 )

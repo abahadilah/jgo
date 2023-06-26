@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 val dataModule = module {
     single { provideApiService(get(named("api"))) }
     single { provideCustomerApiService(get(named("api"))) }
+    single { provideAffiliateApiService(get(named("api"))) }
     single { provideOtpApiService(get(named("api"))) }
     single { provideLocationApiService(get(named("api"))) }
     single { provideStockPointApiService(get(named("api"))) }
@@ -21,6 +22,9 @@ private fun provideApiService(retrofit: Retrofit) =
 
 private fun provideCustomerApiService(retrofit: Retrofit) =
     retrofit.create(CustomerApiService::class.java)
+
+private fun provideAffiliateApiService(retrofit: Retrofit) =
+    retrofit.create(AffiliateApiService::class.java)
 
 private fun provideOtpApiService(retrofit: Retrofit) =
     retrofit.create(OtpApiService::class.java)

@@ -25,7 +25,7 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
     private val adapter = OrderAdapter()
 
     override fun reselect() {
-        loadData(false)
+        loadProfile()
     }
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentOrderBinding
@@ -44,7 +44,13 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
     private fun setupObserver() {
         viewModel.filter.observe(this) {
             binding.tvStatus.text = it.toString()
-            loadData(false)
+            loadProfile()
+        }
+
+        viewModel.customer.observe(this) {
+            binding.filterView.data = it
+            loadOrder(viewModel.isReload)
+            viewModel.isReload = false
         }
     }
 
@@ -55,7 +61,8 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
     private fun setupListener() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             binding.swipeRefreshLayout.isRefreshing = false
-            loadData(true)
+            viewModel.isReload = true
+            loadProfile()
         }
 
         binding.mcvAllStatus.setOnClickListener {
@@ -103,12 +110,8 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
         }
     }
 
-    private fun loadData(isReload: Boolean) {
-        loadProfile()
-        loadOrder(isReload)
-    }
-
     private fun setupView() {
+        binding.filterView.isVisible = false
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
@@ -151,9 +154,22 @@ class OrderFragment: HomeBaseFragment<FragmentOrderBinding>(), ModuleNavigator {
     private fun loadProfile() {
         viewModel.getProfile().observe(this) {
             binding.tvName.text = it?.name
+            binding.filterView.isVisible = it?.isAffiliate() == true
+            if (it?.isAffiliate() == true) {
+                getCustomer()
+            }
+            else {
+                loadOrder(viewModel.isReload)
+                viewModel.isReload = false
+            }
         }
     }
 
+    private fun getCustomer() {
+        viewModel.getCustomer().observe(this) {
+            viewModel.customer.postValue(it?.customer)
+        }
+    }
 
     private fun showShimmer() {
         binding.llSkeleton.isVisible = true

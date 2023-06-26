@@ -8,4 +8,5 @@ interface IConfigurationRepository {
     fun setOriginAddress(lat: Double?, lng: Double?, name: String?): Flow<ConfigurationData?>
     fun skipVersion(version: String?): Flow<ConfigurationData?>
     fun clearFcmId()
+    fun getCustomer(): Flow<ConfigurationData?>
 }

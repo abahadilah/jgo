@@ -8,5 +8,6 @@ class ConfigurationInteractor(private val repository: IConfigurationRepository):
         repository.setOriginAddress(lat, lng, name)
     override fun skipVersion(version: String?) = repository.skipVersion(version)
     override fun get() = repository.get()
+    override fun getCustomer() = repository.getCustomer()
     override fun clearFcmId()  = repository.clearFcmId()
 }

@@ -11,5 +11,6 @@ val useCaseModule = module {
     factory<OrderUseCase> { OrderInteractor(get()) }
     factory<ConfigurationUseCase> { ConfigurationInteractor(get()) }
     factory<NotificationUseCase> { NotificationInteractor(get()) }
+    factory<AffiliateUseCase> { AffiliateInteractor(get()) }
 
 }

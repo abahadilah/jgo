@@ -11,4 +11,5 @@ data class ProfileEntity (
     val zip: String?,
     val state: IdNameEntity?,
     val country: IdNameEntity?,
+    val partner_type: String?,
 )

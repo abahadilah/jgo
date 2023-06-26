@@ -3,6 +3,7 @@ package edts.base.android.core_data.source
 import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.Settings
+import edts.base.android.core_data.mapper.AffiliateMapper
 import edts.base.android.core_data.mapper.CustomerMapper
 import edts.base.android.core_data.source.local.*
 import edts.base.android.core_data.source.remote.*
@@ -11,6 +12,7 @@ import edts.base.android.core_domain.model.ProfileData
 import edts.base.android.core_domain.repository.ICustomerRepository
 import edts.base.core_utils.getDeviceName
 import id.co.edtslib.data.NetworkBoundProcessResource
+import id.co.edtslib.data.Result
 import id.co.edtslib.data.source.local.HttpHeaderLocalSource
 import id.co.edtslib.data.source.remote.SessionRemoteDataSource
 import kotlinx.coroutines.flow.flow
@@ -24,6 +26,8 @@ class CustomerRepository(
     private val orderLocalDataSource: OrderLocalDataSource,
     private val invoiceLocalDataSource: InvoiceLocalDataSource,
     private val paymentLocalDataSource: PaymentLocalDataSource,
+    private val affiliateRemoteDataSource: AffiliateRemoteDataSource,
+    private val customerLocalDataSource: CustomerLocalDataSource,
     private val context: Context,
 ) :
     ICustomerRepository {
@@ -38,6 +42,15 @@ class CustomerRepository(
                     val entity = Mappers.getMapper(CustomerMapper::class.java)
                         .profileResponseToEntity(data[0])
                     profileLocalDataSource.save(entity)
+
+                    if (data[0]?.id != null) {
+                        val response = affiliateRemoteDataSource.getCustomer(data[0]!!.id)
+                        if (response.status == Result.Status.SUCCESS) {
+                            val cached = Mappers.getMapper(AffiliateMapper::class.java)
+                                .customerResponseToEntity(response.data)
+                            customerLocalDataSource.save(cached)
+                        }
+                    }
 
                     Mappers.getMapper(CustomerMapper::class.java)
                         .profileEntityToModel(profileLocalDataSource.getCached())
@@ -65,6 +78,7 @@ class CustomerRepository(
         orderLocalDataSource.clear()
         invoiceLocalDataSource.clear()
         paymentLocalDataSource.clear()
+        customerLocalDataSource.clear()
         emit(true)
     }
 }

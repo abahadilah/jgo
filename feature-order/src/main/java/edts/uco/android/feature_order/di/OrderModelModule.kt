@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val orderViewModel = module {
-    viewModel { OrderViewModel(get(), get(), get()) }
+    viewModel { OrderViewModel(get(), get(), get(), get()) }
     viewModel { OrderDetailViewModel(get(), get()) }
     viewModel { CreateOrderViewModel(get(), get(), get()) }
 
