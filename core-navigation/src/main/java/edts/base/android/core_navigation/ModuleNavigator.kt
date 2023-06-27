@@ -12,12 +12,20 @@ import edts.base.android.core_domain.model.InvoiceDetailData
 import edts.base.android.core_domain.model.OrderData
 
 interface ModuleNavigator {
+    fun <T> T.navigateToAddCustomerActivity(resultLauncher: ActivityResultLauncher<Intent>) where T : FragmentActivity, T : ModuleNavigator {
+        startAddCustomerActivity(ActivityClassPath.AddCustomer, resultLauncher)
+    }
+
     fun <T> T.navigateToLoginActivity() where T : FragmentActivity, T : ModuleNavigator {
         startLoginActivity(ActivityClassPath.Login)
     }
 
     fun <T> T.navigateToLoginActivity() where T : Fragment, T : ModuleNavigator {
         startLoginActivity(ActivityClassPath.Login)
+    }
+
+    fun <T> T.navigateToCustomerActivity() where T : Fragment, T : ModuleNavigator {
+        startCustomerActivity(ActivityClassPath.Customer)
     }
 
     fun <T> T.navigateToOrderDetail(orderData: OrderData) where T : Fragment, T : ModuleNavigator {
@@ -70,6 +78,13 @@ private fun FragmentActivity.startHomeActivity(
     startActivity(intent)
 }
 
+private fun FragmentActivity.startAddCustomerActivity(
+    activityClassPath: ActivityClassPath,
+    resultLauncher: ActivityResultLauncher<Intent>
+) {
+    val intent = activityClassPath.getIntent(this)
+    resultLauncher.launch(intent)
+}
 private fun FragmentActivity.startLoginActivity(
     activityClassPath: ActivityClassPath
 ) {
@@ -89,6 +104,13 @@ private fun Fragment.startLoginActivity(
         Intent.FLAG_ACTIVITY_NEW_TASK or
                 FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
     )
+    startActivity(intent)
+}
+
+private fun Fragment.startCustomerActivity(
+    activityClassPath: ActivityClassPath
+) {
+    val intent = activityClassPath.getIntent(requireContext())
     startActivity(intent)
 }
 

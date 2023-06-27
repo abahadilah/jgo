@@ -19,4 +19,12 @@ class CustomerData: DataSelected() {
     var token: String? = null
 
     override fun toString() = name
+    fun address(): String {
+        val s = if (street == null) "" else street
+        val sCity = if (city?.name == null) "" else city!!.name
+        val sState = if (state?.name == null) "" else state!!.name
+        val sZip = if (zip == null) "" else zip
+
+        return String.format("$s ${sCity} ${sState} $sZip")
+    }
 }

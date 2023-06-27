@@ -3,6 +3,7 @@ package edts.uco.android.feature_profile
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.HomeBaseFragment
 import edts.uco.android.feature_profile.databinding.FragmentProfileBinding
@@ -22,8 +23,13 @@ class ProfileFragment: HomeBaseFragment<FragmentProfileBinding>(), ModuleNavigat
     override fun getTrackerPageName(): String?  = null
 
     override fun setup() {
+        setupView()
         setupListener()
         loadData()
+    }
+
+    private fun setupView() {
+        binding.menuCustomer.isVisible = false
     }
 
     private fun setupListener() {
@@ -31,6 +37,10 @@ class ProfileFragment: HomeBaseFragment<FragmentProfileBinding>(), ModuleNavigat
         }
 
         binding.menuChangePin.setOnClickListener {
+        }
+
+        binding.menuCustomer.setOnClickListener {
+            navigateToCustomerActivity()
         }
 
         binding.tvLogout.setOnClickListener {
@@ -45,6 +55,7 @@ class ProfileFragment: HomeBaseFragment<FragmentProfileBinding>(), ModuleNavigat
         viewModel.get().observe(this) {
             binding.tvName.text = it?.name
             binding.tvPhone.text = null
+            binding.menuCustomer.isVisible = it?.isAffiliate() == true
         }
     }
 

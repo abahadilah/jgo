@@ -3,5 +3,8 @@
     <string name="affiliate_all_customer">Semua Customer</string>
     <string name="affiliate_apply">Terapkan</string>
     <string name="affiliate_filter">Filter</string>
+    <string name="affiliate_empty">Anda tidak mempunyai customer</string>
+    <string name="affiliate_customer_list">Daftar Customer</string>
+    <string name="affiliate_add_customer">Tambah Customer</string>
 
 </resources>

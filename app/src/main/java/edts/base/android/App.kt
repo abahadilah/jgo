@@ -1,5 +1,6 @@
 package edts.base.android
 
+import adilahsoft.jgo.android.feature_affiliate.di.customerModelModule
 import adilahsoft.jgo.android.feature_payment.di.paymentModelModule
 import android.app.Application
 import android.view.View
@@ -68,7 +69,8 @@ class App: Application() {
                 baseModelModule,
                 invoiceModelModule,
                 paymentModelModule,
-                notificationModelModule
+                notificationModelModule,
+                customerModelModule
             )
         ) {
 

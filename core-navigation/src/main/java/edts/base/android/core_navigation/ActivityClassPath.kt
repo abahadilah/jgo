@@ -10,6 +10,8 @@ import com.gaelmarhic.quadrant.`Feature-map`.CHECK_PRICE_ACTIVITY
 import com.gaelmarhic.quadrant.`Feature-order`.ORDER_DETAIL_ACTIVITY
 import com.gaelmarhic.quadrant.`Feature-order`.CREATE_ORDER_ACTIVITY
 import com.gaelmarhic.quadrant.`Feature-notification`.NOTIFICATION_ACTIVITY
+import com.gaelmarhic.quadrant.`Feature-affiliate`.CUSTOMER_ACTIVITY
+import com.gaelmarhic.quadrant.`Feature-affiliate`.CUSTOMER_ADD_ACTIVITY
 
 enum class ActivityClassPath(private val className: String) {
     Home(HOME_ACTIVITY),
@@ -19,7 +21,9 @@ enum class ActivityClassPath(private val className: String) {
     OrderDetail(ORDER_DETAIL_ACTIVITY),
     InvoiceDetail(INVOICE_DETAIL_ACTIVITY),
     CreateOrder(CREATE_ORDER_ACTIVITY),
-    Notification(NOTIFICATION_ACTIVITY);
+    Notification(NOTIFICATION_ACTIVITY),
+    Customer(CUSTOMER_ACTIVITY),
+    AddCustomer(CUSTOMER_ADD_ACTIVITY);
 
     fun getIntent(context: Context) = Intent(context, Class.forName(className))
 }

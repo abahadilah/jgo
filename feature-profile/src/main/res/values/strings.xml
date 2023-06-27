@@ -6,8 +6,8 @@
     <string name="profile_change_pin">Ubah Kata Sandi</string>
     <string name="profile_change_pin_desc">Pengaturan kata sandi</string>
 
-    <string name="profile_business_detail">Detail Usaha</string>
-    <string name="profile_business_detail_desc">Lokasi usaha dan outlet</string>
+    <string name="profile_customer_list">Daftar Customer</string>
+    <string name="profile_customer_list_desc">Lihat dan tambah daftar customer</string>
 
     <string name="profile_supply_commitment">Komitmen Supply</string>
     <string name="profile_supply_commitment_desc">Jumlah Minyak, harga &amp; Penjadwalan</string>
