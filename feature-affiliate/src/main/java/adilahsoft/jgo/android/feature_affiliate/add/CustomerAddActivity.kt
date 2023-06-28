@@ -118,6 +118,14 @@ class CustomerAddActivity: PopupActivity<ActivityAddCustomerBinding>(), ModuleNa
             }
         }
 
+        binding.etVillage.delegate = object : TextFieldDelegate {
+            override fun onChanged(input: String?) {
+                viewModel.village = input
+                binding.etVillage.error = null
+            }
+        }
+
+
         binding.etAddress.delegate = object : TextFieldDelegate {
             override fun onChanged(input: String?) {
                 viewModel.address = input
@@ -219,6 +227,11 @@ class CustomerAddActivity: PopupActivity<ActivityAddCustomerBinding>(), ModuleNa
 
         if (viewModel.city?.isNotEmpty() != true) {
             binding.etCity.error = getString(R.string.affiliate_city_empty)
+            error = true
+        }
+
+        if (viewModel.village?.isNotEmpty() != true) {
+            binding.etVillage.error = getString(R.string.affiliate_village)
             error = true
         }
 

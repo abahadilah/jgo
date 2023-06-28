@@ -16,6 +16,7 @@ interface AffiliateUseCase {
                     username: String,
                     password: String,
                     street: String,
+                    street2: String,
                     city: String,
                     zipcode: String,
                     province: Long

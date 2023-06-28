@@ -111,6 +111,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etVillage"
+            app:inputType="text"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_village"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
             android:id="@+id/etAddress"
             app:inputType="address"
             app:imeOptions="next"

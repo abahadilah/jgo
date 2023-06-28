@@ -14,6 +14,7 @@ class CustomerAddViewModel(private val affiliateUseCase: AffiliateUseCase):
     var email: String? = null
     var ktp: String? = null
     var city: String? = null
+    var village: String? = null
     var address: String? = null
     var zipCode: String? = null
     var username: String? = null
@@ -34,6 +35,7 @@ class CustomerAddViewModel(private val affiliateUseCase: AffiliateUseCase):
         username = username!!,
         password = password!!,
         street = address!!,
+        street2 = village!!,
         city = city!!,
         zipcode = zipCode!!,
         province = province.value!!.id

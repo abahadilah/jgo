@@ -33,6 +33,9 @@ data class CustomerAddRequest(
     @field:SerializedName("street")
     val street: String,
 
+    @field:SerializedName("street2")
+    val street2: String,
+
     @field:SerializedName("city")
     val city: String,
 

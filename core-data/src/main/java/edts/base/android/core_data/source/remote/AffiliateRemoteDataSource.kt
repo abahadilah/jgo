@@ -30,6 +30,7 @@ class AffiliateRemoteDataSource(
         username: String,
         password: String,
         street: String,
+        street2: String,
         city: String,
         zipcode: String,
         province: Long
@@ -47,6 +48,7 @@ class AffiliateRemoteDataSource(
                     username = username,
                     password = password,
                     street = street,
+                    street2 = street2,
                     city = city,
                     zipcode = zipcode,
                     province = province

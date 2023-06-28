@@ -17,6 +17,7 @@
     <string name="affiliate_pin_point">Pin Poin</string>
     <string name="affiliate_province">Propinsi</string>
     <string name="affiliate_city">Kota</string>
+    <string name="affiliate_village">Kelurahan</string>
     <string name="affiliate_address">Alamat</string>
     <string name="affiliate_zip_code">Kode Pos</string>
 
@@ -39,6 +40,7 @@
     <string name="affiliate_province_empty">Pilih propinsi kustomer</string>
 
     <string name="affiliate_city_empty">Masukkan kota kustomer</string>
+    <string name="affiliate_village_empty">Masukkan kelurahan kustomer</string>
     <string name="affiliate_address_empty">Masukkan alamat kustomer</string>
     <string name="affiliate_zipcode_empty">Masukkan kode pos kustomer</string>
 
