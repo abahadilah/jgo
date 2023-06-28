@@ -18,4 +18,44 @@ class AffiliateRemoteDataSource(
                 )
             )
         }
+
+    suspend fun addCustomer(
+        name: String,
+        affiliateId: Long,
+        ktp: String,
+        mobile: String,
+        email: String,
+        lng: Double,
+        lat: Double,
+        username: String,
+        password: String,
+        street: String,
+        city: String,
+        zipcode: String,
+        province: Long
+        ) =
+        getResult {
+            customerApiService.addCustomer(
+                CustomerAddRequest(
+                    name = name,
+                    affiliateId = affiliateId,
+                    ktp = ktp,
+                    mobile = mobile,
+                    email = email,
+                    lng = lng,
+                    lat = lat,
+                    username = username,
+                    password = password,
+                    street = street,
+                    city = city,
+                    zipcode = zipcode,
+                    province = province
+                )
+            )
+        }
+
+    suspend fun getProvinces() =
+        getResult {
+            customerApiService.getProvinces()
+        }
 }

@@ -18,6 +18,7 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import edts.base.android.core_domain.model.CheckPriceData
 import edts.base.android.core_domain.model.CreateOrderAddressData
 import edts.base.android.core_domain.model.CreateOrderData
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.model.VehicleTypeData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.base.result.JGoProcessDelegate
@@ -30,6 +31,8 @@ import edts.uco.android.feature_map.ui.price.VehicleTypeTray
 import edts.uco.android.feature_order.BuildConfig
 import edts.uco.android.feature_order.R
 import edts.uco.android.feature_order.databinding.ActivityCreateOrderBinding
+import edts.uco.android.feature_order.ui.create.customer.CustomerDelegate
+import edts.uco.android.feature_order.ui.create.customer.CustomerListTray
 import id.co.edtslib.edtsds.checkbox.CheckBoxDelegate
 import id.co.edtslib.edtsds.popup.Popup
 import id.co.edtslib.edtsds.popup.PopupDelegate
@@ -155,11 +158,13 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
         viewModel.getProfile().observe(this) {
             viewModel.profile.postValue(it)
         }
+
+        viewModel.getCustomers().observeForever {  }
     }
 
     private fun setupObserver() {
         viewModel.vehicleType.observe(this) {
-            clearError()
+            binding.etVehicleType.error = null
             binding.etVehicleType.text = "${it?.name} (${it?.description?.trim()})"
         }
 
@@ -175,8 +180,17 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
             }
         }
 
+        viewModel.customer.observe(this) {
+            binding.etCustomer.error = null
+            binding.etCustomer.text = it?.name
+        }
+
         viewModel.profile.observe(this) {
+            binding.etCustomer.isVisible = it.isAffiliate()
+
             binding.etOriginAddress.text = it.name
+            binding.etOriginAddress.error = null
+
             binding.cbUseCustomerAddress.text = getString(R.string.order_origin_address_use_mine,
                 it.name)
 
@@ -194,6 +208,9 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
             binding.etOriginName.text = it?.name
             binding.etOriginAddress.text = it?.name
 
+            binding.etOriginName.error = null
+            binding.etOriginAddress.error = null
+
             val originAddressComponents = it?.addressComponents?.asList()
             if (originAddressComponents != null && originAddressComponents.size > 2) {
                 viewModel.originCity = originAddressComponents[2]?.name
@@ -203,6 +220,10 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
         viewModel.destinationAddress.observe(this) {
             binding.etDestinationAddress.text = it?.name
             binding.etDestinationName.text = it?.name
+
+            binding.etDestinationAddress.error = null
+            binding.etDestinationName.error = null
+
             binding.ivDestinationAddress.isVisible = it != null
 
             val destinationComponents = it?.addressComponents?.asList()
@@ -332,6 +353,7 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
     }
 
     private fun setupView() {
+        binding.etCustomer.isVisible = false
         binding.cbUseCustomerAddress.isChecked = true
 
         binding.ivDestinationAddress.isVisible = false
@@ -349,6 +371,12 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
     }
 
     private fun setupListener() {
+        binding.etCustomer.delegate = object : TextFieldDelegate {
+            override fun onChanged(input: String?) {
+                showCustomerTray()
+            }
+        }
+
         binding.etVehicleType.delegate = object : TextFieldDelegate {
             override fun onChanged(input: String?) {
                 chooseVehicleType()
@@ -527,6 +555,7 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
 
         binding.etProduct.delegate = object : TextFieldDelegate {
             override fun onChanged(input: String?) {
+                binding.etProduct.error = null
                 viewModel.productName =  input
             }
         }
@@ -568,6 +597,14 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
 
         binding.bvSubmit.setOnClickListener {
             var error = false
+
+            if (binding.etCustomer.isVisible) {
+                if (viewModel.customer.value == null) {
+                    binding.etCustomer.error = getString(R.string.order_customer_empty)
+                    error = true
+                }
+            }
+
             if (viewModel.vehicleType.value == null) {
                 binding.etVehicleType.error = getString(R.string.order_vehicle_type_empty)
                 error = true
@@ -618,6 +655,16 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
                 }
             }
         }
+    }
+
+    private fun showCustomerTray() {
+        val tray = CustomerListTray(this, viewModel.getCustomers())
+        tray.delegate = object : CustomerDelegate {
+            override fun onSelected(item: CustomerData) {
+                viewModel.customer.postValue(item)
+            }
+        }
+        tray.show()
     }
 
     private fun showHistoryDialog(type: HistoryType, list: List<CreateOrderAddressData>) {
@@ -672,10 +719,6 @@ class CreateOrderActivity: PopupActivity<ActivityCreateOrderBinding>(), OnMapRea
             else ->
                 originAddressAutocomplete.launch(intent)
         }
-    }
-
-    private fun clearError() {
-        binding.etVehicleType.error = null
     }
 
     private fun chooseVehicleType() {

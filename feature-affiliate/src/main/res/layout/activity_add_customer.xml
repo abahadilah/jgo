@@ -1,6 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/dimen_16dp"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/H2"
+            android:textColor="@color/colorNeutral70"
+            android:text="@string/affiliate_customer_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etName"
+            app:inputType="text"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_customer_name"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etPhone"
+            app:inputType="phone"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_phone_no"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etEmail"
+            app:inputType="email"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_email"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etKtp"
+            app:inputType="ktp"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_ktp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            style="@style/H2"
+            android:textColor="@color/colorNeutral70"
+            android:text="@string/affiliate_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <id.co.edtslib.edtsds.textfield.TextFieldView
+                android:id="@+id/etLatLng"
+                android:hint="@string/affiliate_pin_point"
+                app:inputType="popup"
+                app:errorTextColor="@color/colorSupportError"
+                app:errorTextAppearance="@style/B2"
+                app:errorIconDrawable="@null"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_marginStart="@dimen/dimen_12dp"
+                android:layout_gravity="center"
+                android:id="@+id/ivPinPoint"
+                android:src="@drawable/ic_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etProvince"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:hint="@string/affiliate_province"
+            app:inputType="popup"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etCity"
+            app:inputType="text"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_city"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etAddress"
+            app:inputType="address"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_address"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etZip"
+            app:inputType="number"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_zip_code"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            style="@style/H2"
+            android:textColor="@color/colorNeutral70"
+            android:text="@string/affiliate_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etUsername"
+            app:inputType="text"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_username"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etPassword"
+            app:inputType="password"
+            app:imeOptions="next"
+            android:hint="@string/affiliate_password"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etConfirmPassword"
+            app:inputType="password"
+            app:imeOptions="done"
+            android:hint="@string/affiliate_confirm_password"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.ButtonView
+            android:id="@+id/bvSubmit"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:text="@string/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

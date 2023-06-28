@@ -10,6 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <id.co.edtslib.edtsds.textfield.TextFieldView
+            android:id="@+id/etCustomer"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            style="@style/B1"
+            android:hint="@string/order_customer"
+            app:inputType="popup"
+            app:errorTextColor="@color/colorSupportError"
+            app:errorTextAppearance="@style/B2"
+            app:errorIconDrawable="@null"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <id.co.edtslib.edtsds.textfield.TextFieldView
             android:id="@+id/etVehicleType"
             android:layout_marginTop="@dimen/dimen_8dp"
             style="@style/B1"
@@ -18,7 +31,7 @@
             app:errorTextColor="@color/colorSupportError"
             app:errorTextAppearance="@style/B2"
             app:errorIconDrawable="@null"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCustomer"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

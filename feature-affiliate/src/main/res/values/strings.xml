@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="affiliate_all_customer">Semua Customer</string>
+    <string name="affiliate_all_customer">Semua Kustomer</string>
     <string name="affiliate_apply">Terapkan</string>
     <string name="affiliate_filter">Filter</string>
-    <string name="affiliate_empty">Anda tidak mempunyai customer</string>
-    <string name="affiliate_customer_list">Daftar Customer</string>
-    <string name="affiliate_add_customer">Tambah Customer</string>
+    <string name="affiliate_empty">Anda tidak mempunyai kustomer</string>
+    <string name="affiliate_customer_list">Daftar Kustomer</string>
+    <string name="affiliate_add_customer">Tambah Kustomer</string>
+
+    <string name="affiliate_customer_info">Data Kustomer</string>
+    <string name="affiliate_customer_name">Nama Kustomer</string>
+    <string name="affiliate_phone_no">No hp</string>
+    <string name="affiliate_email">Email</string>
+    <string name="affiliate_ktp">KTP</string>
+
+    <string name="affiliate_location">Lokasi</string>
+    <string name="affiliate_pin_point">Pin Poin</string>
+    <string name="affiliate_province">Propinsi</string>
+    <string name="affiliate_city">Kota</string>
+    <string name="affiliate_address">Alamat</string>
+    <string name="affiliate_zip_code">Kode Pos</string>
+
+    <string name="affiliate_account">Akun</string>
+    <string name="affiliate_username">Username</string>
+    <string name="affiliate_password">Kata Sandi</string>
+    <string name="affiliate_confirm_password">Ulangi Kata Sandi</string>
+
+    <string name="affiliate_choose_province">Pilih Propinsi</string>
+
+    <string name="affiliate_name_empty">Masukkan nama kustomer</string>
+    <string name="affiliate_phone_empty">Masukkan no hp kustomer</string>
+    <string name="affiliate_phone_invalid">No hp kustomer tidak valid</string>
+    <string name="affiliate_email_empty">Masukkan email kustomer</string>
+    <string name="affiliate_email_invalid">Email tidak valid</string>
+    <string name="affiliate_ktp_empty">Masukkan KTP kustomer</string>
+    <string name="affiliate_ktp_invalid">KTP tidak valid</string>
+
+    <string name="affiliate_pin_point_empty">Pilih pin poin kustomer</string>
+    <string name="affiliate_province_empty">Pilih propinsi kustomer</string>
+
+    <string name="affiliate_city_empty">Masukkan kota kustomer</string>
+    <string name="affiliate_address_empty">Masukkan alamat kustomer</string>
+    <string name="affiliate_zipcode_empty">Masukkan kode pos kustomer</string>
+
+    <string name="affiliate_username_empty">Masukkan username kustomer</string>
+    <string name="affiliate_username_short">Panjang username minimal 6 karakter_</string>
+    <string name="affiliate_username_invalid">Username hanya boleh berisi huruf, angka dan _</string>
+    <string name="affiliate_password_empty">Masukkan kata sandi kustomer</string>
+    <string name="affiliate_password_invalid">Kata sandi kustomer tidak valid, minimal 6 karakter</string>
+    <string name="affiliate_confirm_password_empty">Masukkan konfirmasi kata sandi kustomer</string>
+    <string name="affiliate_confirm_password_not_match">Konfirmasi kata sandi tidak sesuai</string>
+
+    <string name="affiliate_add_customer_success">Kustomer sudah ditambahkan</string>
 
 </resources>

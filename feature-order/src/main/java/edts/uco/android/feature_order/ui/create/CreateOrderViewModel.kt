@@ -4,8 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
 import com.google.android.libraries.places.api.model.Place
+import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_domain.model.ProfileData
 import edts.base.android.core_domain.model.VehicleTypeData
+import edts.base.android.core_domain.usecase.AffiliateUseCase
 import edts.base.android.core_domain.usecase.OrderUseCase
 import edts.base.android.core_domain.usecase.ProfileUseCase
 import edts.base.android.core_domain.usecase.VehicleUseCase
@@ -14,7 +16,8 @@ import kotlinx.coroutines.flow.combine
 
 class CreateOrderViewModel(private val vehicleUseCase: VehicleUseCase,
                            private val profileUseCase: ProfileUseCase,
-                           private val orderUseCase: OrderUseCase): BaseViewModel() {
+                           private val orderUseCase: OrderUseCase,
+                           private val affiliateUseCase: AffiliateUseCase): BaseViewModel() {
     var vehicleType = MutableLiveData<VehicleTypeData?>()
     var useOfficeAddress = MutableLiveData<Boolean>().apply { postValue(true) }
     var profile = MutableLiveData<ProfileData>()
@@ -44,6 +47,7 @@ class CreateOrderViewModel(private val vehicleUseCase: VehicleUseCase,
     var destinationCity5: String? = null
 
     var isMultipleDestination = MutableLiveData<Boolean?>()
+    var customer = MutableLiveData<CustomerData?>()
 
     var length: Int? = null
     var width: Int? = null
@@ -159,6 +163,9 @@ class CreateOrderViewModel(private val vehicleUseCase: VehicleUseCase,
             destinationName5 = destinationName5,
             destinationCity5 = destinationCity5,
             destinationLat5 = destinationAddress5.value?.latLng?.latitude,
-            destinationLng5 = destinationAddress5.value?.latLng?.longitude
+            destinationLng5 = destinationAddress5.value?.latLng?.longitude,
+            customer = customer.value
         ).asLiveData()
+
+    fun getCustomers() = affiliateUseCase.getCustomer(false).asLiveData()
 }

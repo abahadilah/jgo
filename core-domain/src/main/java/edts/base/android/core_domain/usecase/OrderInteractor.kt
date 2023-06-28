@@ -29,14 +29,16 @@ class OrderInteractor(private val repository: IOrderRepository): OrderUseCase {
                              destinationName5: String?,
                              destinationCity5: String?,
                              destinationLat5: Double?,
-                             destinationLng5: Double?) =
+                             destinationLng5: Double?,
+                             customer: CustomerData?) =
         repository.createOrder(vehicleType, product, length, width, height, coli, weight,
             description, originName, originCity, originLat, originLng, destinationName,
             destinationCity, destinationLat, destinationLng,
             destinationName2, destinationCity2, destinationLat2, destinationLng2,
             destinationName3, destinationCity3, destinationLat3, destinationLng3,
             destinationName4, destinationCity4, destinationLat4, destinationLng4,
-            destinationName5, destinationCity5, destinationLat5, destinationLng5)
+            destinationName5, destinationCity5, destinationLat5, destinationLng5,
+            customer)
 
     override fun getOriginAddressHistory() = repository.getOriginAddressHistory()
     override fun getDestinationAddressHistory() = repository.getDestinationAddressHistory()

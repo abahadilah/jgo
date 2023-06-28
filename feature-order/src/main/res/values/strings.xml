@@ -28,6 +28,7 @@
     <string name="order_list">Daftar Order (%1$s)</string>
     <string name="order_invoice_no">No Invoice</string>
     <string name="order_vehicle_type">Jenis Kendaraan</string>
+    <string name="order_customer">Pilih kustomer</string>
     <string name="order_create_order">Buat Order Baru</string>
     <string name="order_origin_address">Alamat Pengirim</string>
     <string name="order_origin_address_use_mine">Gunakan alamat %1$s</string>
@@ -50,6 +51,7 @@
     <string name="order_submit">Submit</string>
     <string name="order_price">Ongkos kirim</string>
     <string name="order_price_empty">Rp -</string>
+    <string name="order_customer_empty">Kustomer harus dipilih</string>
     <string name="order_vehicle_type_empty">Jenis Kendaraan harus dipilih</string>
     <string name="order_origin_address_empty">Alamat pengirim kosong</string>
     <string name="order_origin_name_empty">Nama pengirim kosong</string>

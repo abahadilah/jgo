@@ -34,7 +34,8 @@ interface IOrderRepository {
                     destinationName5: String?,
                     destinationCity5: String?,
                     destinationLat5: Double?,
-                    destinationLng5: Double?):
+                    destinationLng5: Double?,
+                    customer: CustomerData? = null):
             Flow<Result<CreateOrderData?>>
 
     fun getOriginAddressHistory(): Flow<List<CreateOrderAddressData>?>

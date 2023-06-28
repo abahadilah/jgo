@@ -7,7 +7,6 @@ import android.os.Build
 import android.util.Patterns
 import androidx.core.content.ContextCompat
 import edts.base.android.core_utils.R
-import kotlin.math.abs
 
 fun String.bold(subText: String): String {
     val f = indexOf(subText, 0, ignoreCase = true)
@@ -78,7 +77,7 @@ fun String.isValidEmail() =
 
 
 fun String.isValidAddress() = isNotEmpty()
-fun String.isValidPassword() = !isNullOrEmpty() && length >= 6 && this.contains("""[a-zA-Z]""".toRegex()) && this.contains("""[0-9]""".toRegex())
+fun String.isValidPassword() = !isNullOrEmpty() && length >= 6 //&& this.contains("""[a-zA-Z]""".toRegex()) && this.contains("""[0-9]""".toRegex())
 fun String.isValidPhoneOrAddress() = isValidPhone() || isValidEmail()
 fun String.isPhoneNo() = Patterns.PHONE.matcher(this).matches() && this.substring(0..1) == "08"
 fun String.isValidKtp() = !isNullOrEmpty() && length == 16

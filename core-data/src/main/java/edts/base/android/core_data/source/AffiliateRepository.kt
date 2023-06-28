@@ -5,11 +5,15 @@ import edts.base.android.core_data.source.local.ConfigurationEntity
 import edts.base.android.core_data.source.local.ConfigurationLocalDataSource
 import edts.base.android.core_data.source.local.CustomerLocalDataSource
 import edts.base.android.core_data.source.local.ProfileLocalDataSource
+import edts.base.android.core_data.source.local.ProvincesLocalDataSource
 import edts.base.android.core_data.source.remote.AffiliateRemoteDataSource
 import edts.base.android.core_data.source.remote.response.CustomerResponse
+import edts.base.android.core_data.source.remote.response.IdNameResponse
 import edts.base.android.core_domain.model.CustomerData
+import edts.base.android.core_domain.model.IdNameData
 import edts.base.android.core_domain.repository.IAffiliateRepository
 import id.co.edtslib.data.NetworkBoundGetResource
+import id.co.edtslib.data.NetworkBoundProcessResource
 import id.co.edtslib.data.Result
 import id.co.edtslib.data.source.local.HttpHeaderLocalSource
 import id.co.edtslib.data.source.remote.SessionRemoteDataSource
@@ -21,7 +25,8 @@ class AffiliateRepository(private val profileLocalDataSource: ProfileLocalDataSo
                           private val localDataSource: HttpHeaderLocalSource,
                           private val sessionRemoteDataSource: SessionRemoteDataSource,
                           private val customerLocalDataSource: CustomerLocalDataSource,
-                          private val configurationLocalDataSource: ConfigurationLocalDataSource
+                          private val configurationLocalDataSource: ConfigurationLocalDataSource,
+                          private val provincesLocalDataSource: ProvincesLocalDataSource
 ):
     IAffiliateRepository {
 
@@ -68,6 +73,71 @@ class AffiliateRepository(private val profileLocalDataSource: ProfileLocalDataSo
             }
 
             override fun shouldFetch(data: List<CustomerData>?) =
+                isReload || data?.isNotEmpty() != true
+
+        }.asFlow()
+
+    override fun addCustomer(name: String,
+                             ktp: String,
+                             mobile: String,
+                             email: String,
+                             lng: Double,
+                             lat: Double,
+                             username: String,
+                             password: String,
+                             street: String,
+                             city: String,
+                             zipcode: String,
+                             province: Long) =
+        object : NetworkBoundProcessResource<Boolean?, Any>(
+            localDataSource, sessionRemoteDataSource
+        ) {
+            override suspend fun callBackResult(data: Any) = true
+
+            override suspend fun createCall(): Result<Any> {
+                val cached = profileLocalDataSource.getCached()
+                val profileId = if (cached?.id == null) 0L else cached.id
+
+                return affiliateRemoteDataSource.addCustomer(
+                    name = name,
+                    affiliateId = profileId,
+                    ktp = ktp,
+                    mobile = mobile,
+                    email = email,
+                    lng = lng,
+                    lat = lat,
+                    username = username,
+                    password = password,
+                    street = street,
+                    city = city,
+                    zipcode = zipcode,
+                    province = province
+                )
+            }
+
+
+        }.asFlow()
+
+    override fun getProvinces(isReload: Boolean) =
+        object : NetworkBoundGetResource<List<IdNameData>?, List<IdNameResponse>>(
+            localDataSource, sessionRemoteDataSource
+        ) {
+            override suspend fun createCall(): Result<List<IdNameResponse>> =
+                affiliateRemoteDataSource.getProvinces()
+
+            override fun getCached() = flow {
+                val cached = provincesLocalDataSource.getCached()
+                emit(
+                    Mappers.getMapper(AffiliateMapper::class.java)
+                        .provincesEntityToModel(cached))
+            }
+
+
+            override suspend fun saveCallResult(data: List<IdNameResponse>) =
+                provincesLocalDataSource.save(Mappers.getMapper(AffiliateMapper::class.java)
+                    .provincesResponseToEntity(data))
+
+            override fun shouldFetch(data: List<IdNameData>?) =
                 isReload || data?.isNotEmpty() != true
 
         }.asFlow()

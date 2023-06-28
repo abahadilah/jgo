@@ -14,6 +14,7 @@ import edts.base.android.core_domain.model.CustomerData
 import edts.base.android.core_navigation.ModuleNavigator
 import edts.base.android.core_resource.base.result.JGoProcessDelegate
 import edts.base.android.core_resource.base.result.JGoProcessLoadResult
+import edts.base.core_utils.SnackBarUtils
 import id.co.edtslib.baserecyclerview.BaseViewHolder
 import id.co.edtslib.uibase.PopupActivity
 import id.co.edtslib.util.IntentUtil
@@ -26,6 +27,9 @@ class CustomerActivity: PopupActivity<ActivityCustomerBinding>(), ModuleNavigato
     private val addCustomerResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
+                SnackBarUtils.showSnackBar(this,
+                    binding.root,
+                    getString(R.string.affiliate_add_customer_success))
                 loadData(true)
             }
         }
